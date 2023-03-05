@@ -49,7 +49,7 @@ class _HomepageState extends State<Homepage> {
       appBar: AppBar(
         title: Row(
           children: <Widget>[
-            Text("+",style: TextStyle(fontFamily: 'BalticH',fontSize: 35,color: Color(0xFFFF4747))),
+            Text("++",style: TextStyle(fontFamily: 'BalticH',fontSize: 35,color: Color(0xFFFF4747))),
             Text("U",style: TextStyle(fontFamily: 'BalticH',fontSize: 35,)),
             SizedBox(width: 3,),
             Text("M",style: TextStyle(fontFamily: 'BalticC',fontSize: 35),),
