@@ -162,8 +162,8 @@ class _EmergencyCardsState extends State<EmergencyCards> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    IconButton(onPressed: null, icon: Icon(Icons.ice_skating),iconSize: 30,),
-                    Text("Emergency",style: TextStyle(fontSize: 15),),
+                    IconButton(onPressed: (){}, icon: Icon(Icons.emergency),iconSize: 30,color: Color(0xFFA00000),),
+                    Text("Emergency",style: TextStyle(fontSize: 15,color:Color(0xFFA00000), ),),
                   ],
                 ),
               ),
@@ -177,7 +177,7 @@ class _EmergencyCardsState extends State<EmergencyCards> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    IconButton(onPressed: null, icon: Icon(Icons.local_hospital_outlined),iconSize: 30,),
+                    IconButton(onPressed: (){}, icon: Icon(Icons.healing),iconSize: 30,color: Colors.black,),
                     Text("First Aid",style: TextStyle(fontSize: 15),),
                   ],
                 ),
@@ -192,7 +192,7 @@ class _EmergencyCardsState extends State<EmergencyCards> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    IconButton(onPressed: null, icon: Icon(Icons.credit_card),iconSize: 30,),
+                    IconButton(onPressed: (){}, icon: Icon(Icons.credit_card),iconSize: 30,color: Colors.black,),
                     Text("Credentials",style: TextStyle(fontSize: 15),),
                   ],
                 ),
