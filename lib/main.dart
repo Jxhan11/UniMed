@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
 
+import 'package:unimed/Components/usefulStuff.dart';
+
 void main() {
 
    runApp(MyApp());
@@ -59,7 +61,7 @@ class _HomepageState extends State<Homepage> {
         // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           Ads(),
-
+          FilledCard()
         ],
       )
 
