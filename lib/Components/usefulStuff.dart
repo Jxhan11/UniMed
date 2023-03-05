@@ -22,6 +22,20 @@ String GreaterThan100kHelper(String input) {
   }
 }
 
+class Title2 extends StatelessWidget {
+  final String title;
+  const Title2({Key? key, required String this.title}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(title,
+      style: const TextStyle(
+          fontSize: 22
+      ),);
+  }
+}
+
+
 class FilledCard extends StatelessWidget {
   final String ProductName;
   final double Price;

@@ -1,15 +1,14 @@
-
 import 'package:flutter/material.dart';
 import 'dart:ui';
 
 import 'package:unimed/Components/usefulStuff.dart';
 
 void main() {
-
-   runApp(MyApp());
+  runApp(MyApp());
 }
+
 class MyApp extends StatelessWidget {
-   MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
 
 // This widget is the root of your application.
   @override
@@ -24,12 +23,16 @@ class MyApp extends StatelessWidget {
         fontFamily: "ProductSans",
         appBarTheme: AppBarTheme(
           color: Color(0xFFEEEEE),
-          titleTextStyle: TextStyle(color: Color(0xFF242424),fontSize: 30,letterSpacing: 2),
+          titleTextStyle: TextStyle(
+              color: Color(0xFF242424), fontSize: 30, letterSpacing: 2),
         ),
         textTheme: TextTheme(
-          bodyLarge: TextStyle(fontFamily: "ProductSans",fontWeight:FontWeight.w700 ),
-          bodyMedium: TextStyle(fontFamily: "ProductSans",fontWeight:FontWeight.w500 ),
-          bodySmall: TextStyle(fontFamily: "ProductSans",fontWeight:FontWeight.w100 ),
+          bodyLarge:
+              TextStyle(fontFamily: "ProductSans", fontWeight: FontWeight.w700),
+          bodyMedium:
+              TextStyle(fontFamily: "ProductSans", fontWeight: FontWeight.w500),
+          bodySmall:
+              TextStyle(fontFamily: "ProductSans", fontWeight: FontWeight.w100),
         ),
       ),
       // Inner UI of the application
@@ -48,32 +51,178 @@ class Homepage extends StatefulWidget {
 class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
-    double screenHeight=MediaQuery.of(context).size.height;
-    double screenWidth=MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar: AppBar(
-        title: Row(
+        appBar: AppBar(
+          title: Row(
+            children: <Widget>[
+              Text("++",
+                  style: TextStyle(
+                      fontFamily: 'BalticH',
+                      fontSize: 35,
+                      color: Color(0xFFFF4747))),
+              Text("U",
+                  style: TextStyle(
+                    fontFamily: 'BalticH',
+                    fontSize: 35,
+                  )),
+              SizedBox(
+                width: 3,
+              ),
+              Text(
+                "M",
+                style: TextStyle(fontFamily: 'BalticC', fontSize: 35),
+              ),
+            ],
+          ),
+          elevation: 0,
+        ),
+        body: ListView(
+          scrollDirection: Axis.vertical,
+          // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            Text("++",style: TextStyle(fontFamily: 'BalticH',fontSize: 35,color: Color(0xFFFF4747))),
-            Text("U",style: TextStyle(fontFamily: 'BalticH',fontSize: 35,)),
-            SizedBox(width: 3,),
-            Text("M",style: TextStyle(fontFamily: 'BalticC',fontSize: 35),),
+            Ads(),
+            EmergencyCards(),
+            DailyNeeds(),
+            PreviouslyOrdered(),
+            // FreqBought(),
+            // FilledCard(),
+          ],
+        ));
+  }
+}
+
+///////////////////////////////////////END OF MAIN FUNCTION HERE/////////////////////////////////////////////////
+
+class DailyNeeds extends StatefulWidget {
+  const DailyNeeds({Key? key}) : super(key: key);
+
+  @override
+  State<DailyNeeds> createState() => _DailyNeedsState();
+}
+
+class _DailyNeedsState extends State<DailyNeeds> {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8.0),
+      child: Container(
+        height: 315,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Padding(
+                padding: EdgeInsets.only(left: 16.0),
+                child: Title2(title: "Daily Needs")),
+            Expanded(
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: 10,
+                itemBuilder: (BuildContext context, int index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: FilledCard(
+                        ProductName: "Cat",
+                        Price: 250,
+                        onTap: doNothing(),
+                        ProductImg: "https://placekitten.com/500/500"),
+                  );
+                },
+              ),
+            ),
           ],
         ),
-        elevation: 0,
       ),
-      body:Column(
-        // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          Ads(),
-          EmergencyCards(),
-          // FilledCard(),
-
-        ],
-      )
-
     );
   }
+
+  doNothing() {}
+}
+
+class PreviouslyOrdered extends StatefulWidget {
+  const PreviouslyOrdered({Key? key}) : super(key: key);
+
+  @override
+  State<PreviouslyOrdered> createState() => _PreviouslyOrderedState();
+}
+
+class _PreviouslyOrderedState extends State<PreviouslyOrdered> {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8.0),
+      child: Container(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Padding(
+                padding: EdgeInsets.only(left: 16.0),
+                child: Title2(title: "Past Orders")),
+            WideFilledCard(
+              ProductName: "Cat",
+              Price: 250,
+              onTap: doNothing(),
+              ProductImg: "https://placekitten.com/500/500",
+              PurchaseDate: "a few days ago",
+              Seller: "Delivered by uwu",
+            ),
+            WideFilledCard(
+              ProductName: "Cat",
+              Price: 250,
+              onTap: doNothing(),
+              ProductImg: "https://placekitten.com/500/500",
+              PurchaseDate: "a few days ago",
+              Seller: "Delivered by uwu",
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  doNothing() {}
+}
+
+class FreqBought extends StatefulWidget {
+  const FreqBought({Key? key}) : super(key: key);
+
+  @override
+  State<FreqBought> createState() => _FreqBoughtState();
+}
+
+class _FreqBoughtState extends State<FreqBought> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Padding(
+            padding: EdgeInsets.only(left: 16.0),
+            child: Title2(title: "Frequently Bought")),
+        Expanded(
+          child: GridView.builder(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2, // Number of columns
+              crossAxisSpacing: 8.0, // Spacing between columns
+              mainAxisSpacing: 8.0, // Spacing between rows
+            ),
+            itemCount: 10, // Total number of items
+            itemBuilder: (BuildContext context, int index) {
+              return Container(
+                color: Colors.blueGrey,
+                child: Center(
+                  child: Text('Item $index'),
+                ),
+              );
+            },
+          ),
+        )
+      ],
+    );
+  }
+
+  doNothing() {}
 }
 
 class Ads extends StatefulWidget {
@@ -86,8 +235,8 @@ class Ads extends StatefulWidget {
 class _AdsState extends State<Ads> {
   @override
   Widget build(BuildContext context) {
-    double screenHeight=MediaQuery.of(context).size.height;
-    double screenWidth=MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     final PageController controller = PageController();
     return SizedBox(
       width: screenWidth,
@@ -143,8 +292,8 @@ class EmergencyCards extends StatefulWidget {
 class _EmergencyCardsState extends State<EmergencyCards> {
   @override
   Widget build(BuildContext context) {
-    double screenHeight=MediaQuery.of(context).size.height;
-    double screenWidth=MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return Container(
       // color: Colors.amber,
       height: 150,
@@ -154,7 +303,9 @@ class _EmergencyCardsState extends State<EmergencyCards> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             Container(
-              decoration: BoxDecoration(color: Color(0xFFFF8E8E),borderRadius: BorderRadius.circular(15)),
+              decoration: BoxDecoration(
+                  color: Color(0xFFFF8E8E),
+                  borderRadius: BorderRadius.circular(15)),
               width: 110,
               height: 110,
               // color: Colors.blue,
@@ -162,14 +313,27 @@ class _EmergencyCardsState extends State<EmergencyCards> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    IconButton(onPressed: (){}, icon: Icon(Icons.emergency),iconSize: 30,color: Color(0xFFA00000),),
-                    Text("Emergency",style: TextStyle(fontSize: 15,color:Color(0xFFA00000), ),),
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.emergency),
+                      iconSize: 30,
+                      color: Color(0xFFA00000),
+                    ),
+                    Text(
+                      "Emergency",
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Color(0xFFA00000),
+                      ),
+                    ),
                   ],
                 ),
               ),
             ),
             Container(
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),border: Border.all(color: Colors.black54)),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  border: Border.all(color: Colors.black54)),
               width: 110,
               height: 110,
               // color: Colors.blue,
@@ -177,14 +341,24 @@ class _EmergencyCardsState extends State<EmergencyCards> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    IconButton(onPressed: (){}, icon: Icon(Icons.healing),iconSize: 30,color: Colors.black,),
-                    Text("First Aid",style: TextStyle(fontSize: 15),),
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.healing),
+                      iconSize: 30,
+                      color: Colors.black,
+                    ),
+                    Text(
+                      "First Aid",
+                      style: TextStyle(fontSize: 15),
+                    ),
                   ],
                 ),
               ),
             ),
             Container(
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),border: Border.all(color: Colors.black54)),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  border: Border.all(color: Colors.black54)),
               width: 110,
               height: 110,
               // color: Colors.blue,
@@ -192,19 +366,23 @@ class _EmergencyCardsState extends State<EmergencyCards> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    IconButton(onPressed: (){}, icon: Icon(Icons.credit_card),iconSize: 30,color: Colors.black,),
-                    Text("Credentials",style: TextStyle(fontSize: 15),),
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.credit_card),
+                      iconSize: 30,
+                      color: Colors.black,
+                    ),
+                    Text(
+                      "Credentials",
+                      style: TextStyle(fontSize: 15),
+                    ),
                   ],
                 ),
               ),
             ),
-            
           ],
         ),
       ),
-    ) ;
+    );
   }
 }
-
-
-
