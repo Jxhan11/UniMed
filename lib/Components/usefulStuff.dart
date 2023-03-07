@@ -236,7 +236,7 @@ class WideFilledCard extends StatelessWidget {
                       ),
                       Text(('\u{20B9}${GreaterThan100kHelper(Price.toString())}'),
                         style: TextStyle(
-                            fontWeight: FontWeight.w200,
+                            fontWeight: FontWeight.w300,
                             color: Theme.of(context).textTheme.subtitle1!.color
                         ),),
                       Spacer(flex: 4,),
@@ -276,7 +276,7 @@ class WideFilledCard extends StatelessWidget {
                       child: Row(
                         children: [
                           IconButton(onPressed: (){}, icon: Icon(Icons.more_vert)),
-                          ElevatedButton(onPressed: (){}, child: Text("Add to cart")),
+                          ElevatedButton(onPressed: (){}, child: Text("Add to cart",style: TextStyle(fontSize: 10),),),
                         ],
                       ),
                     )

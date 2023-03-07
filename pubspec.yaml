@@ -76,14 +76,19 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: ProductSans
+    - family: PSL
       fonts:
         - asset: fonts/ProductSans-Light.ttf
-          weight: 100
         - asset: fonts/ProductSans-Medium.ttf
-          weight: 200
         - asset: fonts/ProductSans-Bold.ttf
-          weight: 300
+
+    - family: PSM
+      fonts:
+        - asset: fonts/ProductSans-Medium.ttf
+
+    - family: PSB
+      fonts:
+        - asset: fonts/ProductSans-Bold.ttf
 
 
     - family: BalticH

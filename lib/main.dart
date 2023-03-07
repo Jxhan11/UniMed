@@ -27,12 +27,17 @@ class MyApp extends StatelessWidget {
               color: Color(0xFF242424), fontSize: 30, letterSpacing: 2),
         ),
         textTheme: TextTheme(
-          bodyLarge:
-              TextStyle(fontFamily: "ProductSans", fontWeight: FontWeight.w700),
-          bodyMedium:
-              TextStyle(fontFamily: "ProductSans", fontWeight: FontWeight.w500),
-          bodySmall:
-              TextStyle(fontFamily: "ProductSans", fontWeight: FontWeight.w100),
+          // bodyLarge:
+          //     TextStyle(fontFamily: "PSB",),
+          // bodyMedium:
+          //     TextStyle(fontFamily: "PSM",),
+          // bodySmall:
+          //     TextStyle(fontFamily: "PSL",),
+          headline1: TextStyle(color: Colors.deepPurpleAccent,fontFamily: "PSL"),
+          headline2: TextStyle(color: Colors.deepPurpleAccent,fontFamily: "PSL"),
+          bodyText2: TextStyle(fontFamily: "PSL",fontWeight: FontWeight.w400),
+          // bodyText1: TextStyle(color: Colors.blue),
+          subtitle1: TextStyle(fontFamily: "PSM",fontWeight: FontWeight.w300),
         ),
       ),
       // Inner UI of the application
@@ -57,23 +62,20 @@ class _HomepageState extends State<Homepage> {
         appBar: AppBar(
           title: Row(
             children: <Widget>[
-              Text("++",
-                  style: TextStyle(
-                      fontFamily: 'BalticH',
-                      fontSize: 35,
-                      color: Color(0xFFFF4747))),
-              Text("U",
-                  style: TextStyle(
-                    fontFamily: 'BalticH',
-                    fontSize: 35,
-                  )),
-              SizedBox(
-                width: 3,
+              CircleAvatar(
+                backgroundColor: Color(0xFF1C1C1C),
+                radius: 20,
+                child: Container(
+                  height: 37,
+                  width: 37,
+                  decoration: BoxDecoration(color: Color(0xFFF1F1F1),borderRadius: BorderRadius.circular(100)),
+                  child: Center(child: Text("   U   ",style: TextStyle(color: Colors.black,fontFamily: "PSB",fontSize: 15),)),
+                ),
               ),
-              Text(
-                "M",
-                style: TextStyle(fontFamily: 'BalticC', fontSize: 35),
-              ),
+
+              Expanded(child: Container(),),
+              IconButton(onPressed: (){}, icon: Icon(Icons.search),color: Colors.black,splashRadius: 20,),
+              IconButton(onPressed: (){}, icon: Icon(Icons.account_circle_outlined),color: Colors.black,splashRadius: 20,),
             ],
           ),
           elevation: 0,
