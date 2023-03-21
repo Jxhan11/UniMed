@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'dart:ui';
-import 'theme_constants.dart';
 
 import 'package:unimed/Components/usefulStuff.dart';
+import 'package:unimed/Pages/searchWithSuggestions.dart';
 
 void main() {
+  SystemChrome.setSystemUIOverlayStyle(
+    SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+    ),
+  );
   runApp(MyApp());
 }
 
@@ -18,7 +24,7 @@ class MyApp extends StatelessWidget {
       // title of the application
       title: 'Hello World Demo Application',
       // theme of the widget
-darkTheme: AppTheme().darkTheme,
+
       theme: ThemeData(
         primarySwatch: Colors.red,
         scaffoldBackgroundColor: Color(0xFFF2F2F2),
@@ -26,7 +32,7 @@ darkTheme: AppTheme().darkTheme,
         appBarTheme: AppBarTheme(
           color: Color(0xFFEEEEE),
           titleTextStyle: TextStyle(
-              color: Color(0xFF242424), fontSize: 30, letterSpacing: 2),
+              color: Color(0xFF242424), fontSize: 22, letterSpacing: 2),
         ),
         textTheme: TextTheme(
           // bodyLarge:
@@ -35,17 +41,19 @@ darkTheme: AppTheme().darkTheme,
           //     TextStyle(fontFamily: "PSM",),
           // bodySmall:
           //     TextStyle(fontFamily: "PSL",),
-          headline1: TextStyle(color: Colors.deepPurpleAccent,fontFamily: "PSM"),
-          headline2: TextStyle(color: Colors.deepPurpleAccent,fontFamily: "PSM"),
+          headline1:
+              TextStyle(color: Colors.deepPurpleAccent, fontFamily: "PSM"),
+          headline2:
+              TextStyle(color: Colors.deepPurpleAccent, fontFamily: "PSM"),
           bodyText2: TextStyle(fontFamily: "PSM"),
           // bodyText1: TextStyle(color: Colors.blue),
           subtitle1: TextStyle(fontFamily: "PSM"),
         ),
       ),
+      darkTheme: ThemeData.dark(),
       // Inner UI of the application
-      home: const Homepage(),
-
       themeMode: ThemeMode.system,
+      home: const Homepage(),
     );
   }
 }
@@ -63,27 +71,99 @@ class _HomepageState extends State<Homepage> {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Welcome"),
-          elevation: 0,
-        ),
-        body: CustomScrollView(
-
-          slivers: <Widget>[
-            SubHeadlines(text: 'Records'),
-            SliverToBoxAdapter(
-              child: RecordCards(),
+      extendBodyBehindAppBar: true,
+      body: CustomScrollView(
+        slivers: <Widget>[
+          SliverAppBar(
+            collapsedHeight: 60,
+            title: Padding(
+              //TODO: Make the padding and height relative.
+              padding: const EdgeInsets.only(left: 4, right: 4),
+              child: Container(
+                width: double.infinity,
+                height: 52,
+                decoration: BoxDecoration(
+                    color: Theme.of(context).brightness == Brightness.light
+                        ? Colors.white
+                        : Colors.black,
+                    borderRadius: BorderRadius.all(Radius.circular(50))),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  SearchWithSuggestionsPage()),
+                        );
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 0),
+                        child: Container(
+                          child: Row(
+                            children: [
+                              Hero(
+                                tag: 'search-icon-leading',
+                                child: Material(
+                                  color: Colors.transparent,
+                                  child: Icon(
+                                    Icons.search_rounded,
+                                    color: Theme.of(context).brightness ==
+                                            Brightness.dark
+                                        ? Colors.white
+                                        : Colors.black,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              const Hero(
+                                tag: 'search-text',
+                                child: Material(
+                                  color: Colors.transparent,
+                                  child: Text(
+                                    "Search for healthcare facilities",
+                                    style: TextStyle(
+                                        fontFamily: 'ProductSans',
+                                        letterSpacing: 0,
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.grey,
+                                        fontSize: 15,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    CircleAvatar(
+                      radius: 18,
+                      child: Icon(Icons.person_rounded),
+                    ),
+                    // SizedBox(width: 1,),
+                  ],
+                ),
+              ),
             ),
-            EmergencyBoxes(),
-            SubHeadlines(text: 'For you'),
-            ForYouCards(),
-            SliverToBoxAdapter(
-              child: SizedBox(height: 200,),
-            ),
-
-
-          ],
-        ),
+          ),
+          SubHeadlines(text: 'Records'),
+          SliverToBoxAdapter(
+            child: RecordCards(),
+          ),
+          EmergencyBoxes(),
+          SubHeadlines(text: 'For you'),
+          ForYouCards(),
+        ],
+      ),
     );
   }
 }
@@ -394,9 +474,9 @@ class RecordCards extends StatefulWidget {
 class _RecordCardsState extends State<RecordCards> {
   @override
   Widget build(BuildContext context) {
-    return  Container(
+    return Container(
       // color: Colors.black12,
-      padding:EdgeInsets.only(left: 16,top: 8) ,
+      padding: EdgeInsets.only(left: 16, top: 8),
       height: 140,
       child: Container(
         child: ScrollConfiguration(
@@ -418,11 +498,27 @@ class _RecordCardsState extends State<RecordCards> {
                       width: 216,
                       child: Column(
                         children: <Widget>[
-                          SizedBox(height: 20,),
-                          Container(padding: EdgeInsets.only(left: 15), width:double.infinity, child: Text("Resting Heart Rate",textAlign: TextAlign.left,style: TextStyle(color: Color(0xFFA00000),fontSize: 17),)),
-                          SizedBox(height: 20,),
-                          Container(padding: EdgeInsets.only(left: 15),width: double.infinity, child: Text("99 Bpm",))
-
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Container(
+                              padding: EdgeInsets.only(left: 15),
+                              width: double.infinity,
+                              child: Text(
+                                "Resting Heart Rate",
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                    color: Color(0xFFA00000), fontSize: 17),
+                              )),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Container(
+                              padding: EdgeInsets.only(left: 15),
+                              width: double.infinity,
+                              child: Text(
+                                "99 Bpm",
+                              ))
                         ],
                       ),
                     ),
@@ -439,11 +535,27 @@ class _RecordCardsState extends State<RecordCards> {
                       width: 216,
                       child: Column(
                         children: <Widget>[
-                          SizedBox(height: 20,),
-                          Container(padding: EdgeInsets.only(left: 15), width:double.infinity, child: Text("Resting Heart Rate",textAlign: TextAlign.left,style: TextStyle(color: Color(0xFFA00000),fontSize: 17),)),
-                          SizedBox(height: 20,),
-                          Container(padding: EdgeInsets.only(left: 15),width: double.infinity, child: Text("99 Bpm",))
-
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Container(
+                              padding: EdgeInsets.only(left: 15),
+                              width: double.infinity,
+                              child: Text(
+                                "Resting Heart Rate",
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                    color: Color(0xFFA00000), fontSize: 17),
+                              )),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Container(
+                              padding: EdgeInsets.only(left: 15),
+                              width: double.infinity,
+                              child: Text(
+                                "99 Bpm",
+                              ))
                         ],
                       ),
                     ),
@@ -460,18 +572,32 @@ class _RecordCardsState extends State<RecordCards> {
                       width: 216,
                       child: Column(
                         children: <Widget>[
-                          SizedBox(height: 20,),
-                          Container(padding: EdgeInsets.only(left: 15), width:double.infinity, child: Text("Resting Heart Rate",textAlign: TextAlign.left,style: TextStyle(color: Color(0xFFA00000),fontSize: 17),)),
-                          SizedBox(height: 20,),
-                          Container(padding: EdgeInsets.only(left: 15),width: double.infinity, child: Text("99 Bpm",))
-
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Container(
+                              padding: EdgeInsets.only(left: 15),
+                              width: double.infinity,
+                              child: Text(
+                                "Resting Heart Rate",
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                    color: Color(0xFFA00000), fontSize: 17),
+                              )),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Container(
+                              padding: EdgeInsets.only(left: 15),
+                              width: double.infinity,
+                              child: Text(
+                                "99 Bpm",
+                              ))
                         ],
                       ),
                     ),
                   ),
                 ),
-
-
               ],
             ),
           ),
@@ -483,21 +609,28 @@ class _RecordCardsState extends State<RecordCards> {
 
 class SubHeadlines extends StatelessWidget {
   const SubHeadlines({required this.text});
- final String text;
+  final String text;
   @override
   Widget build(BuildContext context) {
-    return  SliverToBoxAdapter(
-      child: Column(
-          children:<Widget>[
-            SizedBox(height: 30,),
-            Container(padding: EdgeInsets.only(left: 30), width:double.infinity , child: Text(text,style: TextStyle(fontSize: 17,letterSpacing: 1.5),)),
-            SizedBox(height: 10,)
-          ]
-      ),
-    ) ;
+    return SliverToBoxAdapter(
+      child: Column(children: <Widget>[
+        SizedBox(
+          height: 30,
+        ),
+        Container(
+            padding: EdgeInsets.only(left: 30),
+            width: double.infinity,
+            child: Text(
+              text,
+              style: TextStyle(fontSize: 17, letterSpacing: 1.5),
+            )),
+        SizedBox(
+          height: 10,
+        )
+      ]),
+    );
   }
 }
-
 
 class EmergencyBoxes extends StatelessWidget {
   const EmergencyBoxes({Key? key}) : super(key: key);
@@ -506,7 +639,7 @@ class EmergencyBoxes extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: Container(
-        padding: EdgeInsets.only(left: 16,right: 16,top: 30),
+        padding: EdgeInsets.only(left: 16, right: 16, top: 30),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
@@ -543,8 +676,8 @@ class EmergencyBoxes extends StatelessWidget {
               margin: EdgeInsets.only(left: 8),
               decoration: BoxDecoration(
                 color: Color(0xFFF9F9F9),
-                  borderRadius: BorderRadius.circular(10),
-                  ),
+                borderRadius: BorderRadius.circular(10),
+              ),
               width: 110,
               height: 120,
               // color: Colors.blue,
@@ -560,7 +693,8 @@ class EmergencyBoxes extends StatelessWidget {
                     ),
                     Text(
                       "First Aid",
-                      style: TextStyle(fontSize: 15 ),
+                      style:
+                          TextStyle(fontSize: 15, fontWeight: FontWeight.w900),
                     ),
                   ],
                 ),
@@ -570,8 +704,8 @@ class EmergencyBoxes extends StatelessWidget {
               margin: EdgeInsets.only(left: 8),
               decoration: BoxDecoration(
                 color: Color(0xFFF9F9F9),
-                  borderRadius: BorderRadius.circular(10),
-                  ),
+                borderRadius: BorderRadius.circular(10),
+              ),
               width: 110,
               height: 120,
               // color: Colors.blue,
@@ -593,7 +727,6 @@ class EmergencyBoxes extends StatelessWidget {
                 ),
               ),
             ),
-
           ],
         ),
       ),
@@ -606,144 +739,48 @@ class ForYouCards extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  SliverToBoxAdapter(
-      child:Column(
-        children: <Widget>[
-          Container(
-            decoration: BoxDecoration(
-              color: Color(0xFFF9F9F9),
-              borderRadius: BorderRadius.circular(15),
-              // boxShadow: <BoxShadow>[
-              //   BoxShadow(
-              //     color: Colors.black12,
-              //     blurRadius: 2,
-              //     offset: Offset(-.5,2),
-              //   ),
-              // ],
+    return SliverToBoxAdapter(
+      child: Container(
+        decoration: BoxDecoration(
+          color: Color(0xFFF9F9F9),
+          borderRadius: BorderRadius.circular(15),
+          boxShadow: <BoxShadow>[
+            BoxShadow(
+              color: Colors.black12,
+              blurRadius: 2,
+              offset: Offset(-.5, 2),
             ),
-            margin: EdgeInsets.only(top: 10),
-            height: 200,
-            width: 340,
-            child:  Column(
-              children: <Widget>[
-                InkWell(
-                  onTap: () {},
-                  child: Container(
-                    padding: EdgeInsets.only(left: 5,top:20,right:10),
-                    child: Row(children: <Widget>[
-                      RawMaterialButton(
-                        onPressed: () {},
-                        elevation: 0,
-                        fillColor: Color(0xFFE3E3E3),
-                        child: Icon(
-                          Icons.newspaper,
-                          size: 25.0,
-                        ),
-                        padding: EdgeInsets.all(15.0),
-                        shape: CircleBorder(),
-                      ),
-                      Text('Insurance Plans',style: TextStyle(fontSize: 25,fontFamily: "PSL",color: Color(
-                          0xFF363636)),)
-                    ],),
+          ],
+        ),
+        margin: EdgeInsets.all(16),
+        height: 200,
+        width: 300,
+        child: Column(
+          children: <Widget>[
+            Container(
+              padding: EdgeInsets.only(left: 5, top: 20, right: 10),
+              child: Row(
+                children: <Widget>[
+                  RawMaterialButton(
+                    onPressed: () {},
+                    elevation: 0,
+                    fillColor: Color(0xFFE3E3E3),
+                    child: Icon(
+                      Icons.newspaper,
+                      size: 25.0,
+                    ),
+                    padding: EdgeInsets.all(15.0),
+                    shape: CircleBorder(),
                   ),
-                ),
-                Container(
-                  padding: EdgeInsets.all(20),
-                  child: Text('Learn More about health insurance policies provided by the government',style: TextStyle(fontFamily: "PSXL",fontSize: 16,letterSpacing: 0.5),),
-                ),
-              ],
+                  Text(
+                    'Insurance Plans',
+                    style: TextStyle(fontSize: 25, fontFamily: "PSM"),
+                  )
+                ],
+              ),
             ),
-          ) ,
-          Container(
-            decoration: BoxDecoration(
-              color: Color(0xFFF9F9F9),
-              borderRadius: BorderRadius.circular(15),
-              // boxShadow: <BoxShadow>[
-              //   BoxShadow(
-              //     color: Colors.black12,
-              //     blurRadius: 2,
-              //     offset: Offset(-.5,2),
-              //   ),
-              // ],
-            ),
-            margin: EdgeInsets.only(top: 10),
-            height: 200,
-            width: 340,
-            child:  Column(
-              children: <Widget>[
-                InkWell(
-                  onTap: () {},
-                  child: Container(
-                    padding: EdgeInsets.only(left: 5,top:20,right:10),
-                    child: Row(children: <Widget>[
-                      RawMaterialButton(
-                        onPressed: () {},
-                        elevation: 0,
-                        fillColor: Color(0xFFE3E3E3),
-                        child: Icon(
-                          Icons.newspaper,
-                          size: 25.0,
-                        ),
-                        padding: EdgeInsets.all(15.0),
-                        shape: CircleBorder(),
-                      ),
-                      Text('Insurance Plans',style: TextStyle(fontSize: 25,fontFamily: "PSL",color: Color(
-                          0xFF363636)),)
-                    ],),
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.all(20),
-                  child: Text('Learn More about health insurance policies provided by the government',style: TextStyle(fontFamily: "PSXL",fontSize: 16,letterSpacing: 0.5),),
-                ),
-              ],
-            ),
-          ) ,
-          Container(
-            decoration: BoxDecoration(
-              color: Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):Color(0xFFF9F9F9),
-              borderRadius: BorderRadius.circular(15),
-              // boxShadow: <BoxShadow>[
-              //   BoxShadow(
-              //     color: Colors.black12,
-              //     blurRadius: 2,
-              //     offset: Offset(-.5,2),
-              //   ),
-              // ],
-            ),
-            margin: EdgeInsets.only(top: 10),
-            height: 200,
-            width: 340,
-            child:  Column(
-              children: <Widget>[
-                InkWell(
-                  onTap: () {},
-                  child: Container(
-                    padding: EdgeInsets.only(left: 5,top:20,right:10),
-                    child: Row(children: <Widget>[
-                      RawMaterialButton(
-                        onPressed: () {},
-                        elevation: 0,
-                        fillColor: Theme.of(context).brightness == Brightness.dark ? Color(0xFF474747):Color(0xFFE3E3E3),
-                        child: Icon(
-                          Icons.newspaper,
-                          size: 25.0,
-                        ),
-                        padding: EdgeInsets.all(15.0),
-                        shape: CircleBorder(),
-                      ),
-                      Text('Insurance Plans',style: TextStyle(fontSize: 25,fontFamily: "PSL",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)
-                    ],),
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.all(20),
-                  child: Text('Learn More about health insurance policies provided by the government',style: TextStyle(fontFamily: "PSXL",fontSize: 16,letterSpacing: 0.5),),
-                ),
-              ],
-            ),
-          ) ,
-        ],
+          ],
+        ),
       ),
     );
   }
