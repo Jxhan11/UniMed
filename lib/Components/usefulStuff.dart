@@ -1,7 +1,139 @@
 import 'package:flutter/material.dart';
 
+PoggiesM3List(
+    {required List<String> itemNames,
+    required List<Icon> leadingIcons,
+    required List<Icon> trailingIcons,
+    required BuildContext ctx,
+    required Function() theTrailingAction,
+      required Function() onTapTile}) {
+  double basicRadius = 12;
+  double lastOnesRadius = 6;
+  int iLen = itemNames.length;
+  List<Widget> widgetsToAdd = [];
 
-String AddCommasAfterEvery3Numbers(double x){
+  if (iLen > 2) {
+    widgetsToAdd.add(PoggiesM3ListTile(
+        itemNames: itemNames[0],
+        leadingIcons: leadingIcons[0],
+        trailingIcons: trailingIcons[0],
+        MainAction: onTapTile,
+        ctx: ctx,
+        TL: basicRadius + 4,
+        TR: basicRadius + 4,
+        BL: lastOnesRadius,
+        BR: lastOnesRadius,
+        TrailingAction: theTrailingAction));
+    widgetsToAdd.add(SizedBox(
+      height: 5,
+    ));
+    for (int i = 1; i < iLen - 1; i++) {
+      widgetsToAdd.add(PoggiesM3ListTile(
+          MainAction: onTapTile,
+          itemNames: itemNames[i],
+          leadingIcons: leadingIcons[i],
+          trailingIcons: trailingIcons[i],
+          ctx: ctx,
+          TL: basicRadius,
+          TR: basicRadius,
+          BL: basicRadius,
+          BR: basicRadius,
+          TrailingAction: theTrailingAction));
+      widgetsToAdd.add(SizedBox(
+        height: 5,
+      ));
+    }
+    widgetsToAdd.add(PoggiesM3ListTile(
+        MainAction: onTapTile,
+        itemNames: itemNames[iLen - 1],
+        leadingIcons: leadingIcons[iLen - 1],
+        trailingIcons: trailingIcons[iLen - 1],
+        ctx: ctx,
+        TL: lastOnesRadius,
+        TR: lastOnesRadius,
+        BL: basicRadius + 4,
+        BR: basicRadius + 4,
+        TrailingAction: theTrailingAction));
+  } else if (iLen == 2) {
+    widgetsToAdd.add(PoggiesM3ListTile(
+        MainAction: onTapTile,
+        itemNames: itemNames[0],
+        leadingIcons: leadingIcons[0],
+        trailingIcons: trailingIcons[0],
+        ctx: ctx,
+        TL: basicRadius + 4,
+        TR: basicRadius + 4,
+        BL: lastOnesRadius,
+        BR: lastOnesRadius,
+        TrailingAction: theTrailingAction));
+    widgetsToAdd.add(SizedBox(
+      height: 5,
+    ));
+    widgetsToAdd.add(PoggiesM3ListTile(
+        MainAction: onTapTile,
+        itemNames: itemNames[iLen - 1],
+        leadingIcons: leadingIcons[iLen - 1],
+        trailingIcons: trailingIcons[iLen - 1],
+        ctx: ctx,
+        TL: lastOnesRadius,
+        TR: lastOnesRadius,
+        BL: basicRadius + 4,
+        BR: basicRadius + 4,
+        TrailingAction: theTrailingAction));
+  } else {
+    widgetsToAdd.add(PoggiesM3ListTile(
+        MainAction: onTapTile,
+        itemNames: itemNames[0],
+        leadingIcons: leadingIcons[0],
+        trailingIcons: trailingIcons[0],
+        ctx: ctx,
+        TL: basicRadius + 4,
+        TR: basicRadius + 4,
+        BL: basicRadius + 4,
+        BR: basicRadius + 4,
+        TrailingAction: theTrailingAction));
+  }
+
+  return Column(
+    children: widgetsToAdd,
+  );
+}
+
+PoggiesM3ListTile(
+    {required itemNames,
+    required leadingIcons,
+    required trailingIcons,
+    required BuildContext ctx,
+    required double TL,
+    required double TR,
+    required double BL,
+    required double BR,
+    required Function() TrailingAction,
+      required Function() MainAction}) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+    child: Container(
+      child: ListTile(
+        onTap: MainAction,
+        title: Text(itemNames),
+        leading: leadingIcons,
+        trailing: IconButton(onPressed: TrailingAction, icon: trailingIcons),
+      ),
+      decoration: BoxDecoration(
+          color: Theme.of(ctx).brightness == Brightness.light
+              ? Colors.white
+              : Colors.black,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(TL),
+            topRight: Radius.circular(TR),
+            bottomLeft: Radius.circular(BL),
+            bottomRight: Radius.circular(BR),
+          )),
+    ),
+  );
+}
+
+String AddCommasAfterEvery3Numbers(double x) {
   String ans;
   String xString = x.toString();
   RegExp reg = RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))');
@@ -9,6 +141,7 @@ String AddCommasAfterEvery3Numbers(double x){
   ans = xString.replaceAllMapped(reg, mathFunc);
   return ans;
 }
+
 String GreaterThan100kHelper(String input) {
   double number = double.tryParse(input) ?? 0.0;
   if (number >= 1000000000) {
@@ -28,13 +161,12 @@ class Title2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(title,
-      style: const TextStyle(
-          fontSize: 22
-      ),);
+    return Text(
+      title,
+      style: const TextStyle(fontSize: 22),
+    );
   }
 }
-
 
 class FilledCard extends StatelessWidget {
   final String ProductName;
@@ -42,8 +174,13 @@ class FilledCard extends StatelessWidget {
   final String ProductImg;
   var onTap;
 
-
-  FilledCard({Key? key, required this.ProductName, required this.Price, required this.onTap, required String this.ProductImg}) : super(key: key);
+  FilledCard(
+      {Key? key,
+      required this.ProductName,
+      required this.Price,
+      required this.onTap,
+      required String this.ProductImg})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -68,38 +205,41 @@ class FilledCard extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8),
                     child: Image(
-                        image: NetworkImage(ProductImg),
+                      image: NetworkImage(ProductImg),
                       fit: BoxFit.cover,
                     ),
                   ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 16.0,top: 16,right: 16.0),
-                child: Text(ProductName,
+                padding:
+                    const EdgeInsets.only(left: 16.0, top: 16, right: 16.0),
+                child: Text(
+                  ProductName,
                   style: const TextStyle(fontSize: 18),
-                overflow: TextOverflow.ellipsis,),
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 16.0,right: 8.0),
+                padding: const EdgeInsets.only(left: 16.0, right: 8.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(('\u{20B9}${GreaterThan100kHelper(Price.toString())}'),
-                    style: TextStyle(
-                      fontWeight: Theme.of(context).textTheme.subtitle1!.fontWeight,
-                      color: Theme.of(context).textTheme.subtitle1!.color
-                    ),),
+                    Text(
+                      ('\u{20B9}${GreaterThan100kHelper(Price.toString())}'),
+                      style: TextStyle(
+                          fontWeight:
+                              Theme.of(context).textTheme.subtitle1!.fontWeight,
+                          color: Theme.of(context).textTheme.subtitle1!.color),
+                    ),
                     ElevatedButton(
-                        onPressed: () => onTap,
-                        child: const Icon(Icons.add_shopping_cart),
+                      onPressed: () => onTap,
+                      child: const Icon(Icons.add_shopping_cart),
                       style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
-                          )
-                      ),
+                        borderRadius: BorderRadius.circular(30),
+                      )),
                     ),
-
                   ],
                 ),
               )
@@ -117,17 +257,21 @@ class OutlinedCard extends StatelessWidget {
   final String ProductImg;
   var onTap;
 
-
-  OutlinedCard({Key? key, required this.ProductName, required this.Price, required this.onTap, required String this.ProductImg}) : super(key: key);
+  OutlinedCard(
+      {Key? key,
+      required this.ProductName,
+      required this.Price,
+      required this.onTap,
+      required String this.ProductImg})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       // color: Color(0xFFEEEEEE),
       decoration: BoxDecoration(
-            border: Border.all(width: 3,color: Color(0xFFCACACA)),
-            borderRadius: BorderRadius.circular(12)
-      ),
+          border: Border.all(width: 3, color: Color(0xFFCACACA)),
+          borderRadius: BorderRadius.circular(12)),
       // color: Theme.of(context).cardColor,
 
       height: 260,
@@ -152,21 +296,25 @@ class OutlinedCard extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 16.0,top: 16,right: 16.0),
-              child: Text(ProductName,
+              padding: const EdgeInsets.only(left: 16.0, top: 16, right: 16.0),
+              child: Text(
+                ProductName,
                 style: const TextStyle(fontSize: 18),
-                overflow: TextOverflow.ellipsis,),
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 16.0,right: 8.0),
+              padding: const EdgeInsets.only(left: 16.0, right: 8.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(('\u{20B9}${GreaterThan100kHelper(Price.toString())}'),
+                  Text(
+                    ('\u{20B9}${GreaterThan100kHelper(Price.toString())}'),
                     style: TextStyle(
-                        fontWeight: Theme.of(context).textTheme.subtitle1!.fontWeight,
-                        color: Theme.of(context).textTheme.subtitle1!.color
-                    ),),
+                        fontWeight:
+                            Theme.of(context).textTheme.subtitle1!.fontWeight,
+                        color: Theme.of(context).textTheme.subtitle1!.color),
+                  ),
                   IconButton(
                       onPressed: () => onTap,
                       icon: const Icon(Icons.add_shopping_cart))
@@ -189,106 +337,124 @@ class WideFilledCard extends StatelessWidget {
 
   var onTap;
 
-
-  WideFilledCard({Key? key, required this.ProductName,
-    required this.Price,
-    required this.onTap,
-    required String this.ProductImg,
-    required String this.PurchaseDate, required String this.Seller
-  }) : super(key: key);
+  WideFilledCard(
+      {Key? key,
+      required this.ProductName,
+      required this.Price,
+      required this.onTap,
+      required String this.ProductImg,
+      required String this.PurchaseDate,
+      required String this.Seller})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 16.0),
+      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(12),
         child: Container(
-          color: Color(0xFFEEEEEE),
-          // color: Theme.of(context).cardColor,
-          height: 224,
-          width: double.infinity,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20.0,horizontal: 16.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+            color: Color(0xFFEEEEEE),
+            // color: Theme.of(context).cardColor,
+            height: 224,
+            width: double.infinity,
+            child: Padding(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 20.0, horizontal: 16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8.0),
+                          child: SizedBox(
+                            width: 175,
+                            child: Text(
+                              ProductName,
+                              style: const TextStyle(fontSize: 24),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 0.0),
+                          child: SizedBox(
+                            width: 175,
+                            child: Text(
+                              Seller,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ),
+                        Text(
+                          ('\u{20B9}${GreaterThan100kHelper(Price.toString())}'),
+                          style: TextStyle(
+                              fontWeight: FontWeight.w300,
+                              color:
+                                  Theme.of(context).textTheme.subtitle1!.color),
+                        ),
+                        Spacer(
+                          flex: 4,
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                              color: Theme.of(context).scaffoldBackgroundColor,
+                              borderRadius: BorderRadius.circular(100)),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 8.0, horizontal: 16),
+                            child: Text(PurchaseDate),
+                          ),
+                        ),
+                        Spacer(
+                          flex: 1,
+                        )
+                      ],
+                    ),
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 8.0),
+                        padding: const EdgeInsets.only(left: 36, right: 16),
                         child: SizedBox(
-                          width: 175,
-                          child: Text(ProductName,
-                            style: const TextStyle(fontSize: 24),
-                            overflow: TextOverflow.ellipsis,),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 0.0),
-                        child: SizedBox(
-                          width: 175,
-                            child: Text(Seller, overflow: TextOverflow.ellipsis,),
-                        ),
-                      ),
-                      Text(('\u{20B9}${GreaterThan100kHelper(Price.toString())}'),
-                        style: TextStyle(
-                            fontWeight: FontWeight.w300,
-                            color: Theme.of(context).textTheme.subtitle1!.color
-                        ),),
-                      Spacer(flex: 4,),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Theme.of(context).scaffoldBackgroundColor,
-                          borderRadius: BorderRadius.circular(100)
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 16),
-                          child: Text(PurchaseDate),
-                        ),
-                      ),
-                      Spacer(flex: 1,)
-                    ],
-                  ),
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 36,right: 16),
-                      child: SizedBox(
-                        height: 120,
-                        width: 120,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8),
-                          child: Image(
-                            image: NetworkImage(ProductImg),
-                            fit: BoxFit.cover,
+                          height: 120,
+                          width: 120,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(8),
+                            child: Image(
+                              image: NetworkImage(ProductImg),
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 16.0),
-                      child: Row(
-                        children: [
-                          IconButton(onPressed: (){}, icon: Icon(Icons.more_vert)),
-                          ElevatedButton(onPressed: (){}, child: Text("Add to cart",style: TextStyle(fontSize: 10),),),
-                        ],
-                      ),
-                    )
-                  ],
-                )
-              ],
-            ),
-          )
-        ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 16.0),
+                        child: Row(
+                          children: [
+                            IconButton(
+                                onPressed: () {}, icon: Icon(Icons.more_vert)),
+                            ElevatedButton(
+                              onPressed: () {},
+                              child: Text(
+                                "Add to cart",
+                                style: TextStyle(fontSize: 10),
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  )
+                ],
+              ),
+            )),
       ),
     );
   }
 }
-
-
