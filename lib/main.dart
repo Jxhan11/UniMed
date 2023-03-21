@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:ui';
+import 'theme_constants.dart';
 
 import 'package:unimed/Components/usefulStuff.dart';
 import 'package:unimed/Pages/searchWithSuggestions.dart';
@@ -50,7 +51,7 @@ class MyApp extends StatelessWidget {
           subtitle1: TextStyle(fontFamily: "PSM"),
         ),
       ),
-      darkTheme: ThemeData.dark(),
+      darkTheme: AppTheme().darkTheme,
       // Inner UI of the application
       themeMode: ThemeMode.system,
       home: const Homepage(),
@@ -85,7 +86,7 @@ class _HomepageState extends State<Homepage> {
                 decoration: BoxDecoration(
                     color: Theme.of(context).brightness == Brightness.light
                         ? Colors.white
-                        : Colors.black,
+                        : Color(0xFF303030),
                     borderRadius: BorderRadius.all(Radius.circular(50))),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -128,7 +129,7 @@ class _HomepageState extends State<Homepage> {
                                   child: Text(
                                     "Search for healthcare facilities",
                                     style: TextStyle(
-                                        fontFamily: 'ProductSans',
+                                        fontFamily: 'PSL',
                                         letterSpacing: 0,
                                         fontWeight: FontWeight.w500,
                                         color: Colors.grey,
@@ -146,8 +147,9 @@ class _HomepageState extends State<Homepage> {
                       width: 10,
                     ),
                     CircleAvatar(
+                      backgroundColor: Theme.of(context).brightness == Brightness.dark? Color(0xFFFF8E8E): Colors.red,
                       radius: 18,
-                      child: Icon(Icons.person_rounded),
+                      child: Icon(Icons.person_rounded,),
                     ),
                     // SizedBox(width: 1,),
                   ],
@@ -492,7 +494,7 @@ class _RecordCardsState extends State<RecordCards> {
                   child: InkWell(
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Color(0xFFF9F9F9),
+                        color: Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):Color(0xFFF9F9F9),
                         borderRadius: BorderRadius.circular(15),
                       ),
                       width: 216,
@@ -508,7 +510,7 @@ class _RecordCardsState extends State<RecordCards> {
                                 "Resting Heart Rate",
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
-                                    color: Color(0xFFA00000), fontSize: 17),
+                                    color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFFF8E8E):Color(0xFFA00000), fontSize: 17),
                               )),
                           SizedBox(
                             height: 20,
@@ -518,6 +520,7 @@ class _RecordCardsState extends State<RecordCards> {
                               width: double.infinity,
                               child: Text(
                                 "99 Bpm",
+                                style: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF303030)),
                               ))
                         ],
                       ),
@@ -529,7 +532,7 @@ class _RecordCardsState extends State<RecordCards> {
                   child: InkWell(
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Color(0xFFF9F9F9),
+                        color: Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):Color(0xFFF9F9F9),
                         borderRadius: BorderRadius.circular(15),
                       ),
                       width: 216,
@@ -542,10 +545,10 @@ class _RecordCardsState extends State<RecordCards> {
                               padding: EdgeInsets.only(left: 15),
                               width: double.infinity,
                               child: Text(
-                                "Resting Heart Rate",
+                                "Active Hours",
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
-                                    color: Color(0xFFA00000), fontSize: 17),
+                                    color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFCEFF9D):Color(0xFF5BAE07), fontSize: 17),
                               )),
                           SizedBox(
                             height: 20,
@@ -554,7 +557,8 @@ class _RecordCardsState extends State<RecordCards> {
                               padding: EdgeInsets.only(left: 15),
                               width: double.infinity,
                               child: Text(
-                                "99 Bpm",
+                                "50 s",
+                                style: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF303030)),
                               ))
                         ],
                       ),
@@ -566,7 +570,7 @@ class _RecordCardsState extends State<RecordCards> {
                   child: InkWell(
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Color(0xFFF9F9F9),
+                        color: Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):Color(0xFFF9F9F9),
                         borderRadius: BorderRadius.circular(15),
                       ),
                       width: 216,
@@ -579,10 +583,10 @@ class _RecordCardsState extends State<RecordCards> {
                               padding: EdgeInsets.only(left: 15),
                               width: double.infinity,
                               child: Text(
-                                "Resting Heart Rate",
+                                "Sleep",
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
-                                    color: Color(0xFFA00000), fontSize: 17),
+                                    color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFA7B5FF):Color(0xFF334DD3), fontSize: 17),
                               )),
                           SizedBox(
                             height: 20,
@@ -591,13 +595,15 @@ class _RecordCardsState extends State<RecordCards> {
                               padding: EdgeInsets.only(left: 15),
                               width: double.infinity,
                               child: Text(
-                                "99 Bpm",
+                                "7h 20m",
+                                style: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF303030)),
                               ))
                         ],
                       ),
                     ),
                   ),
                 ),
+
               ],
             ),
           ),
@@ -675,7 +681,7 @@ class EmergencyBoxes extends StatelessWidget {
             Container(
               margin: EdgeInsets.only(left: 8),
               decoration: BoxDecoration(
-                color: Color(0xFFF9F9F9),
+                color:Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):Color(0xFFF9F9F9),
                 borderRadius: BorderRadius.circular(10),
               ),
               width: 110,
@@ -689,12 +695,12 @@ class EmergencyBoxes extends StatelessWidget {
                       onPressed: () {},
                       icon: Icon(Icons.healing),
                       iconSize: 30,
-                      color: Colors.black,
+                      color:Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF303030),
                     ),
                     Text(
                       "First Aid",
                       style:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.w900),
+                          TextStyle(fontSize: 15,color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF303030),),
                     ),
                   ],
                 ),
@@ -703,7 +709,7 @@ class EmergencyBoxes extends StatelessWidget {
             Container(
               margin: EdgeInsets.only(left: 8),
               decoration: BoxDecoration(
-                color: Color(0xFFF9F9F9),
+                color:Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):Color(0xFFF9F9F9),
                 borderRadius: BorderRadius.circular(10),
               ),
               width: 110,
@@ -717,11 +723,11 @@ class EmergencyBoxes extends StatelessWidget {
                       onPressed: () {},
                       icon: Icon(Icons.credit_card),
                       iconSize: 30,
-                      color: Colors.black,
+                      color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF303030),
                     ),
                     Text(
                       "Credentials",
-                      style: TextStyle(fontSize: 15),
+                      style: TextStyle(fontSize: 15,color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF303030),),
                     ),
                   ],
                 ),
@@ -740,47 +746,135 @@ class ForYouCards extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
-      child: Container(
-        decoration: BoxDecoration(
-          color: Color(0xFFF9F9F9),
-          borderRadius: BorderRadius.circular(15),
-          boxShadow: <BoxShadow>[
-            BoxShadow(
-              color: Colors.black12,
-              blurRadius: 2,
-              offset: Offset(-.5, 2),
+      child: Column(
+        children: <Widget>[
+          Container(
+            decoration: BoxDecoration(
+              color: Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):Color(0xFFF9F9F9),
+              borderRadius: BorderRadius.circular(25),
+              boxShadow: <BoxShadow>[
+                BoxShadow(
+                  color: Colors.black12,
+                  blurRadius: 2,
+                  offset: Offset(-.5,2),
+                ),
+              ],
             ),
-          ],
-        ),
-        margin: EdgeInsets.all(16),
-        height: 200,
-        width: 300,
-        child: Column(
-          children: <Widget>[
-            Container(
-              padding: EdgeInsets.only(left: 5, top: 20, right: 10),
-              child: Row(
-                children: <Widget>[
-                  RawMaterialButton(
-                    onPressed: () {},
-                    elevation: 0,
-                    fillColor: Color(0xFFE3E3E3),
-                    child: Icon(
-                      Icons.newspaper,
-                      size: 25.0,
-                    ),
-                    padding: EdgeInsets.all(15.0),
-                    shape: CircleBorder(),
+            margin: EdgeInsets.only(top: 10),
+            height: 110,
+            width: 340,
+            child:  Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                InkWell(
+                  onTap: () {},
+                  child: Container(
+                    // padding: EdgeInsets.only(left: 5,top:20,right:10),
+                    child: Row(children: <Widget>[
+                      RawMaterialButton(
+                        onPressed: () {},
+                        elevation: 0,
+                        fillColor: Theme.of(context).brightness == Brightness.dark ? Color(0xFF474747):Color(0xFFE3E3E3),
+                        child: Icon(
+                          Icons.newspaper,
+                          size: 25.0,
+                        ),
+                        padding: EdgeInsets.all(15.0),
+                        shape: CircleBorder(),
+                      ),
+                      Text('Insurance Plans',style: TextStyle(fontSize: 20,fontFamily: "PSL",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)
+                    ],),
                   ),
-                  Text(
-                    'Insurance Plans',
-                    style: TextStyle(fontSize: 25, fontFamily: "PSM"),
-                  )
-                ],
-              ),
+                ),
+
+              ],
             ),
-          ],
-        ),
+          ),
+          Container(
+            decoration: BoxDecoration(
+              color: Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):Color(0xFFF9F9F9),
+              borderRadius: BorderRadius.circular(25),
+              boxShadow: <BoxShadow>[
+                BoxShadow(
+                  color: Colors.black12,
+                  blurRadius: 2,
+                  offset: Offset(-.5,2),
+                ),
+              ],
+            ),
+            margin: EdgeInsets.only(top: 10),
+            height: 110,
+            width: 340,
+            child:  Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                InkWell(
+                  onTap: () {},
+                  child: Container(
+                    // padding: EdgeInsets.only(left: 5,top:20,right:10),
+                    child: Row(children: <Widget>[
+                      RawMaterialButton(
+                        onPressed: () {},
+                        elevation: 0,
+                        fillColor: Theme.of(context).brightness == Brightness.dark ? Color(0xFF474747):Color(0xFFE3E3E3),
+                        child: Icon(
+                          Icons.newspaper,
+                          size: 25.0,
+                        ),
+                        padding: EdgeInsets.all(15.0),
+                        shape: CircleBorder(),
+                      ),
+                      Text('Link with Blood Bank',style: TextStyle(fontSize: 20,fontFamily: "PSL",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)
+                    ],),
+                  ),
+                ),
+
+              ],
+            ),
+          ),
+          Container(
+            decoration: BoxDecoration(
+              color: Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):Color(0xFFF9F9F9),
+              borderRadius: BorderRadius.circular(25),
+               boxShadow: <BoxShadow>[
+                 BoxShadow(
+                   color: Colors.black12,
+                   blurRadius: 2,
+                   offset: Offset(-.5,2),
+                ),
+               ],
+            ),
+            margin: EdgeInsets.only(top: 10),
+            height: 110,
+            width: 340,
+            child:  Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                InkWell(
+                  onTap: () {},
+                  child: Container(
+                    // padding: EdgeInsets.only(left: 5,top:20,right:10),
+                    child: Row(children: <Widget>[
+                      RawMaterialButton(
+                        onPressed: () {},
+                        elevation: 0,
+                        fillColor: Theme.of(context).brightness == Brightness.dark ? Color(0xFF474747):Color(0xFFE3E3E3),
+                        child: Icon(
+                          Icons.newspaper,
+                          size: 25.0,
+                        ),
+                        padding: EdgeInsets.all(15.0),
+                        shape: CircleBorder(),
+                      ),
+                      Text('Gib Organ plis',style: TextStyle(fontSize: 20,fontFamily: "PSL",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)
+                    ],),
+                  ),
+                ),
+
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

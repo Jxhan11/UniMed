@@ -16,9 +16,9 @@ class ThemeNotifier with ChangeNotifier {
 
 class AppTheme {
   get darkTheme => ThemeData(
-    primarySwatch: Colors.grey,
+    primarySwatch: Colors.red,
     appBarTheme: AppBarTheme(
-        color: Colors.black, systemOverlayStyle: SystemUiOverlayStyle.light),
+        color: Colors.transparent, systemOverlayStyle: SystemUiOverlayStyle.light),
     inputDecorationTheme: InputDecorationTheme(
       hintStyle: TextStyle(color: Colors.grey),
       labelStyle: TextStyle(color: Colors.white),
