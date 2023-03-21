@@ -84,6 +84,10 @@ flutter:
       fonts:
         - asset: fonts/GoogleSans-Medium.ttf
 
+    - family: PSXL
+      fonts:
+        - asset: fonts/ProductSans-Light.ttf
+
 
 
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
+import 'theme_constants.dart';
 
 import 'package:unimed/Components/usefulStuff.dart';
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       // title of the application
       title: 'Hello World Demo Application',
       // theme of the widget
-
+darkTheme: AppTheme().darkTheme,
       theme: ThemeData(
         primarySwatch: Colors.red,
         scaffoldBackgroundColor: Color(0xFFF2F2F2),
@@ -43,6 +44,8 @@ class MyApp extends StatelessWidget {
       ),
       // Inner UI of the application
       home: const Homepage(),
+
+      themeMode: ThemeMode.system,
     );
   }
 }
@@ -74,6 +77,9 @@ class _HomepageState extends State<Homepage> {
             EmergencyBoxes(),
             SubHeadlines(text: 'For you'),
             ForYouCards(),
+            SliverToBoxAdapter(
+              child: SizedBox(height: 200,),
+            ),
 
 
           ],
@@ -554,7 +560,7 @@ class EmergencyBoxes extends StatelessWidget {
                     ),
                     Text(
                       "First Aid",
-                      style: TextStyle(fontSize: 15,fontWeight:FontWeight.w900 ),
+                      style: TextStyle(fontSize: 15 ),
                     ),
                   ],
                 ),
@@ -601,43 +607,144 @@ class ForYouCards extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  SliverToBoxAdapter(
-      child:Container(
-        decoration: BoxDecoration(
-          color: Color(0xFFF9F9F9),
-          borderRadius: BorderRadius.circular(15),
-          boxShadow: <BoxShadow>[
-            BoxShadow(
-              color: Colors.black12,
-              blurRadius: 2,
-              offset: Offset(-.5,2),
+      child:Column(
+        children: <Widget>[
+          Container(
+            decoration: BoxDecoration(
+              color: Color(0xFFF9F9F9),
+              borderRadius: BorderRadius.circular(15),
+              // boxShadow: <BoxShadow>[
+              //   BoxShadow(
+              //     color: Colors.black12,
+              //     blurRadius: 2,
+              //     offset: Offset(-.5,2),
+              //   ),
+              // ],
             ),
-          ],
-        ),
-        margin: EdgeInsets.all(16),
-        height: 200,
-        width: 300,
-        child:  Column(
-          children: <Widget>[
-            Container(
-              padding: EdgeInsets.only(left: 5,top:20,right:10),
-              child: Row(children: <Widget>[
-                RawMaterialButton(
-                  onPressed: () {},
-                  elevation: 0,
-                  fillColor: Color(0xFFE3E3E3),
-                  child: Icon(
-                    Icons.newspaper,
-                    size: 25.0,
+            margin: EdgeInsets.only(top: 10),
+            height: 200,
+            width: 340,
+            child:  Column(
+              children: <Widget>[
+                InkWell(
+                  onTap: () {},
+                  child: Container(
+                    padding: EdgeInsets.only(left: 5,top:20,right:10),
+                    child: Row(children: <Widget>[
+                      RawMaterialButton(
+                        onPressed: () {},
+                        elevation: 0,
+                        fillColor: Color(0xFFE3E3E3),
+                        child: Icon(
+                          Icons.newspaper,
+                          size: 25.0,
+                        ),
+                        padding: EdgeInsets.all(15.0),
+                        shape: CircleBorder(),
+                      ),
+                      Text('Insurance Plans',style: TextStyle(fontSize: 25,fontFamily: "PSL",color: Color(
+                          0xFF363636)),)
+                    ],),
                   ),
-                  padding: EdgeInsets.all(15.0),
-                  shape: CircleBorder(),
                 ),
-                Text('Insurance Plans',style: TextStyle(fontSize: 25,fontFamily: "PSM"),)
-              ],),
+                Container(
+                  padding: EdgeInsets.all(20),
+                  child: Text('Learn More about health insurance policies provided by the government',style: TextStyle(fontFamily: "PSXL",fontSize: 16,letterSpacing: 0.5),),
+                ),
+              ],
             ),
-          ],
-        ),
-      ) ,
+          ) ,
+          Container(
+            decoration: BoxDecoration(
+              color: Color(0xFFF9F9F9),
+              borderRadius: BorderRadius.circular(15),
+              // boxShadow: <BoxShadow>[
+              //   BoxShadow(
+              //     color: Colors.black12,
+              //     blurRadius: 2,
+              //     offset: Offset(-.5,2),
+              //   ),
+              // ],
+            ),
+            margin: EdgeInsets.only(top: 10),
+            height: 200,
+            width: 340,
+            child:  Column(
+              children: <Widget>[
+                InkWell(
+                  onTap: () {},
+                  child: Container(
+                    padding: EdgeInsets.only(left: 5,top:20,right:10),
+                    child: Row(children: <Widget>[
+                      RawMaterialButton(
+                        onPressed: () {},
+                        elevation: 0,
+                        fillColor: Color(0xFFE3E3E3),
+                        child: Icon(
+                          Icons.newspaper,
+                          size: 25.0,
+                        ),
+                        padding: EdgeInsets.all(15.0),
+                        shape: CircleBorder(),
+                      ),
+                      Text('Insurance Plans',style: TextStyle(fontSize: 25,fontFamily: "PSL",color: Color(
+                          0xFF363636)),)
+                    ],),
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.all(20),
+                  child: Text('Learn More about health insurance policies provided by the government',style: TextStyle(fontFamily: "PSXL",fontSize: 16,letterSpacing: 0.5),),
+                ),
+              ],
+            ),
+          ) ,
+          Container(
+            decoration: BoxDecoration(
+              color: Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):Color(0xFFF9F9F9),
+              borderRadius: BorderRadius.circular(15),
+              // boxShadow: <BoxShadow>[
+              //   BoxShadow(
+              //     color: Colors.black12,
+              //     blurRadius: 2,
+              //     offset: Offset(-.5,2),
+              //   ),
+              // ],
+            ),
+            margin: EdgeInsets.only(top: 10),
+            height: 200,
+            width: 340,
+            child:  Column(
+              children: <Widget>[
+                InkWell(
+                  onTap: () {},
+                  child: Container(
+                    padding: EdgeInsets.only(left: 5,top:20,right:10),
+                    child: Row(children: <Widget>[
+                      RawMaterialButton(
+                        onPressed: () {},
+                        elevation: 0,
+                        fillColor: Theme.of(context).brightness == Brightness.dark ? Color(0xFF474747):Color(0xFFE3E3E3),
+                        child: Icon(
+                          Icons.newspaper,
+                          size: 25.0,
+                        ),
+                        padding: EdgeInsets.all(15.0),
+                        shape: CircleBorder(),
+                      ),
+                      Text('Insurance Plans',style: TextStyle(fontSize: 25,fontFamily: "PSL",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)
+                    ],),
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.all(20),
+                  child: Text('Learn More about health insurance policies provided by the government',style: TextStyle(fontFamily: "PSXL",fontSize: 16,letterSpacing: 0.5),),
+                ),
+              ],
+            ),
+          ) ,
+        ],
+      ),
     );
   }
 }
