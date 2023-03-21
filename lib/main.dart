@@ -34,11 +34,11 @@ class MyApp extends StatelessWidget {
           //     TextStyle(fontFamily: "PSM",),
           // bodySmall:
           //     TextStyle(fontFamily: "PSL",),
-          headline1: TextStyle(color: Colors.deepPurpleAccent,fontFamily: "PSL"),
-          headline2: TextStyle(color: Colors.deepPurpleAccent,fontFamily: "PSL"),
-          bodyText2: TextStyle(fontFamily: "PSL",fontWeight: FontWeight.w400),
+          headline1: TextStyle(color: Colors.deepPurpleAccent,fontFamily: "PSM"),
+          headline2: TextStyle(color: Colors.deepPurpleAccent,fontFamily: "PSM"),
+          bodyText2: TextStyle(fontFamily: "PSM"),
           // bodyText1: TextStyle(color: Colors.blue),
-          subtitle1: TextStyle(fontFamily: "PSM",fontWeight: FontWeight.w300),
+          subtitle1: TextStyle(fontFamily: "PSM"),
         ),
       ),
       // Inner UI of the application
@@ -73,6 +73,7 @@ class _HomepageState extends State<Homepage> {
             ),
             EmergencyBoxes(),
             SubHeadlines(text: 'For you'),
+            ForYouCards(),
 
 
           ],
@@ -553,7 +554,7 @@ class EmergencyBoxes extends StatelessWidget {
                     ),
                     Text(
                       "First Aid",
-                      style: TextStyle(fontSize: 15),
+                      style: TextStyle(fontSize: 15,fontWeight:FontWeight.w900 ),
                     ),
                   ],
                 ),
@@ -594,3 +595,49 @@ class EmergencyBoxes extends StatelessWidget {
   }
 }
 
+class ForYouCards extends StatelessWidget {
+  const ForYouCards({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return  SliverToBoxAdapter(
+      child:Container(
+        decoration: BoxDecoration(
+          color: Color(0xFFF9F9F9),
+          borderRadius: BorderRadius.circular(15),
+          boxShadow: <BoxShadow>[
+            BoxShadow(
+              color: Colors.black12,
+              blurRadius: 2,
+              offset: Offset(-.5,2),
+            ),
+          ],
+        ),
+        margin: EdgeInsets.all(16),
+        height: 200,
+        width: 300,
+        child:  Column(
+          children: <Widget>[
+            Container(
+              padding: EdgeInsets.only(left: 5,top:20,right:10),
+              child: Row(children: <Widget>[
+                RawMaterialButton(
+                  onPressed: () {},
+                  elevation: 0,
+                  fillColor: Color(0xFFE3E3E3),
+                  child: Icon(
+                    Icons.newspaper,
+                    size: 25.0,
+                  ),
+                  padding: EdgeInsets.all(15.0),
+                  shape: CircleBorder(),
+                ),
+                Text('Insurance Plans',style: TextStyle(fontSize: 25,fontFamily: "PSM"),)
+              ],),
+            ),
+          ],
+        ),
+      ) ,
+    );
+  }
+}

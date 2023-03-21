@@ -78,17 +78,13 @@ flutter:
   fonts:
     - family: PSL
       fonts:
-        - asset: fonts/ProductSans-Light.ttf
-        - asset: fonts/ProductSans-Medium.ttf
-        - asset: fonts/ProductSans-Bold.ttf
+        - asset: fonts/GoogleSans-Regular.ttf
 
     - family: PSM
       fonts:
-        - asset: fonts/ProductSans-Medium.ttf
+        - asset: fonts/GoogleSans-Medium.ttf
 
-    - family: PSB
-      fonts:
-        - asset: fonts/ProductSans-Bold.ttf
+
 
 
     - family: BalticH
