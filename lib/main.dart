@@ -144,7 +144,7 @@ BodyFormerFunction(x,context) {
                     borderRadius: BorderRadius.all(Radius.circular(50))),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     GestureDetector(
                       onTap: () {
@@ -156,7 +156,7 @@ BodyFormerFunction(x,context) {
                         );
                       },
                       child: Padding(
-                        padding: EdgeInsets.only(left: 0),
+                        padding: EdgeInsets.only(left: 24),
                         child: Container(
                           child: Row(
                             children: [
@@ -200,10 +200,13 @@ BodyFormerFunction(x,context) {
                     SizedBox(
                       width: 10,
                     ),
-                    CircleAvatar(
-                      backgroundColor: Theme.of(context).brightness == Brightness.dark? Color(0xFFFF8E8E): Colors.red,
-                      radius: 18,
-                      child: Icon(Icons.person_rounded,),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 16.0),
+                      child: CircleAvatar(
+                        backgroundColor: Theme.of(context).brightness == Brightness.dark? Color(0xFFFF8E8E): Colors.red,
+                        radius: 18,
+                        child: Icon(Icons.person_rounded,),
+                      ),
                     ),
                     // SizedBox(width: 1,),
                   ],
