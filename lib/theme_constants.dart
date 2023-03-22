@@ -31,6 +31,7 @@ class AppTheme {
       bodyText2: TextStyle(fontFamily: "PSM"),
       subtitle1: TextStyle(fontFamily: "PSM"),
     ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(backgroundColor: Color(0xFF303030)),
 
   );
 
