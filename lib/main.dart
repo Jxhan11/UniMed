@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:unimed/Pages/News.dart';
 import 'package:unimed/Pages/filesPage.dart';
 import 'package:unimed/Pages/healthPage.dart';
 import 'package:unimed/Pages/profilePage.dart';
@@ -9,7 +10,9 @@ import 'theme_constants.dart';
 import 'package:unimed/Components/usefulStuff.dart';
 import 'package:unimed/Pages/searchWithSuggestions.dart';
 
+
 void main() {
+
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
@@ -216,7 +219,7 @@ BodyFormerFunction(x,context) {
               ),
             ),
           ),
-          SubHeadlines(text: 'Records'),
+          SubHeadlines(text: 'Health'),
           SliverToBoxAdapter(
             child: RecordCards(),
           ),
@@ -544,11 +547,15 @@ class RecordCards extends StatefulWidget {
 }
 
 class _RecordCardsState extends State<RecordCards> {
+
   @override
+
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return Container(
       // color: Colors.black12,
-      padding: EdgeInsets.only(left: 16, top: 8),
+      padding: EdgeInsets.only(left: 16, top: 8,right: 16),
       height: 140,
       child: Container(
         child: ScrollConfiguration(
@@ -567,11 +574,11 @@ class _RecordCardsState extends State<RecordCards> {
                         color: Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):Color(0xFFF9F9F9),
                         borderRadius: BorderRadius.circular(15),
                       ),
-                      width: 216,
+                      width: screenWidth/2 + 10,
                       child: Column(
                         children: <Widget>[
                           SizedBox(
-                            height: 20,
+                            height:20 ,
                           ),
                           Container(
                               padding: EdgeInsets.only(left: 15),
@@ -598,14 +605,14 @@ class _RecordCardsState extends State<RecordCards> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.only(top: 8,bottom: 8),
                   child: InkWell(
                     child: Container(
                       decoration: BoxDecoration(
                         color: Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):Color(0xFFF9F9F9),
                         borderRadius: BorderRadius.circular(15),
                       ),
-                      width: 216,
+                      width:screenWidth/2 + 10,
                       child: Column(
                         children: <Widget>[
                           SizedBox(
@@ -643,7 +650,7 @@ class _RecordCardsState extends State<RecordCards> {
                         color: Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):Color(0xFFF9F9F9),
                         borderRadius: BorderRadius.circular(15),
                       ),
-                      width: 216,
+                      width: screenWidth/2 + 10,
                       child: Column(
                         children: <Widget>[
                           SizedBox(
@@ -713,18 +720,22 @@ class EmergencyBoxes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return SliverToBoxAdapter(
       child: Container(
-        padding: EdgeInsets.only(left: 16, right: 16, top: 30),
+        // color: Colors.amber,
+        // width: 500,
+        padding: EdgeInsets.only(top: 20),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Container(
               padding: EdgeInsets.all(8),
               decoration: BoxDecoration(
                   color: Color(0xFFFF8E8E),
                   borderRadius: BorderRadius.circular(10)),
-              width: 110,
+              width:screenWidth/3.4 ,
               height: 120,
               // color: Colors.blue,
               child: Center(
@@ -754,7 +765,7 @@ class EmergencyBoxes extends StatelessWidget {
                 color:Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):Color(0xFFF9F9F9),
                 borderRadius: BorderRadius.circular(10),
               ),
-              width: 110,
+              width: screenWidth/3.4,
               height: 120,
               // color: Colors.blue,
               child: Center(
@@ -762,13 +773,15 @@ class EmergencyBoxes extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     IconButton(
-                      onPressed: () {},
-                      icon: Icon(Icons.healing),
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) =>  NewsPage()),);
+                      },
+                      icon: Icon(Icons.newspaper),
                       iconSize: 30,
                       color:Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF303030),
                     ),
                     Text(
-                      "First Aid",
+                      "News",
                       style:
                           TextStyle(fontSize: 15,color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF303030),),
                     ),
@@ -782,7 +795,7 @@ class EmergencyBoxes extends StatelessWidget {
                 color:Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):Color(0xFFF9F9F9),
                 borderRadius: BorderRadius.circular(10),
               ),
-              width: 110,
+              width: screenWidth/3.4,
               height: 120,
               // color: Colors.blue,
               child: Center(
@@ -791,12 +804,12 @@ class EmergencyBoxes extends StatelessWidget {
                   children: <Widget>[
                     IconButton(
                       onPressed: () {},
-                      icon: Icon(Icons.credit_card),
+                      icon: Icon(Icons.health_and_safety),
                       iconSize: 30,
                       color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF303030),
                     ),
                     Text(
-                      "Credentials",
+                      "First Aid",
                       style: TextStyle(fontSize: 15,color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF303030),),
                     ),
                   ],
@@ -827,10 +840,10 @@ class ForYouCards extends StatelessWidget {
               children: <Widget>[
                 Container(
                   decoration: BoxDecoration(
-                      image: DecorationImage(image: NetworkImage("https://th.bing.com/th/id/OIP.3HZOOl0lErndPeHwv2Ih3AHaFG?pid=ImgDet&w=207&h=143&c=7&dpr=1.3"),fit: BoxFit.fill,colorFilter:  ColorFilter.mode(Colors.white.withOpacity(0.3), BlendMode.dstATop),),
+                      image: DecorationImage(image: NetworkImage("https://th.bing.com/th/id/OIP.3HZOOl0lErndPeHwv2Ih3AHaFG?pid=ImgDet&w=207&h=143&c=7&dpr=1.3"),fit: BoxFit.fill,colorFilter:  ColorFilter.mode(Colors.white.withOpacity(0.0), BlendMode.dstATop),),
                       // color: Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):Color(0xFFF9F9F9),
                       borderRadius: BorderRadius.circular(25),
-                      border: Border.all(color: Colors.black,width: 0.5)
+                      border: Border.all(color: Theme.of(context).brightness == Brightness.dark? Colors.white38:Colors.black45,width: 0.5)
                     // boxShadow: <BoxShadow>[
                     //   BoxShadow(
                     //     color: Colors.black12,
@@ -840,8 +853,8 @@ class ForYouCards extends StatelessWidget {
                     // ],
                   ),
                   margin: EdgeInsets.only(top: 10),
-                  height: 100,
-                  width: 200,
+                  height: 160,
+                  width: 250,
                   child:  Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
