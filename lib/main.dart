@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:unimed/Pages/filesPage.dart';
+import 'package:unimed/Pages/healthPage.dart';
+import 'package:unimed/Pages/profilePage.dart';
 import 'dart:ui';
 import 'theme_constants.dart';
 
@@ -67,13 +70,64 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
+  int _selectedIndex = 0;
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
   @override
   Widget build(BuildContext context) {
+    //TODO: Change system's navigation bar colors with dark and light mode. Make it navigation bar color somehow
+    // SystemChrome.setSystemUIOverlayStyle(
+    //   SystemUiOverlayStyle(
+    //       systemNavigationBarColor: Colors.white
+    //   )
+    // );
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       extendBodyBehindAppBar: true,
-      body: CustomScrollView(
+      body: BodyFormerFunction(_selectedIndex, context),
+      bottomNavigationBar: NavigationBar(
+        destinations: const [
+          NavigationDestination(
+              selectedIcon: Icon(Icons.home_outlined),
+              icon: Icon(Icons.home),
+              label: 'Home',
+          ),
+          NavigationDestination(
+              icon: Icon(Icons.favorite),
+              selectedIcon: Icon(Icons.favorite_border),
+              label: 'Health'
+          ),
+          NavigationDestination(
+              icon: Icon(Icons.file_copy_rounded),
+              selectedIcon: Icon(Icons.file_copy_outlined),
+              label: 'Files'
+          ),
+          NavigationDestination(
+              icon: Icon(Icons.person_rounded),
+              selectedIcon: Icon(Icons.person_outline_rounded),
+              label: 'Profile'
+          ),
+        ],
+        selectedIndex: _selectedIndex,
+        onDestinationSelected: _onItemTapped,
+        elevation: 10.0,
+      ),
+    );
+  }
+}
+
+///////////////////////////////////////END OF MAIN FUNCTION HERE/////////////////////////////////////////////////
+
+BodyFormerFunction(x,context) {
+  // ONLY PURPOSE IS TO CHANGE THE CONTENTS OF THE BODY
+  switch(x){
+    case 0:
+      // Home page
+      return CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
             collapsedHeight: 60,
@@ -113,7 +167,7 @@ class _HomepageState extends State<Homepage> {
                                   child: Icon(
                                     Icons.search_rounded,
                                     color: Theme.of(context).brightness ==
-                                            Brightness.dark
+                                        Brightness.dark
                                         ? Colors.white
                                         : Colors.black,
                                   ),
@@ -129,11 +183,11 @@ class _HomepageState extends State<Homepage> {
                                   child: Text(
                                     "Search for healthcare facilities",
                                     style: TextStyle(
-                                        fontFamily: 'PSL',
-                                        letterSpacing: 0,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.grey,
-                                        fontSize: 15,
+                                      fontFamily: 'PSL',
+                                      letterSpacing: 0,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.grey,
+                                      fontSize: 15,
                                     ),
                                   ),
                                 ),
@@ -165,12 +219,23 @@ class _HomepageState extends State<Homepage> {
           SubHeadlines(text: 'For you'),
           ForYouCards(),
         ],
-      ),
-    );
+      );
+      break;
+    case 1:
+      // Health Page
+      return HealthPageWidgets();
+      break;
+    case 2:
+      // Files Page
+      return FilesPageWidgets();
+      break;
+    case 3:
+      // ProfilePage
+      return ProfilePageWidgets();
+      break;
   }
-}
 
-///////////////////////////////////////END OF MAIN FUNCTION HERE/////////////////////////////////////////////////
+}
 
 class DailyNeeds extends StatefulWidget {
   const DailyNeeds({Key? key}) : super(key: key);

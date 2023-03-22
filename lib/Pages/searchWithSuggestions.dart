@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:unimed/Components/usefulStuff.dart';
+import 'package:unimed/Pages/searchResultsPage.dart';
 import 'package:unimed/main.dart';
 
 class SearchWithSuggestionsPage extends StatefulWidget {
@@ -28,6 +29,14 @@ class _SearchWithSuggestionsPageState extends State<SearchWithSuggestionsPage> {
         enableCrossButtonInSliverAppBar = false;
       });
     }
+  }
+  void _userPressedEnter(text){
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) =>
+              searchResults(searchTerm: text)),
+    );
   }
   void _clearText() {
     searchController.clear();
@@ -59,13 +68,17 @@ class _SearchWithSuggestionsPageState extends State<SearchWithSuggestionsPage> {
               child: Material(
                 color: Colors.transparent,
                 child: TextField(
+                  textInputAction: TextInputAction.search,
                   controller: searchController,
+                  onSubmitted: (text){
+                    _userPressedEnter(text);
+                  },
                   onChanged: (text){
                     _onTextChanged();
                   },
                   autofocus: true,
                   decoration:  InputDecoration(
-                    hintText: 'Search',
+                    hintText: 'Search UniMed',
                     border: InputBorder.none,
                     suffixIcon:  enableCrossButtonInSliverAppBar? IconButton(
                       onPressed: () {
