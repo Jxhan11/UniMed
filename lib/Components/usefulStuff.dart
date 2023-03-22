@@ -43,7 +43,7 @@ class UsefulSubheading extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(text, style: TextStyle(
         fontSize: 14,
-      color: Colors.grey[600]
+      color: Colors.grey[600],
     ),);
   }
 }
