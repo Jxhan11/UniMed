@@ -53,11 +53,11 @@ class UsefulSubheading extends StatelessWidget {
 
 PoggiesM3List(
     {required List<String> itemNames,
-    required List<Icon> leadingIcons,
-    required List<Icon> trailingIcons,
+      List<Icon>? leadingIcons,
+      List<Icon>? trailingIcons,
     required BuildContext ctx,
-    required Function() theTrailingAction,
-      required Function() onTapTile}) {
+    required List<Function> theTrailingAction,
+      required Function()? onTapTile}) {
   double basicRadius = 12;
   double basicRadiusDelta = 4;
   double lastOnesRadius = 6;
@@ -69,15 +69,15 @@ PoggiesM3List(
   if (iLen > 2) {
     widgetsToAdd.add(PoggiesM3ListTile(
         itemNames: itemNames[0],
-        leadingIcons: leadingIcons[0],
-        trailingIcons: trailingIcons[0],
+        leadingIcons: leadingIcons?[0],
+        trailingIcons: trailingIcons?[0],
         MainAction: onTapTile,
         ctx: ctx,
         TL: basicRadius + basicRadiusDelta,
         TR: basicRadius + basicRadiusDelta,
         BL: lastOnesRadius,
         BR: lastOnesRadius,
-        TrailingAction: theTrailingAction));
+        TrailingAction: () => theTrailingAction[0]()));
     widgetsToAdd.add(SizedBox(
       height: spaceBetweenTiles,
     ));
@@ -85,14 +85,14 @@ PoggiesM3List(
       widgetsToAdd.add(PoggiesM3ListTile(
           MainAction: onTapTile,
           itemNames: itemNames[i],
-          leadingIcons: leadingIcons[i],
-          trailingIcons: trailingIcons[i],
+          leadingIcons: leadingIcons?[i],
+          trailingIcons: trailingIcons?[i],
           ctx: ctx,
           TL: basicRadius,
           TR: basicRadius,
           BL: basicRadius,
           BR: basicRadius,
-          TrailingAction: theTrailingAction));
+          TrailingAction: () => theTrailingAction[i]()));
       widgetsToAdd.add(SizedBox(
         height: spaceBetweenTiles,
       ));
@@ -100,52 +100,52 @@ PoggiesM3List(
     widgetsToAdd.add(PoggiesM3ListTile(
         MainAction: onTapTile,
         itemNames: itemNames[iLen - 1],
-        leadingIcons: leadingIcons[iLen - 1],
-        trailingIcons: trailingIcons[iLen - 1],
+        leadingIcons: leadingIcons?[iLen - 1],
+        trailingIcons: trailingIcons?[iLen - 1],
         ctx: ctx,
         TL: lastOnesRadius,
         TR: lastOnesRadius,
         BL: basicRadius + basicRadiusDelta,
         BR: basicRadius + basicRadiusDelta,
-        TrailingAction: theTrailingAction));
+        TrailingAction: () => theTrailingAction[iLen-1]()));
   } else if (iLen == 2) {
     widgetsToAdd.add(PoggiesM3ListTile(
         MainAction: onTapTile,
         itemNames: itemNames[0],
-        leadingIcons: leadingIcons[0],
-        trailingIcons: trailingIcons[0],
+        leadingIcons: leadingIcons?[0],
+        trailingIcons: trailingIcons?[0],
         ctx: ctx,
         TL: basicRadius + basicRadiusDelta,
         TR: basicRadius + basicRadiusDelta,
         BL: lastOnesRadius,
         BR: lastOnesRadius,
-        TrailingAction: theTrailingAction));
+        TrailingAction: () => theTrailingAction[0]()));
     widgetsToAdd.add(SizedBox(
       height: spaceBetweenTiles,
     ));
     widgetsToAdd.add(PoggiesM3ListTile(
         MainAction: onTapTile,
         itemNames: itemNames[iLen - 1],
-        leadingIcons: leadingIcons[iLen - 1],
-        trailingIcons: trailingIcons[iLen - 1],
+        leadingIcons: leadingIcons?[iLen - 1],
+        trailingIcons: trailingIcons?[iLen - 1],
         ctx: ctx,
         TL: lastOnesRadius,
         TR: lastOnesRadius,
         BL: basicRadius + basicRadiusDelta,
         BR: basicRadius + basicRadiusDelta,
-        TrailingAction: theTrailingAction));
+        TrailingAction: () => theTrailingAction[iLen-1]()));
   } else {
     widgetsToAdd.add(PoggiesM3ListTile(
         MainAction: onTapTile,
         itemNames: itemNames[0],
-        leadingIcons: leadingIcons[0],
-        trailingIcons: trailingIcons[0],
+        leadingIcons: leadingIcons?[0],
+        trailingIcons: trailingIcons?[0],
         ctx: ctx,
         TL: basicRadius + basicRadiusDelta,
         TR: basicRadius + basicRadiusDelta,
         BL: basicRadius + basicRadiusDelta,
         BR: basicRadius + basicRadiusDelta,
-        TrailingAction: theTrailingAction));
+        TrailingAction: () => theTrailingAction[0]()));
   }
 
   return Column(
@@ -162,8 +162,10 @@ PoggiesM3ListTile(
     required double TR,
     required double BL,
     required double BR,
-    required Function() TrailingAction,
-      required Function() MainAction}) {
+    required void Function()? TrailingAction,
+      required Function()? MainAction}) {
+
+
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 16.0),
     child: ClipRRect(
@@ -178,8 +180,8 @@ PoggiesM3ListTile(
           child: ListTile(
               onTap: MainAction,
               title: Text(itemNames),
-              leading: leadingIcons,
-              trailing: IconButton(onPressed: TrailingAction, icon: trailingIcons),
+              leading: leadingIcons!= null ? leadingIcons : null,
+              trailing: trailingIcons!=null ? IconButton(onPressed: TrailingAction, icon: trailingIcons) : null,
             ),
         ),
       ),
