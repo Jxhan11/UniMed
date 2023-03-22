@@ -105,9 +105,7 @@ class _SearchWithSuggestionsPageState extends State<SearchWithSuggestionsPage> {
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
           sliver: SliverToBoxAdapter(
             child: PoggiesM3List(
-                onTapTile: () {
-                  print("tile is tapped");
-                },
+                onTapTile: theTrailingActions,
                 ctx: context,
                 itemNames: [
                   "example1",

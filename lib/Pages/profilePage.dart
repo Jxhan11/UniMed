@@ -100,6 +100,9 @@ _EmergencyInfo(ctx){
   List<Function> theTrailingActions = [
     go1,go2,go3,go4,go5,go6
   ];
+  List<Function> theMainActions = [
+    go1,go2,go3,go4,go5,go6
+  ];
   onTapTile(){
 
   }
@@ -115,7 +118,7 @@ _EmergencyInfo(ctx){
         ),
         PoggiesM3List(
             itemNames: itemNames,
-            leadingIcons: leadingIcons, ctx: ctx, theTrailingAction: theTrailingActions, onTapTile: onTapTile),
+            leadingIcons: leadingIcons, ctx: ctx, theTrailingAction: theTrailingActions, onTapTile: theMainActions),
       ],
     ),
   );
@@ -129,6 +132,9 @@ _MiscStuff(ctx){
   void go6(){}
 
   List<Function> theTrailingActions = [
+    go1,go2,go3,go4,go5,go6
+  ];
+  List<Function> theMainActions = [
     go1,go2,go3,go4,go5,go6
   ];
   onTapTile(){
@@ -146,7 +152,7 @@ _MiscStuff(ctx){
         ),
         PoggiesM3List(
             itemNames: itemNames2,
-            leadingIcons: leadingIcons2, ctx: ctx, theTrailingAction: theTrailingActions, onTapTile: onTapTile),
+            leadingIcons: leadingIcons2, ctx: ctx, theTrailingAction: theTrailingActions, onTapTile: theMainActions),
       ],
     ),
   );
@@ -170,9 +176,15 @@ _SupportStuff(ctx){
   void go6(){
     print("cross 6 is tapped");
   }
+  void go12(){
+    print("tile 1 is tapped");
+  }
 
   List<Function> theTrailingActions = [
       go1,go2,go3,go4,go5,go6
+  ];
+  List<Function> theMainActions = [
+    go12,go2,go3,go4,go5,go6
   ];
   void onTapTile(){
 
@@ -189,8 +201,8 @@ _SupportStuff(ctx){
         ),
         PoggiesM3List(
             itemNames: itemNames3,
-            leadingIcons: leadingIcons3, ctx: ctx, trailingIcons: trailingIcons,
-            theTrailingAction: theTrailingActions, onTapTile: onTapTile),
+            leadingIcons: leadingIcons3, ctx: ctx,
+            theTrailingAction: theTrailingActions, onTapTile: theMainActions),
       ],
     ),
   );

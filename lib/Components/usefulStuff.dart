@@ -57,7 +57,7 @@ PoggiesM3List(
       List<Icon>? trailingIcons,
     required BuildContext ctx,
     required List<Function> theTrailingAction,
-      required Function()? onTapTile}) {
+      required List<Function> onTapTile}) {
   double basicRadius = 12;
   double basicRadiusDelta = 4;
   double lastOnesRadius = 6;
@@ -71,7 +71,7 @@ PoggiesM3List(
         itemNames: itemNames[0],
         leadingIcons: leadingIcons?[0],
         trailingIcons: trailingIcons?[0],
-        MainAction: onTapTile,
+        MainAction: () => onTapTile[0](),
         ctx: ctx,
         TL: basicRadius + basicRadiusDelta,
         TR: basicRadius + basicRadiusDelta,
@@ -83,7 +83,7 @@ PoggiesM3List(
     ));
     for (int i = 1; i < iLen - 1; i++) {
       widgetsToAdd.add(PoggiesM3ListTile(
-          MainAction: onTapTile,
+          MainAction: () => onTapTile[i](),
           itemNames: itemNames[i],
           leadingIcons: leadingIcons?[i],
           trailingIcons: trailingIcons?[i],
@@ -98,7 +98,7 @@ PoggiesM3List(
       ));
     }
     widgetsToAdd.add(PoggiesM3ListTile(
-        MainAction: onTapTile,
+        MainAction: () => onTapTile[iLen-1](),
         itemNames: itemNames[iLen - 1],
         leadingIcons: leadingIcons?[iLen - 1],
         trailingIcons: trailingIcons?[iLen - 1],
@@ -110,7 +110,7 @@ PoggiesM3List(
         TrailingAction: () => theTrailingAction[iLen-1]()));
   } else if (iLen == 2) {
     widgetsToAdd.add(PoggiesM3ListTile(
-        MainAction: onTapTile,
+        MainAction: () => onTapTile[0](),
         itemNames: itemNames[0],
         leadingIcons: leadingIcons?[0],
         trailingIcons: trailingIcons?[0],
@@ -124,7 +124,7 @@ PoggiesM3List(
       height: spaceBetweenTiles,
     ));
     widgetsToAdd.add(PoggiesM3ListTile(
-        MainAction: onTapTile,
+        MainAction: () => onTapTile[iLen-1](),
         itemNames: itemNames[iLen - 1],
         leadingIcons: leadingIcons?[iLen - 1],
         trailingIcons: trailingIcons?[iLen - 1],
@@ -136,7 +136,7 @@ PoggiesM3List(
         TrailingAction: () => theTrailingAction[iLen-1]()));
   } else {
     widgetsToAdd.add(PoggiesM3ListTile(
-        MainAction: onTapTile,
+        MainAction: () => onTapTile[0](),
         itemNames: itemNames[0],
         leadingIcons: leadingIcons?[0],
         trailingIcons: trailingIcons?[0],
@@ -163,7 +163,7 @@ PoggiesM3ListTile(
     required double BL,
     required double BR,
     required void Function()? TrailingAction,
-      required Function()? MainAction}) {
+      required void Function()? MainAction}) {
 
 
   return Padding(
