@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:unimed/Components/usefulStuff.dart';
+import 'package:unimed/Pages/searchWithSuggestions.dart';
+import 'package:unimed/main.dart';
 
 class searchResults extends StatefulWidget {
   final searchTerm;
@@ -38,13 +41,35 @@ class _searchResultsState extends State<searchResults> {
               ),
             ),
           ),
+          SubHeadlines(text: 'Diagnosis'),
           SliverToBoxAdapter(
-            child: Center(
-              child: CircularProgressIndicator(),
-            ),
-          )
+            child: PoggiesM3List(itemNames: [
+              "20% . Common Cold",
+              "40% . Tonsils",
+              "40% . Food Poisoning"
+            ],
+                ctx: context,
+                theTrailingAction: theTrailingActions,
+                onTapTile: theTrailingActions),
+          ),
+
         ],
       ),
     );
   }
 }
+
+void go1(){
+  print("cross 1 is tapped");
+}
+void go2(){
+  print("cross 2 is tapped");
+}
+void go3(){
+  print("cross 3 is tapped");
+}
+
+
+List<Function> theTrailingActions = [
+  go1,go2,go3
+];

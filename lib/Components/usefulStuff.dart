@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-
+Color LBoxFill=Color(0xFFFFFFFF);
 class UsefulBigText extends StatelessWidget {
   final text;
   const UsefulBigText({Key? key, this.text}) : super(key: key);
@@ -176,7 +176,7 @@ PoggiesM3ListTile(
           bottomRight: Radius.circular(BR),
         ),
         child: Material(
-          color: Theme.of(ctx).brightness == Brightness.light? Colors.white : Colors.black,
+          color: Theme.of(ctx).brightness == Brightness.light? LBoxFill : Color(0xFF303030a),
           child: ListTile(
               onTap: MainAction,
               title: Text(itemNames),

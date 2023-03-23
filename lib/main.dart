@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
 
       theme: ThemeData(
         primarySwatch: Colors.red,
-        scaffoldBackgroundColor: Color(0xFFF2F2F2),
+        scaffoldBackgroundColor: Color(0xFFF2F3F5),
         fontFamily: "ProductSans",
         appBarTheme: AppBarTheme(
           color: Color(0xFFEEEEE),
@@ -555,134 +555,130 @@ class _RecordCardsState extends State<RecordCards> {
     double screenWidth = MediaQuery.of(context).size.width;
     return Container(
       // color: Colors.black12,
-      padding: EdgeInsets.only(left: 16, top: 8,right: 16),
-      height: 140,
+      // padding: EdgeInsets.only(left: 16, top: 8,right: 16),
+      height: 120,
       child: Container(
         child: ScrollConfiguration(
           behavior: ScrollBehavior(),
-          child: GlowingOverscrollIndicator(
-            axisDirection: AxisDirection.down,
-            color: Colors.transparent,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: InkWell(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):Color(0xFFF9F9F9),
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      width: screenWidth/2 + 10,
-                      child: Column(
-                        children: <Widget>[
-                          SizedBox(
-                            height:20 ,
-                          ),
-                          Container(
-                              padding: EdgeInsets.only(left: 15),
-                              width: double.infinity,
-                              child: Text(
-                                "Resting Heart Rate",
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                    color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFFF8E8E):Color(0xFFA00000), fontSize: 17),
-                              )),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Container(
-                              padding: EdgeInsets.only(left: 15),
-                              width: double.infinity,
-                              child: Text(
-                                "99 Bpm",
-                                style: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF303030)),
-                              ))
-                        ],
-                      ),
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(left: 20),
+                child: InkWell(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):LBoxFill,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    width: screenWidth/2 + 10,
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height:20 ,
+                        ),
+                        Container(
+                            padding: EdgeInsets.only(left: 15),
+                            width: double.infinity,
+                            child: Text(
+                              "Resting Heart Rate",
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                  color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFFF8E8E):Color(0xFFA00000), fontSize: 17),
+                            )),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Container(
+                            padding: EdgeInsets.only(left: 15),
+                            width: double.infinity,
+                            child: Text(
+                              "99 Bpm",
+                              style: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF303030)),
+                            ))
+                      ],
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 8,bottom: 8),
-                  child: InkWell(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):Color(0xFFF9F9F9),
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      width:screenWidth/2 + 10,
-                      child: Column(
-                        children: <Widget>[
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Container(
-                              padding: EdgeInsets.only(left: 15),
-                              width: double.infinity,
-                              child: Text(
-                                "Active Hours",
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                    color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFCEFF9D):Color(0xFF5BAE07), fontSize: 17),
-                              )),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Container(
-                              padding: EdgeInsets.only(left: 15),
-                              width: double.infinity,
-                              child: Text(
-                                "50 s",
-                                style: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF303030)),
-                              ))
-                        ],
-                      ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: InkWell(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):LBoxFill,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    width:screenWidth/2 + 10,
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Container(
+                            padding: EdgeInsets.only(left: 15),
+                            width: double.infinity,
+                            child: Text(
+                              "Active Hours",
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                  color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFCEFF9D):Color(0xFF5BAE07), fontSize: 17),
+                            )),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Container(
+                            padding: EdgeInsets.only(left: 15),
+                            width: double.infinity,
+                            child: Text(
+                              "50 s",
+                              style: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF303030)),
+                            ))
+                      ],
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: InkWell(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):Color(0xFFF9F9F9),
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      width: screenWidth/2 + 10,
-                      child: Column(
-                        children: <Widget>[
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Container(
-                              padding: EdgeInsets.only(left: 15),
-                              width: double.infinity,
-                              child: Text(
-                                "Sleep",
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                    color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFA7B5FF):Color(0xFF334DD3), fontSize: 17),
-                              )),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Container(
-                              padding: EdgeInsets.only(left: 15),
-                              width: double.infinity,
-                              child: Text(
-                                "7h 20m",
-                                style: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF303030)),
-                              ))
-                        ],
-                      ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 10,right: 20),
+                child: InkWell(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):LBoxFill,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    width: screenWidth/2 + 10,
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Container(
+                            padding: EdgeInsets.only(left: 15),
+                            width: double.infinity,
+                            child: Text(
+                              "Sleep",
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                  color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFA7B5FF):Color(0xFF334DD3), fontSize: 17),
+                            )),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Container(
+                            padding: EdgeInsets.only(left: 15),
+                            width: double.infinity,
+                            child: Text(
+                              "7h 20m",
+                              style: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF303030)),
+                            ))
+                      ],
                     ),
                   ),
                 ),
+              ),
 
-              ],
-            ),
+            ],
           ),
         ),
       ),
@@ -762,7 +758,7 @@ class EmergencyBoxes extends StatelessWidget {
             Container(
               margin: EdgeInsets.only(left: 8),
               decoration: BoxDecoration(
-                color:Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):Color(0xFFF9F9F9),
+                color:Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):LBoxFill,
                 borderRadius: BorderRadius.circular(10),
               ),
               width: screenWidth/3.4,
@@ -792,7 +788,7 @@ class EmergencyBoxes extends StatelessWidget {
             Container(
               margin: EdgeInsets.only(left: 8),
               decoration: BoxDecoration(
-                color:Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):Color(0xFFF9F9F9),
+                color:Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):LBoxFill,
                 borderRadius: BorderRadius.circular(10),
               ),
               width: screenWidth/3.4,
@@ -823,183 +819,529 @@ class EmergencyBoxes extends StatelessWidget {
   }
 }
 
-class ForYouCards extends StatelessWidget {
+// class ForYouCards extends StatelessWidget {
+//   const ForYouCards({Key? key}) : super(key: key);
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return SliverToBoxAdapter(
+//       child: Container(
+//         // color: Colors.amber,
+//         padding: EdgeInsets.only(left: 20,right:20),
+//         height: 200,
+//         child: ListView(
+//           scrollDirection: Axis.horizontal,
+//           children: <Widget>[
+//             Column(
+//               children: <Widget>[
+//                 Container(
+//                   decoration: BoxDecoration(
+//                       image: DecorationImage(image: NetworkImage("https://th.bing.com/th/id/OIP.3HZOOl0lErndPeHwv2Ih3AHaFG?pid=ImgDet&w=207&h=143&c=7&dpr=1.3"),fit: BoxFit.fill,colorFilter:  ColorFilter.mode(Colors.white.withOpacity(0.0), BlendMode.dstATop),),
+//                       // color: Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):Color(0xFFF9F9F9),
+//                       borderRadius: BorderRadius.circular(25),
+//                       border: Border.all(color: Theme.of(context).brightness == Brightness.dark? Colors.white38:Colors.black45,width: 0.5)
+//                     // boxShadow: <BoxShadow>[
+//                     //   BoxShadow(
+//                     //     color: Colors.black12,
+//                     //     // blurRadius: 1,
+//                     //     offset: Oaffset(-.5,2),
+//                     //   ),
+//                     // ],
+//                   ),
+//                   margin: EdgeInsets.only(top: 10),
+//                   height: 160,
+//                   width: 250,
+//                   child:  Column(
+//                     mainAxisAlignment: MainAxisAlignment.center,
+//                     crossAxisAlignment: CrossAxisAlignment.start,
+//                     children: <Widget>[
+//                       InkWell(
+//                         onTap: () {},
+//                         child: Container(
+//                           // padding: EdgeInsets.only(left: 5,top:20,right:10),
+//                           child: Column(children: <Widget>[
+//                             // RawMaterialButton(
+//                             //   onPressed: () {},
+//                             //   elevation: 0,
+//                             //   fillColor: Theme.of(context).brightness == Brightness.dark ? Color(0xFF474747):Color(0xFFE3E3E3),
+//                             //   child: Icon(
+//                             //     Icons.newspaper,
+//                             //     size: 25.0,
+//                             //   ),
+//                             //   padding: EdgeInsets.all(15.0),
+//                             //   shape: CircleBorder(),
+//                             // ),
+//                             Container(padding: EdgeInsets.only(left: 20), width: double.infinity, child: Text('Insurance',textAlign: TextAlign.left, style: TextStyle(fontSize: 22,fontFamily: "PSM",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)),
+//                             Container(padding: EdgeInsets.only(left: 20), width: double.infinity, child: Text('Plans',textAlign: TextAlign.left, style: TextStyle(fontSize: 22,fontFamily: "PSM",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)),
+//                             SizedBox(height: 10,),
+//                             Container(padding: EdgeInsets.only(left: 20), width: double.infinity, child: Text('25 Plans',textAlign: TextAlign.left, style: TextStyle(fontSize: 15,fontFamily: "PSXL",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)),
+//
+//                           ],),
+//                         ),
+//                       ),
+//
+//                     ],
+//                   ),
+//                 ),
+//               ],
+//             ),
+//             SizedBox(width: 8,),
+//             Column(
+//               children: <Widget>[
+//                 Container(
+//                   decoration: BoxDecoration(
+//                       image: DecorationImage(image: NetworkImage("https://th.bing.com/th/id/OIP.36tkpsg_KY_R1JIfPKO8jAHaF7?w=211&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"),fit: BoxFit.fill,colorFilter: Theme.of(context).brightness ==Brightness.dark? ColorFilter.mode(Colors.black.withOpacity(0.3), BlendMode.dstATop):ColorFilter.mode(Colors.white.withOpacity(0.3), BlendMode.dstATop)),
+//                       // color: Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):Color(0xFFF9F9F9),
+//                       borderRadius: BorderRadius.circular(25),
+//                       border: Border.all(color: Colors.black54,width: 0.2)
+//                     // boxShadow: <BoxShadow>[
+//                     //   BoxShadow(
+//                     //     color: Colors.black12,
+//                     //     // blurRadius: 1,
+//                     //     offset: Oaffset(-.5,2),
+//                     //   ),
+//                     // ],
+//                   ),
+//                   margin: EdgeInsets.only(top: 10),
+//                   height: 160,
+//                   width: 250,
+//                   child:  Column(
+//                     mainAxisAlignment: MainAxisAlignment.center,
+//                     crossAxisAlignment: CrossAxisAlignment.start,
+//                     children: <Widget>[
+//                       InkWell(
+//                         onTap: () {},
+//                         child: Container(
+//                           // padding: EdgeInsets.only(left: 5,top:20,right:10),
+//                           child: Column(children: <Widget>[
+//                             // RawMaterialButton(
+//                             //   onPressed: () {},
+//                             //   elevation: 0,
+//                             //   fillColor: Theme.of(context).brightness == Brightness.dark ? Color(0xFF474747):Color(0xFFE3E3E3),
+//                             //   child: Icon(
+//                             //     Icons.newspaper,
+//                             //     size: 25.0,
+//                             //   ),
+//                             //   padding: EdgeInsets.all(15.0),
+//                             //   shape: CircleBorder(),
+//                             // ),
+//                             Container(padding: EdgeInsets.only(left: 20), width: double.infinity, child: Text('Insurance',textAlign: TextAlign.left, style: TextStyle(fontSize: 22,fontFamily: "PSM",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)),
+//                             Container(padding: EdgeInsets.only(left: 20), width: double.infinity, child: Text('Plans',textAlign: TextAlign.left, style: TextStyle(fontSize: 22,fontFamily: "PSM",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)),
+//                             SizedBox(height: 10,),
+//                             Container(padding: EdgeInsets.only(left: 20), width: double.infinity, child: Text('25 Plans',textAlign: TextAlign.left, style: TextStyle(fontSize: 15,fontFamily: "PSXL",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)),
+//
+//                           ],),
+//                         ),
+//                       ),
+//
+//                     ],
+//                   ),
+//                 ),
+//               ],
+//             ),
+//             SizedBox(width: 8,),
+//             Column(
+//               children: <Widget>[
+//                 Container(
+//                   decoration: BoxDecoration(
+//                       image: DecorationImage(image: NetworkImage("https://th.bing.com/th/id/OIP.3HZOOl0lErndPeHwv2Ih3AHaFG?pid=ImgDet&w=207&h=143&c=7&dpr=1.3"),fit: BoxFit.fill,colorFilter:  ColorFilter.mode(Colors.white.withOpacity(0.3), BlendMode.dstATop),),
+//                       // color: Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):Color(0xFFF9F9F9),
+//                       borderRadius: BorderRadius.circular(25),
+//                       border: Border.all(color: Colors.black,width: 0.5)
+//                     // boxShadow: <BoxShadow>[
+//                     //   BoxShadow(
+//                     //     color: Colors.black12,
+//                     //     // blurRadius: 1,
+//                     //     offset: Oaffset(-.5,2),
+//                     //   ),
+//                     // ],
+//                   ),
+//                   margin: EdgeInsets.only(top: 10),
+//                   height: 160,
+//                   width: 250,
+//                   child:  Column(
+//                     mainAxisAlignment: MainAxisAlignment.center,
+//                     crossAxisAlignment: CrossAxisAlignment.start,
+//                     children: <Widget>[
+//                       InkWell(
+//                         onTap: () {},
+//                         child: Container(
+//                           // padding: EdgeInsets.only(left: 5,top:20,right:10),
+//                           child: Column(children: <Widget>[
+//                             // RawMaterialButton(
+//                             //   onPressed: () {},
+//                             //   elevation: 0,
+//                             //   fillColor: Theme.of(context).brightness == Brightness.dark ? Color(0xFF474747):Color(0xFFE3E3E3),
+//                             //   child: Icon(
+//                             //     Icons.newspaper,
+//                             //     size: 25.0,
+//                             //   ),
+//                             //   padding: EdgeInsets.all(15.0),
+//                             //   shape: CircleBorder(),
+//                             // ),
+//                             Container(padding: EdgeInsets.only(left: 20), width: double.infinity, child: Text('Insurance',textAlign: TextAlign.left, style: TextStyle(fontSize: 22,fontFamily: "PSM",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)),
+//                             Container(padding: EdgeInsets.only(left: 20), width: double.infinity, child: Text('Plans',textAlign: TextAlign.left, style: TextStyle(fontSize: 22,fontFamily: "PSM",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)),
+//                             SizedBox(height: 10,),
+//                             Container(padding: EdgeInsets.only(left: 20), width: double.infinity, child: Text('25 Plans',textAlign: TextAlign.left, style: TextStyle(fontSize: 15,fontFamily: "PSXL",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)),
+//
+//                           ],),
+//                         ),
+//                       ),
+//
+//                     ],
+//                   ),
+//                 ),
+//               ],
+//             ),
+//
+//       ),
+//     );
+//   }
+// }
+
+// class ForYouCards extends StatefulWidget {
+//   const ForYouCards({Key? key}) : super(key: key);
+//
+//   @override
+//   State<ForYouCards> createState() => _ForYouCardsState();
+// }
+//
+// class _ForYouCardsState extends State<ForYouCards> {
+//   @override
+//   Widget build(BuildContext context) {
+//     double screenHeight = MediaQuery.of(context).size.height;
+//     double screenWidth = MediaQuery.of(context).size.width;
+//     return  SliverToBoxAdapter(
+//       child: Container(
+//         margin: EdgeInsets.only(left: 15,right:15),
+//         // color: Colors.red,
+//         decoration: BoxDecoration(
+//           borderRadius: BorderRadius.circular(15),
+//           // color: Theme.of(context).brightness==Brightness.dark? Color(0xFF303030): Color(0xFFF9F9F9),
+//         ),
+//         height: screenHeight/2,
+//         child: Column(
+//           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//           children: <Widget>[
+//             InkWell(
+//               child: Container(
+//                 height: screenHeight/9,
+//                 padding: EdgeInsets.only(left: 15) ,
+//                 // color: Colors.amber,
+//                 child: Row(
+//                   children: <Widget>[
+//                     CircleAvatar(
+//                       backgroundColor: Theme.of(context).brightness==Brightness.dark? Color(0xFF474747):Color(0xFFE3E3E3),
+//                       radius: 40,
+//                       child: Icon(Icons.book,size: 30,color: Theme.of(context).brightness==Brightness.dark? Color(0xFFEEEEEE):Color(0xFF343434),),
+//                     ),
+//                     SizedBox(width: 15,),
+//                     Column(
+//                       mainAxisAlignment: MainAxisAlignment.center,
+//                       children: <Widget>[
+//                         Container( width:screenWidth/1.5 , child: Text('Insurance Policies',textAlign: TextAlign.left,style: TextStyle(fontSize: 25,color: Theme.of(context).brightness==Brightness.dark? Color(0xFFEEEEEE):Color(0xFF343434),fontFamily: "PSL"),)),
+//                         SizedBox(height: 8,),
+//                         Container(width:screenWidth/1.5, child: Text('Enroll in Insurance schemes provided by the government',overflow: TextOverflow.ellipsis,maxLines: 2,style: TextStyle(fontFamily: "PSXL",fontSize:12 , color: Theme.of(context).brightness==Brightness.dark? Color(0xFFEEEEEE):Color(0xFF343434)),))
+//                       ],
+//                     ),
+//                   ],
+//                 ),
+//               ),
+//             ),
+//             InkWell(
+//               child: Container(
+//                 height: screenHeight/9,
+//                 padding: EdgeInsets.only(left: 15) ,
+//                 // color: Colors.amber,
+//                 child: Row(
+//                   children: <Widget>[
+//                     CircleAvatar(
+//                       backgroundColor: Theme.of(context).brightness==Brightness.dark? Color(0xFF474747):Color(0xFFE3E3E3),
+//                       radius: 40,
+//                       child: Icon(Icons.book,size: 30,color: Theme.of(context).brightness==Brightness.dark? Color(0xFFEEEEEE):Color(0xFF343434),),
+//                     ),
+//                     SizedBox(width: 15,),
+//                     Column(
+//                       mainAxisAlignment: MainAxisAlignment.center,
+//                       children: <Widget>[
+//                         Container( width:screenWidth/1.5 , child: Text('Insurance Policies',textAlign: TextAlign.left,style: TextStyle(fontSize: 25,color: Theme.of(context).brightness==Brightness.dark? Color(0xFFEEEEEE):Color(0xFF343434),fontFamily: "PSL"),)),
+//                         SizedBox(height: 8,),
+//                         Container(width:screenWidth/1.5, child: Text('Enroll in Insurance schemes provided by the government',overflow: TextOverflow.ellipsis,maxLines: 2,style: TextStyle(fontFamily: "PSXL",fontSize:12 , color: Theme.of(context).brightness==Brightness.dark? Color(0xFFEEEEEE):Color(0xFF343434)),))
+//                       ],
+//                     ),
+//                   ],
+//                 ),
+//               ),
+//             ),
+//             InkWell(
+//               child: Container(
+//                 height: screenHeight/9,
+//                 padding: EdgeInsets.only(left: 15) ,
+//                 // color: Colors.amber,
+//                 child: Row(
+//                   children: <Widget>[
+//                     CircleAvatar(
+//                       backgroundColor: Theme.of(context).brightness==Brightness.dark? Color(0xFF474747):Color(0xFFE3E3E3),
+//                       radius: 40,
+//                       child: Icon(Icons.book,size: 30,color: Theme.of(context).brightness==Brightness.dark? Color(0xFFEEEEEE):Color(0xFF343434),),
+//                     ),
+//                     SizedBox(width: 15,),
+//                     Column(
+//                       mainAxisAlignment: MainAxisAlignment.center,
+//                       children: <Widget>[
+//                         Container( width:screenWidth/1.5 , child: Text('Insurance Policies',textAlign: TextAlign.left,style: TextStyle(fontSize: 25,color: Theme.of(context).brightness==Brightness.dark? Color(0xFFEEEEEE):Color(0xFF343434),fontFamily: "PSL"),)),
+//                         SizedBox(height: 8,),
+//                         Container(width:screenWidth/1.5, child: Text('Enroll in Insurance schemes provided by the government',overflow: TextOverflow.ellipsis,maxLines: 2,style: TextStyle(fontFamily: "PSXL",fontSize:12 , color: Theme.of(context).brightness==Brightness.dark? Color(0xFFEEEEEE):Color(0xFF343434)),))
+//                       ],
+//                     ),
+//                   ],
+//                 ),
+//               ),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+class ForYouCards extends StatefulWidget {
   const ForYouCards({Key? key}) : super(key: key);
 
   @override
+  State<ForYouCards> createState() => _ForYouCardsState();
+}
+
+class _ForYouCardsState extends State<ForYouCards> {
+  @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return SliverToBoxAdapter(
-      child: Container(
-        // color: Colors.amber,
-        padding: EdgeInsets.only(left: 20,right:20),
-        height: 200,
-        child: ListView(
-          scrollDirection: Axis.horizontal,
-          children: <Widget>[
-            Column(
-              children: <Widget>[
-                Container(
-                  decoration: BoxDecoration(
-                      image: DecorationImage(image: NetworkImage("https://th.bing.com/th/id/OIP.3HZOOl0lErndPeHwv2Ih3AHaFG?pid=ImgDet&w=207&h=143&c=7&dpr=1.3"),fit: BoxFit.fill,colorFilter:  ColorFilter.mode(Colors.white.withOpacity(0.0), BlendMode.dstATop),),
-                      // color: Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):Color(0xFFF9F9F9),
-                      borderRadius: BorderRadius.circular(25),
-                      border: Border.all(color: Theme.of(context).brightness == Brightness.dark? Colors.white38:Colors.black45,width: 0.5)
-                    // boxShadow: <BoxShadow>[
-                    //   BoxShadow(
-                    //     color: Colors.black12,
-                    //     // blurRadius: 1,
-                    //     offset: Oaffset(-.5,2),
-                    //   ),
-                    // ],
-                  ),
-                  margin: EdgeInsets.only(top: 10),
-                  height: 160,
-                  width: 250,
-                  child:  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      InkWell(
-                        onTap: () {},
-                        child: Container(
-                          // padding: EdgeInsets.only(left: 5,top:20,right:10),
-                          child: Column(children: <Widget>[
-                            // RawMaterialButton(
-                            //   onPressed: () {},
-                            //   elevation: 0,
-                            //   fillColor: Theme.of(context).brightness == Brightness.dark ? Color(0xFF474747):Color(0xFFE3E3E3),
-                            //   child: Icon(
-                            //     Icons.newspaper,
-                            //     size: 25.0,
-                            //   ),
-                            //   padding: EdgeInsets.all(15.0),
-                            //   shape: CircleBorder(),
-                            // ),
-                            Container(padding: EdgeInsets.only(left: 20), width: double.infinity, child: Text('Insurance',textAlign: TextAlign.left, style: TextStyle(fontSize: 22,fontFamily: "PSM",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)),
-                            Container(padding: EdgeInsets.only(left: 20), width: double.infinity, child: Text('Plans',textAlign: TextAlign.left, style: TextStyle(fontSize: 22,fontFamily: "PSM",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)),
-                            SizedBox(height: 10,),
-                            Container(padding: EdgeInsets.only(left: 20), width: double.infinity, child: Text('25 Plans',textAlign: TextAlign.left, style: TextStyle(fontSize: 15,fontFamily: "PSXL",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)),
-
-                          ],),
-                        ),
-                      ),
-
-                    ],
-                  ),
+      child: Column(
+        children: <Widget>[
+          Column(
+            children: <Widget>[
+              Container(
+                decoration: BoxDecoration(
+                    image: DecorationImage(image: NetworkImage("https://wallpapercave.com/wp/wp7064109.jpg"),fit: BoxFit.fill,colorFilter:  Theme.of(context).brightness==Brightness.dark? ColorFilter.mode(Colors.black.withOpacity(0.4), BlendMode.dstATop):ColorFilter.mode(Colors.black.withOpacity(0.4), BlendMode.dstATop),),
+                    // color: Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):Color(0xFFF9F9F9),
+                    borderRadius: BorderRadius.circular(15),
+                    border: Border.all(color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),width: 0.3)
+                  // boxShadow: <BoxShadow>[
+                  //   BoxShadow(
+                  //     color: Colors.black12,
+                  //     // blurRadius: 1,
+                  //     offset: Oaffset(-.5,2),
+                  //   ),
+                  // ],
                 ),
-              ],
-            ),
-            SizedBox(width: 8,),
-            Column(
-              children: <Widget>[
-                Container(
-                  decoration: BoxDecoration(
-                      image: DecorationImage(image: NetworkImage("https://th.bing.com/th/id/OIP.36tkpsg_KY_R1JIfPKO8jAHaF7?w=211&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"),fit: BoxFit.fill,colorFilter: Theme.of(context).brightness ==Brightness.dark? ColorFilter.mode(Colors.black.withOpacity(0.3), BlendMode.dstATop):ColorFilter.mode(Colors.white.withOpacity(0.3), BlendMode.dstATop)),
-                      // color: Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):Color(0xFFF9F9F9),
-                      borderRadius: BorderRadius.circular(25),
-                      border: Border.all(color: Colors.black54,width: 0.2)
-                    // boxShadow: <BoxShadow>[
-                    //   BoxShadow(
-                    //     color: Colors.black12,
-                    //     // blurRadius: 1,
-                    //     offset: Oaffset(-.5,2),
-                    //   ),
-                    // ],
-                  ),
-                  margin: EdgeInsets.only(top: 10),
-                  height: 160,
-                  width: 250,
-                  child:  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      InkWell(
-                        onTap: () {},
-                        child: Container(
-                          // padding: EdgeInsets.only(left: 5,top:20,right:10),
-                          child: Column(children: <Widget>[
-                            // RawMaterialButton(
-                            //   onPressed: () {},
-                            //   elevation: 0,
-                            //   fillColor: Theme.of(context).brightness == Brightness.dark ? Color(0xFF474747):Color(0xFFE3E3E3),
-                            //   child: Icon(
-                            //     Icons.newspaper,
-                            //     size: 25.0,
-                            //   ),
-                            //   padding: EdgeInsets.all(15.0),
-                            //   shape: CircleBorder(),
-                            // ),
-                            Container(padding: EdgeInsets.only(left: 20), width: double.infinity, child: Text('Insurance',textAlign: TextAlign.left, style: TextStyle(fontSize: 22,fontFamily: "PSM",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)),
-                            Container(padding: EdgeInsets.only(left: 20), width: double.infinity, child: Text('Plans',textAlign: TextAlign.left, style: TextStyle(fontSize: 22,fontFamily: "PSM",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)),
-                            SizedBox(height: 10,),
-                            Container(padding: EdgeInsets.only(left: 20), width: double.infinity, child: Text('25 Plans',textAlign: TextAlign.left, style: TextStyle(fontSize: 15,fontFamily: "PSXL",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)),
+                margin: EdgeInsets.only(top: 10),
+                height: 160,
+                width: screenWidth/1.1,
+                child:  Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    InkWell(
+                      onTap: () {},
+                      child: Container(
+                        // padding: EdgeInsets.only(left: 5,top:20,right:10),
+                        child: Column(children: <Widget>[
+                          // RawMaterialButton(
+                          //   onPressed: () {},
+                          //   elevation: 0,
+                          //   fillColor: Theme.of(context).brightness == Brightness.dark ? Color(0xFF474747):Color(0xFFE3E3E3),
+                          //   child: Icon(
+                          //     Icons.newspaper,
+                          //     size: 25.0,
+                          //   ),
+                          //   padding: EdgeInsets.all(15.0),
+                          //   shape: CircleBorder(),
+                          // ),
+                          SizedBox(height: 30,),
+                          Container(padding: EdgeInsets.only(left: 30), width: double.infinity, child: Text('INSURANCE',textAlign: TextAlign.left, style: TextStyle(fontSize: 22,letterSpacing: 3 ,fontFamily: "PSM",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)),
+                          SizedBox(height: 2,),
+                          Container(padding: EdgeInsets.only(left: 30), width: double.infinity, child: Text('PLANS', textAlign: TextAlign.left, style: TextStyle(fontSize: 22,letterSpacing: 3,fontFamily: "PSM",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)),
+                          SizedBox(height: 10,),
+                          // Container(padding: EdgeInsets.only(left: 30), width: double.infinity, child: Text('25 Plans',textAlign: TextAlign.left, style: TextStyle(fontSize: 15,fontFamily: "PSXL",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)),
 
-                          ],),
-                        ),
+                        ],),
                       ),
+                    ),
 
-                    ],
-                  ),
+                  ],
                 ),
-              ],
-            ),
-            SizedBox(width: 8,),
-            Column(
-              children: <Widget>[
-                Container(
-                  decoration: BoxDecoration(
-                      image: DecorationImage(image: NetworkImage("https://th.bing.com/th/id/OIP.3HZOOl0lErndPeHwv2Ih3AHaFG?pid=ImgDet&w=207&h=143&c=7&dpr=1.3"),fit: BoxFit.fill,colorFilter:  ColorFilter.mode(Colors.white.withOpacity(0.3), BlendMode.dstATop),),
-                      // color: Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):Color(0xFFF9F9F9),
-                      borderRadius: BorderRadius.circular(25),
-                      border: Border.all(color: Colors.black,width: 0.5)
-                    // boxShadow: <BoxShadow>[
-                    //   BoxShadow(
-                    //     color: Colors.black12,
-                    //     // blurRadius: 1,
-                    //     offset: Oaffset(-.5,2),
-                    //   ),
-                    // ],
-                  ),
-                  margin: EdgeInsets.only(top: 10),
-                  height: 160,
-                  width: 250,
-                  child:  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      InkWell(
-                        onTap: () {},
-                        child: Container(
-                          // padding: EdgeInsets.only(left: 5,top:20,right:10),
-                          child: Column(children: <Widget>[
-                            // RawMaterialButton(
-                            //   onPressed: () {},
-                            //   elevation: 0,
-                            //   fillColor: Theme.of(context).brightness == Brightness.dark ? Color(0xFF474747):Color(0xFFE3E3E3),
-                            //   child: Icon(
-                            //     Icons.newspaper,
-                            //     size: 25.0,
-                            //   ),
-                            //   padding: EdgeInsets.all(15.0),
-                            //   shape: CircleBorder(),
-                            // ),
-                            Container(padding: EdgeInsets.only(left: 20), width: double.infinity, child: Text('Insurance',textAlign: TextAlign.left, style: TextStyle(fontSize: 22,fontFamily: "PSM",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)),
-                            Container(padding: EdgeInsets.only(left: 20), width: double.infinity, child: Text('Plans',textAlign: TextAlign.left, style: TextStyle(fontSize: 22,fontFamily: "PSM",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)),
-                            SizedBox(height: 10,),
-                            Container(padding: EdgeInsets.only(left: 20), width: double.infinity, child: Text('25 Plans',textAlign: TextAlign.left, style: TextStyle(fontSize: 15,fontFamily: "PSXL",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)),
+              ),
+            ],
+          ),
+          Column(
+            children: <Widget>[
+              Container(
+                decoration: BoxDecoration(
+                    image: DecorationImage(image: NetworkImage("https://i.pinimg.com/originals/00/b1/0f/00b10f11ad4b5c7864220ac4817e6712.jpg"),fit: BoxFit.fill,colorFilter:  ColorFilter.mode(Colors.black.withOpacity(0.4), BlendMode.dstATop),),
+                    // color: Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):Color(0xFFF9F9F9),
+                    borderRadius: BorderRadius.circular(15),
+                    border: Border.all(color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),width: 0.3)
 
-                          ],),
-                        ),
+                  // boxShadow: <BoxShadow>[
+                  //   BoxShadow(
+                  //     color: Colors.black12,
+                  //     // blurRadius: 1,
+                  //     offset: Oaffset(-.5,2),
+                  //   ),
+                  // ],
+                ),
+                margin: EdgeInsets.only(top: 10),
+                height: 160,
+                width: screenWidth/1.1,
+                child:  Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    InkWell(
+                      onTap: () {},
+                      child: Container(
+                        // padding: EdgeInsets.only(left: 5,top:20,right:10),
+                        child: Column(children: <Widget>[
+                          // RawMaterialButton(
+                          //   onPressed: () {},
+                          //   elevation: 0,
+                          //   fillColor: Theme.of(context).brightness == Brightness.dark ? Color(0xFF474747):Color(0xFFE3E3E3),
+                          //   child: Icon(
+                          //     Icons.newspaper,
+                          //     size: 25.0,
+                          //   ),
+                          //   padding: EdgeInsets.all(15.0),
+                          //   shape: CircleBorder(),
+                          // ),
+                          SizedBox(height: 30,),
+                          Container(padding: EdgeInsets.only(left: 30), width: double.infinity, child: Text('LINK WITH',textAlign: TextAlign.left, style: TextStyle(fontSize: 22,letterSpacing: 3 ,fontFamily: "PSM",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)),
+                          SizedBox(height: 2,),
+                          Container(padding: EdgeInsets.only(left: 30), width: double.infinity, child: Text('BLOOD BANKS', textAlign: TextAlign.left, style: TextStyle(fontSize: 22,letterSpacing: 3,fontFamily: "PSM",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)),
+                          SizedBox(height: 10,),
+                          // Container(padding: EdgeInsets.only(left: 30), width: double.infinity, child: Text('25 Plans',textAlign: TextAlign.left, style: TextStyle(fontSize: 15,fontFamily: "PSXL",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)),
+
+                        ],),
                       ),
+                    ),
 
-                    ],
-                  ),
+                  ],
                 ),
-              ],
-            ),
-          ],
-        ),
+              ),
+            ],
+          ),
+          SizedBox(height: 20,),
+
+          // Column(
+          //   children: <Widget>[
+          //     Container(
+          //       decoration: BoxDecoration(
+          //           image: DecorationImage(image: NetworkImage("https://th.bing.com/th/id/OIP.3HZOOl0lErndPeHwv2Ih3AHaFG?pid=ImgDet&w=207&h=143&c=7&dpr=1.3"),fit: BoxFit.fill,colorFilter:  ColorFilter.mode(Colors.white.withOpacity(0.3), BlendMode.dstATop),),
+          //           // color: Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):Color(0xFFF9F9F9),
+          //           borderRadius: BorderRadius.circular(25),
+          //           border: Border.all(color: Colors.black,width: 0.5)
+          //         // boxShadow: <BoxShadow>[
+          //         //   BoxShadow(
+          //         //     color: Colors.black12,
+          //         //     // blurRadius: 1,
+          //         //     offset: Oaffset(-.5,2),
+          //         //   ),
+          //         // ],
+          //       ),
+          //       margin: EdgeInsets.only(top: 10),
+          //       height: 160,
+          //       width: 250,
+          //       child:  Column(
+          //         mainAxisAlignment: MainAxisAlignment.center,
+          //         crossAxisAlignment: CrossAxisAlignment.start,
+          //         children: <Widget>[
+          //           InkWell(
+          //             onTap: () {},
+          //             child: Container(
+          //               // padding: EdgeInsets.only(left: 5,top:20,right:10),
+          //               child: Column(children: <Widget>[
+          //                 // RawMaterialButton(
+          //                 //   onPressed: () {},
+          //                 //   elevation: 0,
+          //                 //   fillColor: Theme.of(context).brightness == Brightness.dark ? Color(0xFF474747):Color(0xFFE3E3E3),
+          //                 //   child: Icon(
+          //                 //     Icons.newspaper,
+          //                 //     size: 25.0,
+          //                 //   ),
+          //                 //   padding: EdgeInsets.all(15.0),
+          //                 //   shape: CircleBorder(),
+          //                 // ),
+          //                 Container(padding: EdgeInsets.only(left: 20), width: double.infinity, child: Text('Insurance',textAlign: TextAlign.left, style: TextStyle(fontSize: 22,fontFamily: "PSM",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)),
+          //                 Container(padding: EdgeInsets.only(left: 20), width: double.infinity, child: Text('Plans',textAlign: TextAlign.left, style: TextStyle(fontSize: 22,fontFamily: "PSM",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)),
+          //                 SizedBox(height: 10,),
+          //                 Container(padding: EdgeInsets.only(left: 20), width: double.infinity, child: Text('25 Plans',textAlign: TextAlign.left, style: TextStyle(fontSize: 15,fontFamily: "PSXL",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)),
+          //
+          //               ],),
+          //             ),
+          //           ),
+          //
+          //         ],
+          //       ),
+          //     ),
+          //   ],
+          // ),
+          // Column(
+          //   children: <Widget>[
+          //     Container(
+          //       decoration: BoxDecoration(
+          //           image: DecorationImage(image: NetworkImage("https://th.bing.com/th/id/OIP.3HZOOl0lErndPeHwv2Ih3AHaFG?pid=ImgDet&w=207&h=143&c=7&dpr=1.3"),fit: BoxFit.fill,colorFilter:  ColorFilter.mode(Colors.white.withOpacity(0.3), BlendMode.dstATop),),
+          //           // color: Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):Color(0xFFF9F9F9),
+          //           borderRadius: BorderRadius.circular(25),
+          //           border: Border.all(color: Colors.black,width: 0.5)
+          //         // boxShadow: <BoxShadow>[
+          //         //   BoxShadow(
+          //         //     color: Colors.black12,
+          //         //     // blurRadius: 1,
+          //         //     offset: Oaffset(-.5,2),
+          //         //   ),
+          //         // ],
+          //       ),
+          //       margin: EdgeInsets.only(top: 10),
+          //       height: 160,
+          //       width: 250,
+          //       child:  Column(
+          //         mainAxisAlignment: MainAxisAlignment.center,
+          //         crossAxisAlignment: CrossAxisAlignment.start,
+          //         children: <Widget>[
+          //           InkWell(
+          //             onTap: () {},
+          //             child: Container(
+          //               // padding: EdgeInsets.only(left: 5,top:20,right:10),
+          //               child: Column(children: <Widget>[
+          //                 // RawMaterialButton(
+          //                 //   onPressed: () {},
+          //                 //   elevation: 0,
+          //                 //   fillColor: Theme.of(context).brightness == Brightness.dark ? Color(0xFF474747):Color(0xFFE3E3E3),
+          //                 //   child: Icon(
+          //                 //     Icons.newspaper,
+          //                 //     size: 25.0,
+          //                 //   ),
+          //                 //   padding: EdgeInsets.all(15.0),
+          //                 //   shape: CircleBorder(),
+          //                 // ),
+          //                 Container(padding: EdgeInsets.only(left: 20), width: double.infinity, child: Text('Insurance',textAlign: TextAlign.left, style: TextStyle(fontSize: 22,fontFamily: "PSM",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)),
+          //                 Container(padding: EdgeInsets.only(left: 20), width: double.infinity, child: Text('Plans',textAlign: TextAlign.left, style: TextStyle(fontSize: 22,fontFamily: "PSM",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)),
+          //                 SizedBox(height: 10,),
+          //                 Container(padding: EdgeInsets.only(left: 20), width: double.infinity, child: Text('25 Plans',textAlign: TextAlign.left, style: TextStyle(fontSize: 15,fontFamily: "PSXL",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)),
+          //
+          //               ],),
+          //             ),
+          //           ),
+          //
+          //         ],
+          //       ),
+          //     ),
+          //   ],
+          // ),
+        ],
       ),
-    );
+    ) ;
   }
 }
+
