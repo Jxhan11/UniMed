@@ -1,6 +1,28 @@
 import 'package:flutter/material.dart';
 
 Color LBoxFill=Color(0xFFFFFFFF);
+Color DBoxFill=Color(0xFF313131);
+
+
+class GeneralizedPadding{
+  final BuildContext context;
+  GeneralizedPadding(this.context);
+
+  double horizontal({required double value}){
+    double toReturn = 0;
+    double screenWidth = MediaQuery.of(context).size.width;
+    double offset = value/screenWidth;
+    toReturn = offset * screenWidth;
+    return toReturn;
+  }
+  double vertical({required double value}){
+    double toReturn = 0;
+    double screenHeight = MediaQuery.of(context).size.height;
+    double offset = value/screenHeight;
+    toReturn = offset * screenHeight;
+    return toReturn;
+  }
+}
 class UsefulBigText extends StatelessWidget {
   final text;
   const UsefulBigText({Key? key, this.text}) : super(key: key);
@@ -58,14 +80,13 @@ PoggiesM3List(
     required BuildContext ctx,
     required List<Function> theTrailingAction,
       required List<Function> onTapTile}) {
-  double basicRadius = 12;
-  double basicRadiusDelta = 4;
-  double lastOnesRadius = 6;
+  double basicRadius = 0;
+  double basicRadiusDelta = 20;
+  double lastOnesRadius = 0;
   double spaceBetweenTiles = 3.0;
   int iLen = itemNames.length;
 
   List<Widget> widgetsToAdd = [];
-
   if (iLen > 2) {
     widgetsToAdd.add(PoggiesM3ListTile(
         itemNames: itemNames[0],
@@ -176,7 +197,7 @@ PoggiesM3ListTile(
           bottomRight: Radius.circular(BR),
         ),
         child: Material(
-          color: Theme.of(ctx).brightness == Brightness.light? LBoxFill : Color(0xFF303030a),
+          color: Theme.of(ctx).brightness == Brightness.light? LBoxFill : DBoxFill,
           child: ListTile(
               onTap: MainAction,
               title: Text(itemNames),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart ';
 import 'package:unimed/Components/usefulStuff.dart';
+import 'package:unimed/Pages/Profile%20sub-menus/medInfo.dart';
 import 'package:unimed/main.dart';
 
 List<String> itemNames = ['Medical Information','Emergency Contacts'];
@@ -90,7 +91,14 @@ _Profile() {
   );
 }
 _EmergencyInfo(ctx){
-  void go1(){}
+  void go1(){
+    // Medical Information
+    Navigator.push(
+        ctx,
+        MaterialPageRoute(
+        builder: (context) =>
+        MedicalInformation()));
+  }
   void go2(){}
   void go3(){}
   void go4(){}
