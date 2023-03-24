@@ -27,12 +27,12 @@ class AppTheme {
     brightness: Brightness.dark,
     canvasColor: Color(0xFF1F1F1F),
     textTheme: TextTheme(
-      headline1: TextStyle(color: Colors.deepPurpleAccent,fontFamily: "PSM"),
-      headline2: TextStyle(color: Colors.deepPurpleAccent,fontFamily: "PSM"),
+      headline1: TextStyle(color: Colors.white,fontFamily: "PSM"),
+      headline2: TextStyle(color: Colors.white,fontFamily: "PSM"),
       bodyText2: TextStyle(fontFamily: "PSM"),
       subtitle1: TextStyle(fontFamily: "PSM"),
     ),
-    navigationBarTheme: NavigationBarThemeData(backgroundColor: Color(0xFF131313)),
+    // navigationBarTheme: NavigationBarThemeData(backgroundColor: Color(0xFF131313)),
 
   );
 

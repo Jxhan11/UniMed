@@ -50,6 +50,7 @@ class _SearchWithSuggestionsPageState extends State<SearchWithSuggestionsPage> {
         body: CustomScrollView(
       slivers: [
         SliverAppBar(
+          backgroundColor: Colors.transparent,
           leading: Hero(
             tag: 'search-icon-leading',
             child: Material(
