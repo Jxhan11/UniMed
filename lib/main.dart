@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:unimed/Pages/Insurance.dart';
 import 'package:unimed/Pages/News.dart';
 import 'package:unimed/Pages/filesPage.dart';
 import 'package:unimed/Pages/healthPage.dart';
@@ -135,6 +136,7 @@ BodyFormerFunction(x,context) {
       return CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
+            systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: Theme.of(context).scaffoldBackgroundColor,statusBarIconBrightness: Theme.of(context).brightness==Brightness.dark? Brightness.light:Brightness.dark),
             collapsedHeight: 60,
             title: Padding(
               //TODO: Make the padding and height relative.
@@ -568,7 +570,7 @@ class _RecordCardsState extends State<RecordCards> {
                 child: InkWell(
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):LBoxFill,
+                      color: Theme.of(context).brightness == Brightness.dark ? DBoxFill:LBoxFill,
                       borderRadius: BorderRadius.circular(15),
                     ),
                     width: screenWidth/2 + 10,
@@ -606,7 +608,7 @@ class _RecordCardsState extends State<RecordCards> {
                 child: InkWell(
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):LBoxFill,
+                      color: Theme.of(context).brightness == Brightness.dark ? DBoxFill:LBoxFill,
                       borderRadius: BorderRadius.circular(15),
                     ),
                     width:screenWidth/2 + 10,
@@ -644,7 +646,7 @@ class _RecordCardsState extends State<RecordCards> {
                 child: InkWell(
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):LBoxFill,
+                      color: Theme.of(context).brightness == Brightness.dark ? DBoxFill:LBoxFill,
                       borderRadius: BorderRadius.circular(15),
                     ),
                     width: screenWidth/2 + 10,
@@ -758,7 +760,7 @@ class EmergencyBoxes extends StatelessWidget {
             Container(
               margin: EdgeInsets.only(left: 8),
               decoration: BoxDecoration(
-                color:Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):LBoxFill,
+                color:Theme.of(context).brightness == Brightness.dark ? DBoxFill:LBoxFill,
                 borderRadius: BorderRadius.circular(10),
               ),
               width: screenWidth/3.4,
@@ -788,7 +790,7 @@ class EmergencyBoxes extends StatelessWidget {
             Container(
               margin: EdgeInsets.only(left: 8),
               decoration: BoxDecoration(
-                color:Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):LBoxFill,
+                color:Theme.of(context).brightness == Brightness.dark ? DBoxFill:LBoxFill,
                 borderRadius: BorderRadius.circular(10),
               ),
               width: screenWidth/3.4,
@@ -1361,58 +1363,67 @@ class _ForYouCardsState extends State<ForYouCards> {
   @override
   Widget build(BuildContext context) {
     GeneralizedPadding test = GeneralizedPadding(context);
+    double screenWidth=MediaQuery.of(context).size.width;
     return Container(
-      padding: EdgeInsets.all(10),
+      // padding: EdgeInsets.all(0),
       // color: Colors.red,
-      height: test.vertical(value: 675),
+      height: test.vertical(value: 615),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              Container(
-                height: test.vertical(value: 200),
-                width: test.horizontal(value: 180),
-                // margin: EdgeInsets.all(20),
-                padding: EdgeInsets.all(test.horizontal(value: 20)),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: Theme.of(context).brightness==Brightness.dark? DBoxFill:LBoxFill,
-                ),
+              InkWell(
+                splashColor: Colors.blue,
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => InsurancePg()));
+                },
+                child: Container(
+                  // height: test.vertical(value: 200),
+                  width: screenWidth/2.3,
+                  // height: 186,
+                  // margin: EdgeInsets.all(20),
+                  padding: EdgeInsets.all(test.horizontal(value: 20)),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Theme.of(context).brightness==Brightness.dark? DBoxFill:LBoxFill,
+                  ),
 
-                child: Column(
-                  children: <Widget>[
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Container(
-                        height: test.vertical(value: 23),
-                        child: Text('Insurance',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+                  child: Column(
+                    children: <Widget>[
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Container(
+                          height: test.vertical(value: 23),
+                          child: Text('Insurance',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+                        ),
                       ),
-                    ),
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Container(
-                        height: test.vertical(value: 23),
-                        child: Text('Policies',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Container(
+                          height: test.vertical(value: 23),
+                          child: Text('Policies',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+                        ),
                       ),
-                    ),
-                    SizedBox(height: test.vertical(value: 80),),
-                    Align(
-                      alignment: Alignment.bottomRight,
-                      child: Container(
-                        height: 20,
-                        child: Icon(Icons.book,color: Color(0xFF91D2FF),),
+                      SizedBox(height: test.vertical(value: 80),),
+                      Align(
+                        alignment: Alignment.bottomRight,
+                        child: Container(
+                          height: 20,
+                          child: Icon(Icons.book,color: Color(0xFF91D2FF),),
+                        ),
                       ),
-                    ),
 
-                  ],
+                    ],
+                  ),
                 ),
               ),
               // SizedBox(width: 10,),
               Container(
-                height: test.vertical(value: 200),
-                width: test.horizontal(value: 180),
+                width: screenWidth/2.3,
+                // height: 180,
+                // width: screenWidth/2,
                 // margin: EdgeInsets.all(20),
                 padding: EdgeInsets.all(test.horizontal(value: 20)),
                 decoration: BoxDecoration(
@@ -1454,132 +1465,56 @@ class _ForYouCardsState extends State<ForYouCards> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              Container(
-                height: test.vertical(value: 200),
-                width: test.horizontal(value: 180),
-                // margin: EdgeInsets.all(20),
-                padding: EdgeInsets.all(test.horizontal(value: 20)),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: Theme.of(context).brightness==Brightness.dark? DBoxFill:LBoxFill,
-                ),
+              InkWell(
+                splashColor: Colors.blue,
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => InsurancePg()));
+                },
+                child: Container(
+                  // height: test.vertical(value: 200),
+                  width: screenWidth/2.3,
+                  // height: 186,
+                  // margin: EdgeInsets.all(20),
+                  padding: EdgeInsets.all(test.horizontal(value: 20)),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Theme.of(context).brightness==Brightness.dark? DBoxFill:LBoxFill,
+                  ),
 
-                child: Column(
-                  children: <Widget>[
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Container(
-                        height: test.vertical(value: 23),
-                        child: Text('Pharmacies',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+                  child: Column(
+                    children: <Widget>[
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Container(
+                          height: test.vertical(value: 23),
+                          child: Text('Insurance',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+                        ),
                       ),
-                    ),
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Container(
-                        height: test.vertical(value: 23),
-                        child: Text('Nearby',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Container(
+                          height: test.vertical(value: 23),
+                          child: Text('Policies',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+                        ),
                       ),
-                    ),
-                    SizedBox(height: test.vertical(value: 80),),
-                    Align(
-                      alignment: Alignment.bottomRight,
-                      child: Container(
-                        height: 20,
-                        child: Icon(Icons.shopping_bag_rounded,color: Color(
-                            0xFF91F9A6),),
+                      SizedBox(height: test.vertical(value: 80),),
+                      Align(
+                        alignment: Alignment.bottomRight,
+                        child: Container(
+                          height: 20,
+                          child: Icon(Icons.book,color: Color(0xFF91D2FF),),
+                        ),
                       ),
-                    ),
 
-                  ],
-                ),
-              ),
-              // SizedBox(width: 10,),
-              Container(
-                height: test.vertical(value: 200),
-                width: test.horizontal(value: 180),
-                // margin: EdgeInsets.all(20),
-                padding: EdgeInsets.all(test.horizontal(value: 20)),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: Theme.of(context).brightness==Brightness.dark? DBoxFill:LBoxFill,
-                ),
-
-                child: Column(
-                  children: <Widget>[
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Container(
-                        height: test.vertical(value: 23),
-                        child: Text('Appointments',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Container(
-                        height: test.vertical(value: 23),
-                        child: Text('',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
-                      ),
-                    ),
-                    SizedBox(height: test.vertical(value: 80),),
-                    Align(
-                      alignment: Alignment.bottomRight,
-                      child: Container(
-                        height: test.vertical(value: 23),
-                        child: Icon(Icons.sticky_note_2,color: Color(0xFFFF9B9B),),
-                      ),
-                    ),
-
-                  ],
-                ),
-              ),
-
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              Container(
-                height: test.vertical(value: 200),
-                width: test.horizontal(value: 180),
-                // margin: EdgeInsets.all(20),
-                padding: EdgeInsets.all(test.horizontal(value: 20)),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: Theme.of(context).brightness==Brightness.dark? DBoxFill:LBoxFill,
-                ),
-
-                child: Column(
-                  children: <Widget>[
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Container(
-                        height: test.vertical(value: 23),
-                        child: Text('Insurance',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Container(
-                        height: test.vertical(value: 23),
-                        child: Text('Policies',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
-                      ),
-                    ),
-                    SizedBox(height: test.vertical(value: 80),),
-                    Align(
-                      alignment: Alignment.bottomRight,
-                      child: Container(
-                        height: 20,
-                        child: Icon(Icons.book,color: Color(0xFF91D2FF),),
-                      ),
-                    ),
-
-                  ],
+                    ],
+                  ),
                 ),
               ),
               // SizedBox(width: 10,),
               Container(
-                height: test.vertical(value: 200),
-                width: test.horizontal(value: 180),
+                width: screenWidth/2.3,
+                // height: 180,
+                // width: screenWidth/2,
                 // margin: EdgeInsets.all(20),
                 padding: EdgeInsets.all(test.horizontal(value: 20)),
                 decoration: BoxDecoration(
@@ -1618,6 +1553,101 @@ class _ForYouCardsState extends State<ForYouCards> {
 
             ],
           ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              InkWell(
+                splashColor: Colors.blue,
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => InsurancePg()));
+                },
+                child: Container(
+                  // height: test.vertical(value: 200),
+                  width: screenWidth/2.3,
+                  // height: 186,
+                  // margin: EdgeInsets.all(20),
+                  padding: EdgeInsets.all(test.horizontal(value: 20)),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Theme.of(context).brightness==Brightness.dark? DBoxFill:LBoxFill,
+                  ),
+
+                  child: Column(
+                    children: <Widget>[
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Container(
+                          height: test.vertical(value: 23),
+                          child: Text('Insurance',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Container(
+                          height: test.vertical(value: 23),
+                          child: Text('Policies',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+                        ),
+                      ),
+                      SizedBox(height: test.vertical(value: 80),),
+                      Align(
+                        alignment: Alignment.bottomRight,
+                        child: Container(
+                          height: 20,
+                          child: Icon(Icons.book,color: Color(0xFF91D2FF),),
+                        ),
+                      ),
+
+                    ],
+                  ),
+                ),
+              ),
+              // SizedBox(width: 10,),
+              Container(
+                width: screenWidth/2.3,
+                // height: 180,
+                // width: screenWidth/2,
+                // margin: EdgeInsets.all(20),
+                padding: EdgeInsets.all(test.horizontal(value: 20)),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Theme.of(context).brightness==Brightness.dark? DBoxFill:LBoxFill,
+                ),
+
+                child: Column(
+                  children: <Widget>[
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Container(
+                        height: test.vertical(value: 23),
+                        child: Text('Link With',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Container(
+                        height: 20,
+                        child: Text('Blood Banks',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+                      ),
+                    ),
+                    SizedBox(height: test.vertical(value: 80),),
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: Container(
+                        height: test.vertical(value: 23),
+                        child: Icon(Icons.water_drop,color: Color(0xFFFF9B9B),),
+                      ),
+                    ),
+
+                  ],
+                ),
+              ),
+
+            ],
+          ),
+          // SizedBox(height: test.vertical(value: 15),),
+
+          // SizedBox(height: test.vertical(value: 15),),
+
 
 
 

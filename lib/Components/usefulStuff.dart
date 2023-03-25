@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 Color LBoxFill=Color(0xFFFFFFFF);
 Color DBoxFill=Color(0xFF313131);
+// Color DBoxFill=Color(0xFF181818);
 
 
 class GeneralizedPadding{
