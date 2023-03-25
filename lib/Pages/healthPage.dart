@@ -175,6 +175,18 @@ class _HealthPgState extends State<HealthPg> {
               data: data,
             ),
           ),
+          TipsBox(),
+          SliverToBoxAdapter(
+            child: SizedBox(
+              height: 10,
+            ),
+          ),
+          TipsBox(),
+          SliverToBoxAdapter(
+            child: SizedBox(
+              height: 50,
+            ),
+          ),
         ],
       ),
     );
@@ -257,6 +269,56 @@ class _AboveChartState extends State<AboveChart> {
                 )),
               ),
             ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class TipsBox extends StatefulWidget {
+  const TipsBox({Key? key}) : super(key: key);
+
+  @override
+  State<TipsBox> createState() => _TipsBoxState();
+}
+
+class _TipsBoxState extends State<TipsBox> {
+  @override
+  Widget build(BuildContext context) {
+    GeneralizedPadding test = GeneralizedPadding(context);
+    return SliverToBoxAdapter(
+      child: Container(
+        height: test.vertical(value:200),
+        margin: EdgeInsets.only(left: test.horizontal(value: 20),right: test.horizontal(value: 20)),
+        padding: EdgeInsets.only(left: test.horizontal(value: 20),bottom: test.vertical(value: 10),top: 5),
+        // width: test.horizontal(value: ),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15),
+          color: Theme.of(context).brightness==Brightness.dark? DBoxFill:LBoxFill,
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            // SizedBox(height: 5,),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text('How to Increase Lung Capacity?',style: TextStyle(fontFamily: "PSL",fontSize: 22),),
+            ),
+            SizedBox(height: 1,),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text('1. Hold Breath for over a minute everyday',style: TextStyle(fontFamily: "PSXL",fontSize: 15)),
+            ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text('2. Eat grapes',style: TextStyle(fontFamily: "PSXL",fontSize: 15)),
+            ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text('3. Swimming',style: TextStyle(fontFamily: "PSXL",fontSize: 15)),
+            ),
+
           ],
         ),
       ),

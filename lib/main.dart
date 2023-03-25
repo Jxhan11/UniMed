@@ -225,7 +225,7 @@ BodyFormerFunction(x,context) {
           ),
           EmergencyBoxes(),
           SubHeadlines(text: 'For you'),
-          ForYouCards(),
+          SliverToBoxAdapter(child: ForYouCards()),
         ],
       );
       break;
@@ -1105,6 +1105,251 @@ class EmergencyBoxes extends StatelessWidget {
 //   }
 // }
 
+// class ForYouCards extends StatefulWidget {
+//   const ForYouCards({Key? key}) : super(key: key);
+//
+//   @override
+//   State<ForYouCards> createState() => _ForYouCardsState();
+// }
+//
+// class _ForYouCardsState extends State<ForYouCards> {
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     GeneralizedPadding test = GeneralizedPadding(context);
+//     return Container(
+//       // color: Colors.red,
+//       // padding: EdgeInsets.only(left: 20,right: 50),
+//       margin: EdgeInsets.only(left:20,right: 20),
+//       height: test.vertical(value: 500),
+//       child: GridView.count(
+//           crossAxisCount: 2,
+//         children: <Widget>[
+//           Container(
+//             margin: EdgeInsets.only(left: test.horizontal(value: 20),right: test.horizontal(value: 10),bottom: test.vertical(value: 20)),
+//             padding: EdgeInsets.all(test.horizontal(value: 20)),
+//             decoration: BoxDecoration(
+//               borderRadius: BorderRadius.circular(10),
+//               color: Theme.of(context).brightness==Brightness.dark? DBoxFill:LBoxFill,
+//             ),
+//
+//             child: Column(
+//               children: <Widget>[
+//                 Align(
+//                   alignment: Alignment.topLeft,
+//                   child: Container(
+//                     height: 23,
+//                     child: Text('Insurance',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+//                   ),
+//                 ),
+//                 Align(
+//                   alignment: Alignment.topLeft,
+//                   child: Container(
+//                     height: 20,
+//                     child: Text('Policies',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+//                   ),
+//                 ),
+//                 SizedBox(height: test.vertical(value: 40),),
+//                 Align(
+//                   alignment: Alignment.bottomRight,
+//                   child: Container(
+//                     height: 20,
+//                     child: Icon(Icons.book),
+//                   ),
+//                 ),
+//
+//               ],
+//             ),
+//           ),
+//           Container(
+//             margin: EdgeInsets.only(left: test.horizontal(value: 10),right: test.horizontal(value: 20),bottom: test.vertical(value: 20)),
+//             padding: EdgeInsets.all(test.horizontal(value: 20)),
+//             decoration: BoxDecoration(
+//               borderRadius: BorderRadius.circular(10),
+//               color: Theme.of(context).brightness==Brightness.dark? DBoxFill:LBoxFill,
+//             ),
+//
+//             child: Column(
+//               children: <Widget>[
+//                 Align(
+//                   alignment: Alignment.topLeft,
+//                   child: Container(
+//                     height: 23,
+//                     child: Text('Insurance',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+//                   ),
+//                 ),
+//                 Align(
+//                   alignment: Alignment.topLeft,
+//                   child: Container(
+//                     height: 20,
+//                     child: Text('Policies',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+//                   ),
+//                 ),
+//                 SizedBox(height: test.vertical(value: 40),),
+//                 Align(
+//                   alignment: Alignment.bottomRight,
+//                   child: Container(
+//                     height: 20,
+//                     child: Icon(Icons.book),
+//                   ),
+//                 ),
+//
+//               ],
+//             ),
+//           ),
+//           Container(
+//             margin: EdgeInsets.only(left: test.horizontal(value: 20),right: test.horizontal(value: 10),bottom: test.vertical(value: 20)),
+//             padding: EdgeInsets.all(test.horizontal(value: 20)),
+//             decoration: BoxDecoration(
+//               borderRadius: BorderRadius.circular(10),
+//               color: Theme.of(context).brightness==Brightness.dark? DBoxFill:LBoxFill,
+//             ),
+//
+//             child: Column(
+//               children: <Widget>[
+//                 Align(
+//                   alignment: Alignment.topLeft,
+//                   child: Container(
+//                     height: 23,
+//                     child: Text('Insurance',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+//                   ),
+//                 ),
+//                 Align(
+//                   alignment: Alignment.topLeft,
+//                   child: Container(
+//                     height: 20,
+//                     child: Text('Policies',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+//                   ),
+//                 ),
+//                 SizedBox(height: test.vertical(value: 40),),
+//                 Align(
+//                   alignment: Alignment.bottomRight,
+//                   child: Container(
+//                     height: 20,
+//                     child: Icon(Icons.book),
+//                   ),
+//                 ),
+//
+//               ],
+//             ),
+//           ),
+//           Container(
+//             margin: EdgeInsets.only(left: test.horizontal(value: 10),right: test.horizontal(value: 20),bottom: test.vertical(value: 20)),
+//             padding: EdgeInsets.all(test.horizontal(value: 20)),
+//             decoration: BoxDecoration(
+//               borderRadius: BorderRadius.circular(10),
+//               color: Theme.of(context).brightness==Brightness.dark? DBoxFill:LBoxFill,
+//             ),
+//
+//             child: Column(
+//               children: <Widget>[
+//                 Align(
+//                   alignment: Alignment.topLeft,
+//                   child: Container(
+//                     height: 23,
+//                     child: Text('Insurance',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+//                   ),
+//                 ),
+//                 Align(
+//                   alignment: Alignment.topLeft,
+//                   child: Container(
+//                     height: 20,
+//                     child: Text('Policies',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+//                   ),
+//                 ),
+//                 SizedBox(height: test.vertical(value: 40),),
+//                 Align(
+//                   alignment: Alignment.bottomRight,
+//                   child: Container(
+//                     height: 20,
+//                     child: Icon(Icons.book),
+//                   ),
+//                 ),
+//
+//               ],
+//             ),
+//           ),
+//           Container(
+//             margin: EdgeInsets.only(left: test.horizontal(value: 20),right: test.horizontal(value: 10),bottom: test.vertical(value: 20)),
+//             padding: EdgeInsets.all(test.horizontal(value: 20)),
+//             decoration: BoxDecoration(
+//               borderRadius: BorderRadius.circular(10),
+//               color: Theme.of(context).brightness==Brightness.dark? DBoxFill:LBoxFill,
+//             ),
+//
+//             child: Column(
+//               children: <Widget>[
+//                 Align(
+//                   alignment: Alignment.topLeft,
+//                   child: Container(
+//                     height: 23,
+//                     child: Text('Insurance',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+//                   ),
+//                 ),
+//                 Align(
+//                   alignment: Alignment.topLeft,
+//                   child: Container(
+//                     height: 20,
+//                     child: Text('Policies',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+//                   ),
+//                 ),
+//                 SizedBox(height: test.vertical(value: 40),),
+//                 Align(
+//                   alignment: Alignment.bottomRight,
+//                   child: Container(
+//                     height: 20,
+//                     child: Icon(Icons.book),
+//                   ),
+//                 ),
+//
+//               ],
+//             ),
+//           ),
+//           Container(
+//             margin: EdgeInsets.only(left: test.horizontal(value: 10),right: test.horizontal(value: 20),bottom: test.vertical(value: 20)),
+//             padding: EdgeInsets.all(test.horizontal(value: 20)),
+//             decoration: BoxDecoration(
+//               borderRadius: BorderRadius.circular(10),
+//               color: Theme.of(context).brightness==Brightness.dark? DBoxFill:LBoxFill,
+//             ),
+//
+//             child: Column(
+//               children: <Widget>[
+//                 Align(
+//                   alignment: Alignment.topLeft,
+//                   child: Container(
+//                     height: 23,
+//                     child: Text('Insurance',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+//                   ),
+//                 ),
+//                 Align(
+//                   alignment: Alignment.topLeft,
+//                   child: Container(
+//                     height: 20,
+//                     child: Text('Policies',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+//                   ),
+//                 ),
+//                 SizedBox(height: test.vertical(value: 40),),
+//                 Align(
+//                   alignment: Alignment.bottomRight,
+//                   child: Container(
+//                     height: 20,
+//                     child: Icon(Icons.book),
+//                   ),
+//                 ),
+//
+//               ],
+//             ),
+//           ),
+//
+//
+//
+//         ],
+//       ),
+//     );
+//   }
+// }
+
 class ForYouCards extends StatefulWidget {
   const ForYouCards({Key? key}) : super(key: key);
 
@@ -1115,233 +1360,272 @@ class ForYouCards extends StatefulWidget {
 class _ForYouCardsState extends State<ForYouCards> {
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
-    double screenWidth = MediaQuery.of(context).size.width;
-    return SliverToBoxAdapter(
+    GeneralizedPadding test = GeneralizedPadding(context);
+    return Container(
+      padding: EdgeInsets.all(10),
+      // color: Colors.red,
+      height: test.vertical(value: 675),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          Column(
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               Container(
+                height: test.vertical(value: 200),
+                width: test.horizontal(value: 180),
+                // margin: EdgeInsets.all(20),
+                padding: EdgeInsets.all(test.horizontal(value: 20)),
                 decoration: BoxDecoration(
-                    image: DecorationImage(image: NetworkImage("https://wallpapercave.com/wp/wp7064109.jpg"),fit: BoxFit.fill,colorFilter:  Theme.of(context).brightness==Brightness.dark? ColorFilter.mode(Colors.black.withOpacity(0.4), BlendMode.dstATop):ColorFilter.mode(Colors.black.withOpacity(0.4), BlendMode.dstATop),),
-                    // color: Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):Color(0xFFF9F9F9),
-                    borderRadius: BorderRadius.circular(15),
-                    border: Border.all(color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),width: 0.3)
-                  // boxShadow: <BoxShadow>[
-                  //   BoxShadow(
-                  //     color: Colors.black12,
-                  //     // blurRadius: 1,
-                  //     offset: Oaffset(-.5,2),
-                  //   ),
-                  // ],
+                  borderRadius: BorderRadius.circular(10),
+                  color: Theme.of(context).brightness==Brightness.dark? DBoxFill:LBoxFill,
                 ),
-                margin: EdgeInsets.only(top: 10),
-                height: 160,
-                width: screenWidth/1.1,
-                child:  Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    InkWell(
-                      onTap: () {},
-                      child: Container(
-                        // padding: EdgeInsets.only(left: 5,top:20,right:10),
-                        child: Column(children: <Widget>[
-                          // RawMaterialButton(
-                          //   onPressed: () {},
-                          //   elevation: 0,
-                          //   fillColor: Theme.of(context).brightness == Brightness.dark ? Color(0xFF474747):Color(0xFFE3E3E3),
-                          //   child: Icon(
-                          //     Icons.newspaper,
-                          //     size: 25.0,
-                          //   ),
-                          //   padding: EdgeInsets.all(15.0),
-                          //   shape: CircleBorder(),
-                          // ),
-                          SizedBox(height: 30,),
-                          Container(padding: EdgeInsets.only(left: 30), width: double.infinity, child: Text('INSURANCE',textAlign: TextAlign.left, style: TextStyle(fontSize: 22,letterSpacing: 3 ,fontFamily: "PSM",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)),
-                          SizedBox(height: 2,),
-                          Container(padding: EdgeInsets.only(left: 30), width: double.infinity, child: Text('PLANS', textAlign: TextAlign.left, style: TextStyle(fontSize: 22,letterSpacing: 3,fontFamily: "PSM",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)),
-                          SizedBox(height: 10,),
-                          // Container(padding: EdgeInsets.only(left: 30), width: double.infinity, child: Text('25 Plans',textAlign: TextAlign.left, style: TextStyle(fontSize: 15,fontFamily: "PSXL",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)),
 
-                        ],),
+                child: Column(
+                  children: <Widget>[
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Container(
+                        height: test.vertical(value: 23),
+                        child: Text('Insurance',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Container(
+                        height: test.vertical(value: 23),
+                        child: Text('Policies',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+                      ),
+                    ),
+                    SizedBox(height: test.vertical(value: 80),),
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: Container(
+                        height: 20,
+                        child: Icon(Icons.book,color: Color(0xFF91D2FF),),
                       ),
                     ),
 
                   ],
                 ),
               ),
-            ],
-          ),
-          Column(
-            children: <Widget>[
+              // SizedBox(width: 10,),
               Container(
+                height: test.vertical(value: 200),
+                width: test.horizontal(value: 180),
+                // margin: EdgeInsets.all(20),
+                padding: EdgeInsets.all(test.horizontal(value: 20)),
                 decoration: BoxDecoration(
-                    image: DecorationImage(image: NetworkImage("https://i.pinimg.com/originals/00/b1/0f/00b10f11ad4b5c7864220ac4817e6712.jpg"),fit: BoxFit.fill,colorFilter:  ColorFilter.mode(Colors.black.withOpacity(0.4), BlendMode.dstATop),),
-                    // color: Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):Color(0xFFF9F9F9),
-                    borderRadius: BorderRadius.circular(15),
-                    border: Border.all(color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),width: 0.3)
-
-                  // boxShadow: <BoxShadow>[
-                  //   BoxShadow(
-                  //     color: Colors.black12,
-                  //     // blurRadius: 1,
-                  //     offset: Oaffset(-.5,2),
-                  //   ),
-                  // ],
+                  borderRadius: BorderRadius.circular(10),
+                  color: Theme.of(context).brightness==Brightness.dark? DBoxFill:LBoxFill,
                 ),
-                margin: EdgeInsets.only(top: 10),
-                height: 160,
-                width: screenWidth/1.1,
-                child:  Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    InkWell(
-                      onTap: () {},
-                      child: Container(
-                        // padding: EdgeInsets.only(left: 5,top:20,right:10),
-                        child: Column(children: <Widget>[
-                          // RawMaterialButton(
-                          //   onPressed: () {},
-                          //   elevation: 0,
-                          //   fillColor: Theme.of(context).brightness == Brightness.dark ? Color(0xFF474747):Color(0xFFE3E3E3),
-                          //   child: Icon(
-                          //     Icons.newspaper,
-                          //     size: 25.0,
-                          //   ),
-                          //   padding: EdgeInsets.all(15.0),
-                          //   shape: CircleBorder(),
-                          // ),
-                          SizedBox(height: 30,),
-                          Container(padding: EdgeInsets.only(left: 30), width: double.infinity, child: Text('LINK WITH',textAlign: TextAlign.left, style: TextStyle(fontSize: 22,letterSpacing: 3 ,fontFamily: "PSM",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)),
-                          SizedBox(height: 2,),
-                          Container(padding: EdgeInsets.only(left: 30), width: double.infinity, child: Text('BLOOD BANKS', textAlign: TextAlign.left, style: TextStyle(fontSize: 22,letterSpacing: 3,fontFamily: "PSM",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)),
-                          SizedBox(height: 10,),
-                          // Container(padding: EdgeInsets.only(left: 30), width: double.infinity, child: Text('25 Plans',textAlign: TextAlign.left, style: TextStyle(fontSize: 15,fontFamily: "PSXL",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)),
 
-                        ],),
+                child: Column(
+                  children: <Widget>[
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Container(
+                        height: test.vertical(value: 23),
+                        child: Text('Link With',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Container(
+                        height: 20,
+                        child: Text('Blood Banks',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+                      ),
+                    ),
+                    SizedBox(height: test.vertical(value: 80),),
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: Container(
+                        height: test.vertical(value: 23),
+                        child: Icon(Icons.water_drop,color: Color(0xFFFF9B9B),),
                       ),
                     ),
 
                   ],
                 ),
               ),
+
             ],
           ),
-          SizedBox(height: 20,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Container(
+                height: test.vertical(value: 200),
+                width: test.horizontal(value: 180),
+                // margin: EdgeInsets.all(20),
+                padding: EdgeInsets.all(test.horizontal(value: 20)),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Theme.of(context).brightness==Brightness.dark? DBoxFill:LBoxFill,
+                ),
 
-          // Column(
-          //   children: <Widget>[
-          //     Container(
-          //       decoration: BoxDecoration(
-          //           image: DecorationImage(image: NetworkImage("https://th.bing.com/th/id/OIP.3HZOOl0lErndPeHwv2Ih3AHaFG?pid=ImgDet&w=207&h=143&c=7&dpr=1.3"),fit: BoxFit.fill,colorFilter:  ColorFilter.mode(Colors.white.withOpacity(0.3), BlendMode.dstATop),),
-          //           // color: Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):Color(0xFFF9F9F9),
-          //           borderRadius: BorderRadius.circular(25),
-          //           border: Border.all(color: Colors.black,width: 0.5)
-          //         // boxShadow: <BoxShadow>[
-          //         //   BoxShadow(
-          //         //     color: Colors.black12,
-          //         //     // blurRadius: 1,
-          //         //     offset: Oaffset(-.5,2),
-          //         //   ),
-          //         // ],
-          //       ),
-          //       margin: EdgeInsets.only(top: 10),
-          //       height: 160,
-          //       width: 250,
-          //       child:  Column(
-          //         mainAxisAlignment: MainAxisAlignment.center,
-          //         crossAxisAlignment: CrossAxisAlignment.start,
-          //         children: <Widget>[
-          //           InkWell(
-          //             onTap: () {},
-          //             child: Container(
-          //               // padding: EdgeInsets.only(left: 5,top:20,right:10),
-          //               child: Column(children: <Widget>[
-          //                 // RawMaterialButton(
-          //                 //   onPressed: () {},
-          //                 //   elevation: 0,
-          //                 //   fillColor: Theme.of(context).brightness == Brightness.dark ? Color(0xFF474747):Color(0xFFE3E3E3),
-          //                 //   child: Icon(
-          //                 //     Icons.newspaper,
-          //                 //     size: 25.0,
-          //                 //   ),
-          //                 //   padding: EdgeInsets.all(15.0),
-          //                 //   shape: CircleBorder(),
-          //                 // ),
-          //                 Container(padding: EdgeInsets.only(left: 20), width: double.infinity, child: Text('Insurance',textAlign: TextAlign.left, style: TextStyle(fontSize: 22,fontFamily: "PSM",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)),
-          //                 Container(padding: EdgeInsets.only(left: 20), width: double.infinity, child: Text('Plans',textAlign: TextAlign.left, style: TextStyle(fontSize: 22,fontFamily: "PSM",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)),
-          //                 SizedBox(height: 10,),
-          //                 Container(padding: EdgeInsets.only(left: 20), width: double.infinity, child: Text('25 Plans',textAlign: TextAlign.left, style: TextStyle(fontSize: 15,fontFamily: "PSXL",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)),
-          //
-          //               ],),
-          //             ),
-          //           ),
-          //
-          //         ],
-          //       ),
-          //     ),
-          //   ],
-          // ),
-          // Column(
-          //   children: <Widget>[
-          //     Container(
-          //       decoration: BoxDecoration(
-          //           image: DecorationImage(image: NetworkImage("https://th.bing.com/th/id/OIP.3HZOOl0lErndPeHwv2Ih3AHaFG?pid=ImgDet&w=207&h=143&c=7&dpr=1.3"),fit: BoxFit.fill,colorFilter:  ColorFilter.mode(Colors.white.withOpacity(0.3), BlendMode.dstATop),),
-          //           // color: Theme.of(context).brightness == Brightness.dark ? Color(0xFF303030):Color(0xFFF9F9F9),
-          //           borderRadius: BorderRadius.circular(25),
-          //           border: Border.all(color: Colors.black,width: 0.5)
-          //         // boxShadow: <BoxShadow>[
-          //         //   BoxShadow(
-          //         //     color: Colors.black12,
-          //         //     // blurRadius: 1,
-          //         //     offset: Oaffset(-.5,2),
-          //         //   ),
-          //         // ],
-          //       ),
-          //       margin: EdgeInsets.only(top: 10),
-          //       height: 160,
-          //       width: 250,
-          //       child:  Column(
-          //         mainAxisAlignment: MainAxisAlignment.center,
-          //         crossAxisAlignment: CrossAxisAlignment.start,
-          //         children: <Widget>[
-          //           InkWell(
-          //             onTap: () {},
-          //             child: Container(
-          //               // padding: EdgeInsets.only(left: 5,top:20,right:10),
-          //               child: Column(children: <Widget>[
-          //                 // RawMaterialButton(
-          //                 //   onPressed: () {},
-          //                 //   elevation: 0,
-          //                 //   fillColor: Theme.of(context).brightness == Brightness.dark ? Color(0xFF474747):Color(0xFFE3E3E3),
-          //                 //   child: Icon(
-          //                 //     Icons.newspaper,
-          //                 //     size: 25.0,
-          //                 //   ),
-          //                 //   padding: EdgeInsets.all(15.0),
-          //                 //   shape: CircleBorder(),
-          //                 // ),
-          //                 Container(padding: EdgeInsets.only(left: 20), width: double.infinity, child: Text('Insurance',textAlign: TextAlign.left, style: TextStyle(fontSize: 22,fontFamily: "PSM",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)),
-          //                 Container(padding: EdgeInsets.only(left: 20), width: double.infinity, child: Text('Plans',textAlign: TextAlign.left, style: TextStyle(fontSize: 22,fontFamily: "PSM",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)),
-          //                 SizedBox(height: 10,),
-          //                 Container(padding: EdgeInsets.only(left: 20), width: double.infinity, child: Text('25 Plans',textAlign: TextAlign.left, style: TextStyle(fontSize: 15,fontFamily: "PSXL",color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),)),
-          //
-          //               ],),
-          //             ),
-          //           ),
-          //
-          //         ],
-          //       ),
-          //     ),
-          //   ],
-          // ),
+                child: Column(
+                  children: <Widget>[
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Container(
+                        height: test.vertical(value: 23),
+                        child: Text('Pharmacies',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Container(
+                        height: test.vertical(value: 23),
+                        child: Text('Nearby',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+                      ),
+                    ),
+                    SizedBox(height: test.vertical(value: 80),),
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: Container(
+                        height: 20,
+                        child: Icon(Icons.shopping_bag_rounded,color: Color(
+                            0xFF91F9A6),),
+                      ),
+                    ),
+
+                  ],
+                ),
+              ),
+              // SizedBox(width: 10,),
+              Container(
+                height: test.vertical(value: 200),
+                width: test.horizontal(value: 180),
+                // margin: EdgeInsets.all(20),
+                padding: EdgeInsets.all(test.horizontal(value: 20)),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Theme.of(context).brightness==Brightness.dark? DBoxFill:LBoxFill,
+                ),
+
+                child: Column(
+                  children: <Widget>[
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Container(
+                        height: test.vertical(value: 23),
+                        child: Text('Appointments',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Container(
+                        height: test.vertical(value: 23),
+                        child: Text('',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+                      ),
+                    ),
+                    SizedBox(height: test.vertical(value: 80),),
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: Container(
+                        height: test.vertical(value: 23),
+                        child: Icon(Icons.sticky_note_2,color: Color(0xFFFF9B9B),),
+                      ),
+                    ),
+
+                  ],
+                ),
+              ),
+
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Container(
+                height: test.vertical(value: 200),
+                width: test.horizontal(value: 180),
+                // margin: EdgeInsets.all(20),
+                padding: EdgeInsets.all(test.horizontal(value: 20)),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Theme.of(context).brightness==Brightness.dark? DBoxFill:LBoxFill,
+                ),
+
+                child: Column(
+                  children: <Widget>[
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Container(
+                        height: test.vertical(value: 23),
+                        child: Text('Insurance',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Container(
+                        height: test.vertical(value: 23),
+                        child: Text('Policies',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+                      ),
+                    ),
+                    SizedBox(height: test.vertical(value: 80),),
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: Container(
+                        height: 20,
+                        child: Icon(Icons.book,color: Color(0xFF91D2FF),),
+                      ),
+                    ),
+
+                  ],
+                ),
+              ),
+              // SizedBox(width: 10,),
+              Container(
+                height: test.vertical(value: 200),
+                width: test.horizontal(value: 180),
+                // margin: EdgeInsets.all(20),
+                padding: EdgeInsets.all(test.horizontal(value: 20)),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Theme.of(context).brightness==Brightness.dark? DBoxFill:LBoxFill,
+                ),
+
+                child: Column(
+                  children: <Widget>[
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Container(
+                        height: test.vertical(value: 23),
+                        child: Text('Link With',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Container(
+                        height: 20,
+                        child: Text('Blood Banks',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+                      ),
+                    ),
+                    SizedBox(height: test.vertical(value: 80),),
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: Container(
+                        height: test.vertical(value: 23),
+                        child: Icon(Icons.water_drop,color: Color(0xFFFF9B9B),),
+                      ),
+                    ),
+
+                  ],
+                ),
+              ),
+
+            ],
+          ),
+
+
+
+
         ],
       ),
-    ) ;
+    );
   }
 }
+
 
