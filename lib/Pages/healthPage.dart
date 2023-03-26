@@ -70,6 +70,7 @@ class _HealthPgState extends State<HealthPg> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: CustomScrollView(
+        physics: BouncingScrollPhysics(),
         slivers: [
           SliverAppBar(
             backgroundColor: Colors.transparent,
@@ -178,7 +179,7 @@ class _HealthPgState extends State<HealthPg> {
           TipsBox(),
           SliverToBoxAdapter(
             child: SizedBox(
-              height: 10,
+              height: 20,
             ),
           ),
           TipsBox(),
@@ -291,7 +292,7 @@ class _TipsBoxState extends State<TipsBox> {
       child: Container(
         height: test.vertical(value:200),
         margin: EdgeInsets.only(left: test.horizontal(value: 20),right: test.horizontal(value: 20)),
-        padding: EdgeInsets.only(left: test.horizontal(value: 20),bottom: test.vertical(value: 10),top: 5),
+        padding: EdgeInsets.only(left: test.horizontal(value: 20),bottom: test.vertical(value: 10),top: 5,right: test.horizontal(value: 20)),
         // width: test.horizontal(value: ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),

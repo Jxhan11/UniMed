@@ -5,47 +5,47 @@ import 'package:unimed/main.dart';
 
 import '../theme_constants.dart';
 
-class NewsPage extends StatefulWidget {
-  const NewsPage({Key? key}) : super(key: key);
-
-
-  @override
-  State<NewsPage> createState() => _NewsPageState();
-}
-
-class _NewsPageState extends State<NewsPage> {
-  @override
-  Widget build(BuildContext context) {
-    return  MaterialApp(
-      title: 'News Page',
-      theme: ThemeData(
-        primarySwatch: Colors.red,
-        // appBarTheme: AppBarTheme(systemOverlayStyle: SystemUiOverlayStyle.),
-        scaffoldBackgroundColor: Color(0xFFF2F2F2),
-        fontFamily: "ProductSans",
-        textTheme: TextTheme(
-          // bodyLarge:
-          //     TextStyle(fontFamily: "PSB",),
-          // bodyMedium:
-          //     TextStyle(fontFamily: "PSM",),
-          // bodySmall:
-          //     TextStyle(fontFamily: "PSL",),
-          headline1:
-          TextStyle(color: Colors.deepPurpleAccent, fontFamily: "PSM"),
-          headline2:
-          TextStyle(color: Colors.deepPurpleAccent, fontFamily: "PSM"),
-          bodyText2: TextStyle(fontFamily: "PSM"),
-          // bodyText1: TextStyle(color: Colors.blue),
-          subtitle1: TextStyle(fontFamily: "PSM"),
-        ),
-      ),
-      darkTheme: AppTheme().darkTheme,
-      // Inner UI of the application
-      themeMode: ThemeMode.system,
-      home:  News(),
-    );
-  }
-}
+// class NewsPage extends StatefulWidget {
+//   const NewsPage({Key? key}) : super(key: key);
+//
+//
+//   @override
+//   State<NewsPage> createState() => _NewsPageState();
+// }
+//
+// class _NewsPageState extends State<NewsPage> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return  MaterialApp(
+//       title: 'News Page',
+//       theme: ThemeData(
+//         primarySwatch: Colors.red,
+//         // appBarTheme: AppBarTheme(systemOverlayStyle: SystemUiOverlayStyle.),
+//         scaffoldBackgroundColor: Color(0xFFF2F2F2),
+//         fontFamily: "ProductSans",
+//         textTheme: TextTheme(
+//           // bodyLarge:
+//           //     TextStyle(fontFamily: "PSB",),
+//           // bodyMedium:
+//           //     TextStyle(fontFamily: "PSM",),
+//           // bodySmall:
+//           //     TextStyle(fontFamily: "PSL",),
+//           headline1:
+//           TextStyle(color: Colors.deepPurpleAccent, fontFamily: "PSM"),
+//           headline2:
+//           TextStyle(color: Colors.deepPurpleAccent, fontFamily: "PSM"),
+//           bodyText2: TextStyle(fontFamily: "PSM"),
+//           // bodyText1: TextStyle(color: Colors.blue),
+//           subtitle1: TextStyle(fontFamily: "PSM"),
+//         ),
+//       ),
+//       darkTheme: AppTheme().darkTheme,
+//       // Inner UI of the application
+//       themeMode: ThemeMode.system,
+//       home:  News(),
+//     );
+//   }
+// }
 
 class News extends StatefulWidget {
   const News({Key? key}) : super(key: key);
@@ -69,11 +69,7 @@ class _NewsState extends State<News> {
             title: Row(
               children: <Widget>[
                 // SizedBox(width: 20,),
-                IconButton(onPressed: (){
-                  Navigator.pop(context);},
-                 icon: Icon(Icons.arrow_back,color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),
-                ),
-                SizedBox(width: 20,),
+                // SizedBox(width: 20,),
                 Text("Headlines",style: TextStyle(fontFamily: "PSL",fontSize: 22,letterSpacing: 1,color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),),
 
               ],

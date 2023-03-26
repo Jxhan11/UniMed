@@ -76,7 +76,7 @@ class _DiagnosisState extends State<Diagnosis> {
       child: Container(
         // color: Colors.red,
         margin: EdgeInsets.only(left: 20,right: 20,top: 20),
-        height: screenHeight/3.2,
+        // height: screenHeight/3.2,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
@@ -185,7 +185,7 @@ class Hospitals extends StatelessWidget {
       child: Container(
         // color: Colors.red,
         margin: EdgeInsets.only(left: 20,right: 20,top: 20),
-        height: screenHeight/4.9 ,
+        // height: screenHeight/4.9 ,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[

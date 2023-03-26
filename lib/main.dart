@@ -29,6 +29,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       // title of the application
       title: 'Hello World Demo Application',
       // theme of the widget
@@ -134,6 +135,7 @@ BodyFormerFunction(x,context) {
     case 0:
       // Home page
       return CustomScrollView(
+        physics: BouncingScrollPhysics(),
         slivers: <Widget>[
           SliverAppBar(
             systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: Theme.of(context).scaffoldBackgroundColor,statusBarIconBrightness: Theme.of(context).brightness==Brightness.dark? Brightness.light:Brightness.dark),
@@ -721,100 +723,124 @@ class EmergencyBoxes extends StatelessWidget {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
     return SliverToBoxAdapter(
-      child: Container(
-        // color: Colors.amber,
-        // width: 500,
-        padding: EdgeInsets.only(top: 20),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              padding: EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                  color: Color(0xFFFF8E8E),
-                  borderRadius: BorderRadius.circular(10)),
-              width:screenWidth/3.4 ,
-              height: 120,
-              // color: Colors.blue,
-              child: Center(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(Icons.emergency),
-                      iconSize: 30,
-                      color: Color(0xFFA00000),
-                    ),
-                    Text(
-                      "Emergency",
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Color(0xFFA00000),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(left: 8),
-              decoration: BoxDecoration(
-                color:Theme.of(context).brightness == Brightness.dark ? DBoxFill:LBoxFill,
+      child: Center(
+        child: Container(
+          // color: Colors.amber,
+          // width: 500,
+          padding: EdgeInsets.only(left: 15,right: 15,top: 20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              InkWell(
                 borderRadius: BorderRadius.circular(10),
-              ),
-              width: screenWidth/3.4,
-              height: 120,
-              // color: Colors.blue,
-              child: Center(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    IconButton(
-                      onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) =>  NewsPage()),);
-                      },
-                      icon: Icon(Icons.newspaper),
-                      iconSize: 30,
-                      color:Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF303030),
+                onLongPress: (){
+                  HapticFeedback.heavyImpact();
+                },
+                child: Container(
+                  padding: EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                      color: Color(0xFFFF8E8E),
+                      borderRadius: BorderRadius.circular(10)),
+                  width:screenWidth/3.4 ,
+                  height: 120,
+                  // color: Colors.blue,
+                  child: Center(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        IconButton(
+                          onPressed: () {},
+                          icon: Icon(Icons.emergency),
+                          iconSize: 30,
+                          color: Color(0xFFA00000),
+                        ),
+                        Text(
+                          "Emergency",
+                          style: TextStyle(
+                            fontSize: 15,
+                            color: Color(0xFFA00000),
+                          ),
+                        ),
+                      ],
                     ),
-                    Text(
-                      "News",
-                      style:
-                          TextStyle(fontSize: 15,color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF303030),),
-                    ),
-                  ],
+                  ),
                 ),
               ),
-            ),
-            Container(
-              margin: EdgeInsets.only(left: 8),
-              decoration: BoxDecoration(
-                color:Theme.of(context).brightness == Brightness.dark ? DBoxFill:LBoxFill,
+              InkWell(
                 borderRadius: BorderRadius.circular(10),
-              ),
-              width: screenWidth/3.4,
-              height: 120,
-              // color: Colors.blue,
-              child: Center(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(Icons.health_and_safety),
-                      iconSize: 30,
-                      color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF303030),
+                onLongPress: (){
+                  HapticFeedback.heavyImpact();
+                },
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) =>  News()),);
+                },
+                child: Container(
+                  // margin: EdgeInsets.only(),
+                  decoration: BoxDecoration(
+                    color:Theme.of(context).brightness == Brightness.dark ? DBoxFill:LBoxFill,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  width: screenWidth/3.4,
+                  height: 120,
+                  // color: Colors.blue,
+                  child: Center(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        IconButton(
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>News()));
+                          },
+                          icon: Icon(Icons.newspaper),
+                          iconSize: 30,
+                          color:Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF303030),
+                        ),
+                        Text(
+                          "News",
+                          style:
+                              TextStyle(fontSize: 15,color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF303030),),
+                        ),
+                      ],
                     ),
-                    Text(
-                      "First Aid",
-                      style: TextStyle(fontSize: 15,color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF303030),),
-                    ),
-                  ],
+                  ),
                 ),
               ),
-            ),
-          ],
+              InkWell(
+                onTap: (){},
+                borderRadius: BorderRadius.circular(10),
+                onLongPress: (){
+                  HapticFeedback.heavyImpact();
+                },
+                child: Container(
+                  // margin: EdgeInsets.only(left: 8),
+                  decoration: BoxDecoration(
+                    color:Theme.of(context).brightness == Brightness.dark ? DBoxFill:LBoxFill,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  width: screenWidth/3.4,
+                  height: 120,
+                  // color: Colors.blue,
+                  child: Center(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        IconButton(
+                          onPressed: () {},
+                          icon: Icon(Icons.health_and_safety),
+                          iconSize: 30,
+                          color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF303030),
+                        ),
+                        Text(
+                          "First Aid",
+                          style: TextStyle(fontSize: 15,color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF303030),),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
