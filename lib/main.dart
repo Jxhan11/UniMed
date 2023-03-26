@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:unimed/Pages/FirstAid.dart';
 import 'package:unimed/Pages/Insurance.dart';
 import 'package:unimed/Pages/News.dart';
 import 'package:unimed/Pages/filesPage.dart';
@@ -496,7 +497,9 @@ class _EmergencyCardsState extends State<EmergencyCards> {
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => FirstAid()));
+                      },
                       icon: Icon(Icons.healing),
                       iconSize: 30,
                       color: Colors.black,
@@ -806,7 +809,10 @@ class EmergencyBoxes extends StatelessWidget {
                 ),
               ),
               InkWell(
-                onTap: (){},
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => FirstAid()));
+
+                },
                 borderRadius: BorderRadius.circular(10),
                 onLongPress: (){
                   HapticFeedback.heavyImpact();
@@ -825,7 +831,10 @@ class EmergencyBoxes extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
                         IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => FirstAid()));
+
+                          },
                           icon: Icon(Icons.health_and_safety),
                           iconSize: 30,
                           color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF303030),
