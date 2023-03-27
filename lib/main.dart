@@ -36,6 +36,7 @@ class MyApp extends StatelessWidget {
       // theme of the widget
 
       theme: ThemeData(
+        useMaterial3: false,
         primarySwatch: Colors.red,
         scaffoldBackgroundColor: Color(0xFFF2F3F5),
         fontFamily: "ProductSans",

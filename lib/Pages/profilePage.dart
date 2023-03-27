@@ -44,6 +44,7 @@ class _ProfilePageWidgetsState extends State<ProfilePageWidgets> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
+        physics: BouncingScrollPhysics(),
         children: [
           Padding(
             //TODO: Padding in Mediaquery somehow
@@ -82,9 +83,10 @@ _Profile() {
           radius: 50,
           child: Icon(Icons.person),
         ),
-        UsefulBigText(text: "Kamaboko Monjiro"),
+        SizedBox(height: 10,),
+        UsefulBigText(text: "Keanu Reeves"),
         UsefulSubheading(
-          text: "ggezclapwp@test.com",
+          text: "keanureeves@gmail.com",
         )
       ],
     ),
