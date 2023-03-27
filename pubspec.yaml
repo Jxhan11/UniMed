@@ -38,8 +38,13 @@ dependencies:
   cupertino_icons: ^1.0.2
   video_player: ^2.6.0
   youtube_player_flutter: ^8.1.2
+<<<<<<< Updated upstream
   sliding_switch: ^1.1.0
   fluttertoast: ^8.0.9
+=======
+  accordion: ^2.5.1
+  lottie: ^2.3.0
+>>>>>>> Stashed changes
 
 dev_dependencies:
   flutter_test:
@@ -79,6 +84,9 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
+  assets:
+    - Animations/
+
   fonts:
     - family: PSL
       fonts:
