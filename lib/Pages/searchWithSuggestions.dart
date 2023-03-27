@@ -109,12 +109,13 @@ class _SearchWithSuggestionsPageState extends State<SearchWithSuggestionsPage> {
                 onTapTile: theTrailingActions,
                 ctx: context,
                 itemNames: [
-                  "example1",
-                  "example2",
-                  "example3",
-                  "example4",
-                  "example5",
-                  "example6"
+                  "cough syrup",
+                  "digene",
+                  "children's hospital",
+                  "tagore hospital",
+                  "pathology",
+                  "dermatologist",
+                  "annai hospital",
                 ],
                 leadingIcons: [
                   Icon(
@@ -153,8 +154,20 @@ class _SearchWithSuggestionsPageState extends State<SearchWithSuggestionsPage> {
                         ? Colors.white
                         : Colors.black,
                   ),
+                  Icon(
+                    Icons.search_rounded,
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? Colors.white
+                        : Colors.black,
+                  ),
                 ],
                 trailingIcons: [
+                  Icon(
+                    Icons.close,
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? Colors.white
+                        : Colors.black,
+                  ),
                   Icon(
                     Icons.close,
                     color: Theme.of(context).brightness == Brightness.dark
