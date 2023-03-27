@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 Color LBoxFill=Color(0xFFFFFFFF);
 Color DBoxFill=Color(0xFF313131);
+Color DIconBg=Color(0xFF474747);
+Color LIconBg=Color(0xFFE3E3E3);
 // Color DBoxFill=Color(0xFF181818);
 
 

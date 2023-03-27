@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:unimed/Pages/EmergencyPage.dart';
 import 'package:unimed/Pages/FirstAid.dart';
 import 'package:unimed/Pages/Insurance.dart';
 import 'package:unimed/Pages/News.dart';
@@ -461,6 +462,7 @@ class _RecordCardsState extends State<RecordCards> {
   @override
 
   Widget build(BuildContext context) {
+    GeneralizedPadding test = GeneralizedPadding(context);
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
     return Container(
@@ -471,12 +473,14 @@ class _RecordCardsState extends State<RecordCards> {
         child: ScrollConfiguration(
           behavior: ScrollBehavior(),
           child: ListView(
+            physics: BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.only(left: 20),
                 child: InkWell(
                   child: Container(
+                    margin: EdgeInsets.only(right: test.horizontal(value: 8)),
                     decoration: BoxDecoration(
                       color: Theme.of(context).brightness == Brightness.dark ? DBoxFill:LBoxFill,
                       borderRadius: BorderRadius.circular(15),
@@ -515,6 +519,7 @@ class _RecordCardsState extends State<RecordCards> {
                 padding: const EdgeInsets.only(left: 10),
                 child: InkWell(
                   child: Container(
+                    margin: EdgeInsets.only(right: test.horizontal(value: 8)),
                     decoration: BoxDecoration(
                       color: Theme.of(context).brightness == Brightness.dark ? DBoxFill:LBoxFill,
                       borderRadius: BorderRadius.circular(15),
@@ -638,6 +643,10 @@ class EmergencyBoxes extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
               InkWell(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => EmergencyPage()));
+
+                },
                 borderRadius: BorderRadius.circular(10),
                 onLongPress: (){
                   HapticFeedback.heavyImpact();
@@ -655,7 +664,9 @@ class EmergencyBoxes extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
                         IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => EmergencyPage()));
+                          },
                           icon: Icon(Icons.emergency),
                           iconSize: 30,
                           color: Color(0xFFA00000),
