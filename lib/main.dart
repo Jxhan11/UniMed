@@ -216,7 +216,14 @@ BodyFormerFunction(x,context) {
                       child: CircleAvatar(
                         backgroundColor: Theme.of(context).brightness == Brightness.dark? Color(0xFFFF8E8E): Colors.red,
                         radius: 18,
-                        child: Icon(Icons.person_rounded,),
+                        child: ClipOval(
+                          child: Image(
+                            height: 100,
+                            width: 100,
+                            fit: BoxFit.cover,
+                            image: NetworkImage("https://i.pinimg.com/originals/39/26/db/3926db089d7af5fa91711db1dbb82b7c.jpg"),
+                          ),
+                        ),
                       ),
                     ),
                     // SizedBox(width: 1,),
