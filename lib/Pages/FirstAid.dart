@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:unimed/Components/usefulStuff.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
-import 'package:accordion/accordion.dart';
 import '../theme_constants.dart';
 import 'package:lottie/lottie.dart';
 
