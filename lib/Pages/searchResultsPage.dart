@@ -203,7 +203,7 @@ class Hospitals extends StatelessWidget {
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      '20% . Common Cold',
+                      '20Km  .  Sri Sugum Poly Clinic',
                       textAlign: TextAlign.left,
                       style: TextStyle(fontSize: 15),
                     ),
@@ -236,7 +236,7 @@ class Hospitals extends StatelessWidget {
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      '20% . Common Cold',
+                      '40Km  .  Kathir Memorial Hospital',
                       textAlign: TextAlign.left,
                       style: TextStyle(fontSize: 15),
                     ),
@@ -269,7 +269,7 @@ class Hospitals extends StatelessWidget {
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      '20% . Common Cold',
+                      '20Km  .  24Hours CM Hospital',
                       textAlign: TextAlign.left,
                       style: TextStyle(fontSize: 15),
                     ),
@@ -336,7 +336,7 @@ class _DoctorsState extends State<Doctors> {
                   ),
                   SizedBox(height: 20,),
                   Container(
-                    child: Text("Dr. Kevin",style: TextStyle(fontSize: 20),),
+                    child: Text("Dr. Kamala Deepak",style: TextStyle(fontSize: 20),textAlign: TextAlign.center,overflow: TextOverflow.ellipsis,),
                   ),
                 ],
               ),
@@ -355,7 +355,7 @@ class _DoctorsState extends State<Doctors> {
                   ),
                   SizedBox(height: 20,),
                   Container(
-                    child: Text("Dr. Kevin",style: TextStyle(fontSize: 20),),
+                    child: Text("Dr. Sridevi Anantharaman",style: TextStyle(fontSize: 20),textAlign: TextAlign.center,maxLines: 1,overflow: TextOverflow.ellipsis,),
                   ),
                 ],
               ),
@@ -374,7 +374,8 @@ class _DoctorsState extends State<Doctors> {
                   ),
                   SizedBox(height: 20,),
                   Container(
-                    child: Text("Dr. Kevin",style: TextStyle(fontSize: 20),),
+                    // color: Colors.red,
+                    child: Text("Dr. Thomas George",style: TextStyle(fontSize: 20),maxLines: 1,textAlign: TextAlign.center,),
                   ),
                 ],
               ),
@@ -393,7 +394,7 @@ class _DoctorsState extends State<Doctors> {
                   ),
                   SizedBox(height: 20,),
                   Container(
-                    child: Text("Dr. Kevin",style: TextStyle(fontSize: 20),),
+                    child: Text("Dr. Hariharan VS",style: TextStyle(fontSize: 20),),
                   ),
                 ],
               ),
@@ -412,7 +413,7 @@ class _DoctorsState extends State<Doctors> {
                   ),
                   SizedBox(height: 20,),
                   Container(
-                    child: Text("Dr. Kevin",style: TextStyle(fontSize: 20),),
+                    child: Text("Dr. T . Vijay",style: TextStyle(fontSize: 20),),
                   ),
                 ],
               ),
@@ -490,16 +491,16 @@ class _CommonlyBoughtState extends State<CommonlyBought> {
                       height: 100,
                       width: 90,
                       decoration:BoxDecoration(
-                        image: DecorationImage(image:NetworkImage('https://th.bing.com/th/id/OIP.PNmdWLPlwyHpVco9udC_RQHaLI?w=123&h=186&c=7&r=0&o=5&dpr=1.3&pid=1.7',),fit: BoxFit.fill ),
+                        image: DecorationImage(image:NetworkImage('https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/fx5zcdfgs5sezfoa6hbt.jpg',),fit: BoxFit.fill ),
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                       ) ,
                     ),
                     SizedBox(height: 10,),
                     Container(
-                      child: Text("Digene",style: TextStyle(fontSize: 20),),
+                      child: Text("Benadryl",style: TextStyle(fontSize: 20),),
                     ),
                     Container(
-                      child: Text("(200ml)",style: TextStyle(fontSize: 15,fontFamily: "PSXL"),),
+                      child: Text("(150ml)",style: TextStyle(fontSize: 15,fontFamily: "PSXL"),),
                     ),
                   ],
                 ),
@@ -518,16 +519,16 @@ class _CommonlyBoughtState extends State<CommonlyBought> {
                       height: 100,
                       width: 90,
                       decoration:BoxDecoration(
-                        image: DecorationImage(image:NetworkImage('https://th.bing.com/th/id/OIP.PNmdWLPlwyHpVco9udC_RQHaLI?w=123&h=186&c=7&r=0&o=5&dpr=1.3&pid=1.7',),fit: BoxFit.fill ),
+                        image: DecorationImage(image:NetworkImage('https://img1.hkrtcdn.com/22258/prd_2225730-HealthKart-HK-Vitals-Vitamin-D3-2000-IU-60-capsules-Unflavoured_c_l.jpg',),fit: BoxFit.fill ),
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                       ) ,
                     ),
                     SizedBox(height: 10,),
                     Container(
-                      child: Text("Digene",style: TextStyle(fontSize: 20),),
+                      child: Text("Vitamin D3",style: TextStyle(fontSize: 20),),
                     ),
                     Container(
-                      child: Text("(200ml)",style: TextStyle(fontSize: 15,fontFamily: "PSXL"),),
+                      child: Text("(60 Capsules)",style: TextStyle(fontSize: 15,fontFamily: "PSXL"),),
                     ),
                   ],
                 ),
@@ -546,16 +547,16 @@ class _CommonlyBoughtState extends State<CommonlyBought> {
                       height: 100,
                       width: 90,
                       decoration:BoxDecoration(
-                        image: DecorationImage(image:NetworkImage('https://th.bing.com/th/id/OIP.PNmdWLPlwyHpVco9udC_RQHaLI?w=123&h=186&c=7&r=0&o=5&dpr=1.3&pid=1.7',),fit: BoxFit.fill ),
+                        image: DecorationImage(image:NetworkImage('https://5.imimg.com/data5/EV/SC/EM/SELLER-3831431/ibuprofen-500x500.jpg',),fit: BoxFit.fill ),
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                       ) ,
                     ),
                     SizedBox(height: 10,),
                     Container(
-                      child: Text("Digene",style: TextStyle(fontSize: 20),),
+                      child: Text("IbuProfen",style: TextStyle(fontSize: 20),),
                     ),
                     Container(
-                      child: Text("(200ml)",style: TextStyle(fontSize: 15,fontFamily: "PSXL"),),
+                      child: Text("(800mg)",style: TextStyle(fontSize: 15,fontFamily: "PSXL"),),
                     ),
                   ],
                 ),
@@ -574,16 +575,18 @@ class _CommonlyBoughtState extends State<CommonlyBought> {
                       height: 100,
                       width: 90,
                       decoration:BoxDecoration(
-                        image: DecorationImage(image:NetworkImage('https://th.bing.com/th/id/OIP.PNmdWLPlwyHpVco9udC_RQHaLI?w=123&h=186&c=7&r=0&o=5&dpr=1.3&pid=1.7',),fit: BoxFit.fill ),
+                        image: DecorationImage(image:NetworkImage('https://5.imimg.com/data5/SELLER/Default/2022/9/BS/AE/CO/88792944/amoxycillin-capsules-500-mg-500x500.jpg',),fit: BoxFit.fill ),
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                       ) ,
                     ),
                     SizedBox(height: 10,),
                     Container(
-                      child: Text("Digene",style: TextStyle(fontSize: 20),),
+                      // color: Colors.red,
+                      alignment: Alignment.center,
+                      child: Text("Amoxycillin",style: TextStyle(fontSize: 20),),
                     ),
                     Container(
-                      child: Text("(200ml)",style: TextStyle(fontSize: 15,fontFamily: "PSXL"),),
+                      child: Text("(500mg)",style: TextStyle(fontSize: 15,fontFamily: "PSXL"),),
                     ),
                   ],
                 ),
@@ -637,7 +640,7 @@ class _PharmaciesState extends State<Pharmacies> {
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      '2 km . Best Pharmacy',
+                      '5 km . Apollo Pharmacy',
                       textAlign: TextAlign.left,
                       style: TextStyle(fontSize: 15),
                     ),
@@ -670,7 +673,7 @@ class _PharmaciesState extends State<Pharmacies> {
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      '10 Km . Very Good Pharmacy',
+                      '10 Km . RK Medicals',
                       textAlign: TextAlign.left,
                       style: TextStyle(fontSize: 15),
                     ),
@@ -703,7 +706,7 @@ class _PharmaciesState extends State<Pharmacies> {
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      '20 km . Good Pharmacy',
+                      '20 km . MAS Pharmacy',
                       textAlign: TextAlign.left,
                       style: TextStyle(fontSize: 15),
                     ),

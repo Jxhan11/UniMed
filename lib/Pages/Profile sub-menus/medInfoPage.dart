@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:sliding_switch/sliding_switch.dart';
 import 'package:unimed/Components/usefulStuff.dart';
@@ -38,6 +39,12 @@ class _MedicalInformationState extends State<MedicalInformation> {
         physics: BouncingScrollPhysics(),
         slivers: [
           SliverAppBar(
+            systemOverlayStyle: SystemUiOverlayStyle(
+                statusBarColor:Theme.of(context).scaffoldBackgroundColor,
+                statusBarIconBrightness:
+                Theme.of(context).brightness == Brightness.dark
+                    ? Brightness.light
+                    : Brightness.dark),
             backgroundColor: Colors.transparent,
             leading: Hero(
               tag: 'search-icon-leading',
@@ -56,7 +63,7 @@ class _MedicalInformationState extends State<MedicalInformation> {
                 ),
               ),
             ),
-            title: const Text("Medical Information"),
+            title: const Text("Medical Information",style: TextStyle(fontFamily: "PSL",fontSize: 22,letterSpacing: 0),),
             actions: [
               Padding(
                   padding: EdgeInsets.only(top: 8,bottom: 8,right: GeneralizedPadding(context).horizontal(value: 24)),
@@ -78,7 +85,7 @@ class _MedicalInformationState extends State<MedicalInformation> {
                           // fontSize: 16.0
                       );
                     },
-                    child: const Text("Save")),
+                    child: const Text("Save",style: TextStyle(fontFamily: "PSM",fontSize: 15,letterSpacing: 0))),
               )
             ],
           ),
