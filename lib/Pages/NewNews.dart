@@ -69,9 +69,8 @@ class _NewNewsPageState extends State<NewNewsPage> with TickerProviderStateMixin
     _controller.dispose();
     super.dispose();
   }
-  void _onAnimationEnd(AnimationStatus status) async {
+  void _onAnimationEnd(AnimationStatus status) {
     if (status == AnimationStatus.completed) {
-      await Future.delayed(Duration(milliseconds: 500));
       _controller.stop();
     }
   }
@@ -83,7 +82,6 @@ class _NewNewsPageState extends State<NewNewsPage> with TickerProviderStateMixin
         physics: BouncingScrollPhysics(),
         slivers: [
           SliverAppBar(
-            titleSpacing: 0,
             systemOverlayStyle: SystemUiOverlayStyle(
                 statusBarColor:Theme.of(context).scaffoldBackgroundColor,
                 statusBarIconBrightness:
@@ -103,17 +101,6 @@ class _NewNewsPageState extends State<NewNewsPage> with TickerProviderStateMixin
             ),
             title: Row(
               children: <Widget>[
-                Container(
-                  // color: Colors.red,
-                  height: 50,
-
-                  child: Lottie.asset(
-                      Theme.of(context).brightness == Brightness.dark? 'Animations/Newspaper animation.json':"Animations/353-newspaper-spinner.json",
-                      fit: BoxFit.cover,
-                    repeat: true,
-                  ),
-
-                ),
                 Text('News',
                     style: TextStyle(
                         fontFamily: "PSL", fontSize: 22, letterSpacing: 0)),
