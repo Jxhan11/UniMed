@@ -1,32 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:lottie/lottie.dart';
 import 'package:unimed/Pages/EmergencyPage.dart';
 import 'package:unimed/Pages/FirstAid.dart';
 import 'package:unimed/Pages/Insurance.dart';
+import 'package:unimed/Pages/NewNews.dart';
 import 'package:unimed/Pages/News.dart';
 import 'package:unimed/Pages/filesPage.dart';
 import 'package:unimed/Pages/healthPage.dart';
 import 'package:unimed/Pages/profilePage.dart';
 import 'dart:ui';
+import 'package:google_nav_bar/google_nav_bar.dart';
 import 'theme_constants.dart';
 
 import 'package:unimed/Components/usefulStuff.dart';
 import 'package:unimed/Pages/searchWithSuggestions.dart';
 
-
 void main() {
-
-  SystemChrome.setSystemUIOverlayStyle(
-    SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-    ),
-  );
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   MyApp({Key? key}) : super(key: key);
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
 // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -84,6 +85,7 @@ class _HomepageState extends State<Homepage> {
       _selectedIndex = index;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     //TODO: Change system's navigation bar colors with dark and light mode. Make it navigation bar color somehow
@@ -98,29 +100,27 @@ class _HomepageState extends State<Homepage> {
       extendBodyBehindAppBar: true,
       body: BodyFormerFunction(_selectedIndex, context),
       bottomNavigationBar: NavigationBar(
-
-        backgroundColor: Theme.of(context).brightness==Brightness.dark? Color(0xFF303030):Color(0xFFF2F2F2),
+        backgroundColor: Theme.of(context).brightness == Brightness.dark
+            ? Color(0xFF303030)
+            : Color(0xFFF2F2F2),
         destinations: const [
           NavigationDestination(
-              selectedIcon: Icon(Icons.home),
-              icon: Icon(Icons.home_outlined),
-              label: 'Home',
+            selectedIcon: Icon(Icons.home),
+            icon: Icon(Icons.home_outlined),
+            label: 'Home',
           ),
           NavigationDestination(
               icon: Icon(Icons.favorite_border),
               selectedIcon: Icon(Icons.favorite),
-              label: 'Health'
-          ),
+              label: 'Health'),
           NavigationDestination(
               icon: Icon(Icons.file_copy_outlined),
               selectedIcon: Icon(Icons.file_copy_rounded),
-              label: 'Files'
-          ),
+              label: 'Files'),
           NavigationDestination(
               icon: Icon(Icons.person_outline_rounded),
               selectedIcon: Icon(Icons.person_rounded),
-              label: 'Profile'
-          ),
+              label: 'Profile'),
         ],
         selectedIndex: _selectedIndex,
         onDestinationSelected: _onItemTapped,
@@ -132,16 +132,21 @@ class _HomepageState extends State<Homepage> {
 
 ///////////////////////////////////////END OF MAIN FUNCTION HERE/////////////////////////////////////////////////
 
-BodyFormerFunction(x,context) {
+BodyFormerFunction(x, context) {
   // ONLY PURPOSE IS TO CHANGE THE CONTENTS OF THE BODY
-  switch(x){
+  switch (x) {
     case 0:
       // Home page
       return CustomScrollView(
         physics: BouncingScrollPhysics(),
         slivers: <Widget>[
           SliverAppBar(
-            systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: Theme.of(context).scaffoldBackgroundColor,statusBarIconBrightness: Theme.of(context).brightness==Brightness.dark? Brightness.light:Brightness.dark),
+            systemOverlayStyle: SystemUiOverlayStyle(
+                statusBarColor: Theme.of(context).scaffoldBackgroundColor,
+                statusBarIconBrightness:
+                    Theme.of(context).brightness == Brightness.dark
+                        ? Brightness.light
+                        : Brightness.dark),
             collapsedHeight: 60,
             title: Padding(
               //TODO: Make the padding and height relative.
@@ -179,7 +184,7 @@ BodyFormerFunction(x,context) {
                                   child: Icon(
                                     Icons.search_rounded,
                                     color: Theme.of(context).brightness ==
-                                        Brightness.dark
+                                            Brightness.dark
                                         ? Colors.white
                                         : Colors.black,
                                   ),
@@ -215,14 +220,18 @@ BodyFormerFunction(x,context) {
                     Padding(
                       padding: const EdgeInsets.only(right: 16.0),
                       child: CircleAvatar(
-                        backgroundColor: Theme.of(context).brightness == Brightness.dark? Color(0xFFFF8E8E): Colors.red,
+                        backgroundColor:
+                            Theme.of(context).brightness == Brightness.dark
+                                ? Color(0xFFFF8E8E)
+                                : Colors.red,
                         radius: 18,
                         child: ClipOval(
                           child: Image(
                             height: 100,
                             width: 100,
                             fit: BoxFit.cover,
-                            image: NetworkImage("https://i.pinimg.com/originals/39/26/db/3926db089d7af5fa91711db1dbb82b7c.jpg"),
+                            image: NetworkImage(
+                                "https://i.pinimg.com/originals/39/26/db/3926db089d7af5fa91711db1dbb82b7c.jpg"),
                           ),
                         ),
                       ),
@@ -256,7 +265,6 @@ BodyFormerFunction(x,context) {
       return ProfilePageWidgets();
       break;
   }
-
 }
 
 class DailyNeeds extends StatefulWidget {
@@ -446,8 +454,6 @@ class _AdsState extends State<Ads> {
   }
 }
 
-
-
 ///////////////////////////////////////NEW UNIMED APP FUNCTIONS/////////////////////////////////////////////////
 
 class RecordCards extends StatefulWidget {
@@ -458,9 +464,7 @@ class RecordCards extends StatefulWidget {
 }
 
 class _RecordCardsState extends State<RecordCards> {
-
   @override
-
   Widget build(BuildContext context) {
     GeneralizedPadding test = GeneralizedPadding(context);
     double screenHeight = MediaQuery.of(context).size.height;
@@ -477,39 +481,65 @@ class _RecordCardsState extends State<RecordCards> {
             scrollDirection: Axis.horizontal,
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.only(left: 20),
+                padding: const EdgeInsets.only(left: 19),
                 child: InkWell(
                   child: Container(
                     margin: EdgeInsets.only(right: test.horizontal(value: 8)),
                     decoration: BoxDecoration(
-                      color: Theme.of(context).brightness == Brightness.dark ? DBoxFill:LBoxFill,
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? DBoxFill
+                          : LBoxFill,
                       borderRadius: BorderRadius.circular(15),
                     ),
-                    width: screenWidth/2 + 10,
+                    width: screenWidth / 2 + 10,
                     child: Column(
                       children: <Widget>[
-                        SizedBox(
-                          height:20 ,
+                        Row(
+                          children: <Widget>[
+                            Container(
+                              padding: EdgeInsets.only(left: 20, top: 10),
+                              // color: Colors.red,
+                              alignment: Alignment.centerLeft,
+                              height: test.vertical(value: 50),
+                              child: Text(
+                                'Resting Heart Rate',
+                                style:
+                                    TextStyle(fontFamily: "PSM", fontSize: 18,color: Theme.of(context).brightness ==
+                                        Brightness.dark
+                                        ? Color(0xFFFFA3A3)
+                                        : Color(0xFFA00000)),
+                              ),
+                            ),
+                          ],
                         ),
-                        Container(
-                            padding: EdgeInsets.only(left: 15),
-                            width: double.infinity,
-                            child: Text(
-                              "Resting Heart Rate",
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                  color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFFF8E8E):Color(0xFFA00000), fontSize: 17),
+                        Row(
+                          children: <Widget>[
+                            Container(
+                              padding: EdgeInsets.all(20),
+                              child: Text(
+                                '99 Bpm',
+                                style:
+                                    TextStyle(fontFamily: "PSL", fontSize: 15),
+                              ),
+                            ),
+                            Expanded(
+                                child: SizedBox(
+                              width: 1,
                             )),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Container(
-                            padding: EdgeInsets.only(left: 15),
-                            width: double.infinity,
-                            child: Text(
-                              "99 Bpm",
-                              style: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF303030)),
-                            ))
+                            Align(
+                              alignment: Alignment.bottomRight,
+                              child: Container(
+                                // color: Colors.red,
+                                height: test.vertical(value: 50),
+                                width: test.horizontal(value: 100),
+                                margin: EdgeInsets.only(right: 10),
+                                // width: 20,
+                                // color: Colors.red,
+                                child: Lottie.asset('Animations/All.json'),
+                              ),
+                            ),
+                          ],
+                        )
                       ],
                     ),
                   ),
@@ -521,78 +551,138 @@ class _RecordCardsState extends State<RecordCards> {
                   child: Container(
                     margin: EdgeInsets.only(right: test.horizontal(value: 8)),
                     decoration: BoxDecoration(
-                      color: Theme.of(context).brightness == Brightness.dark ? DBoxFill:LBoxFill,
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? DBoxFill
+                          : LBoxFill,
                       borderRadius: BorderRadius.circular(15),
                     ),
-                    width:screenWidth/2 + 10,
+                    width: screenWidth / 2 + 10,
                     child: Column(
                       children: <Widget>[
-                        SizedBox(
-                          height: 20,
+                        Row(
+                          children: <Widget>[
+                            Container(
+                              padding: EdgeInsets.only(left: 20, top: 10),
+                              // color: Colors.red,
+                              alignment: Alignment.centerLeft,
+                              height: test.vertical(value: 50),
+                              child: Text(
+                                'Activity',
+                                style: TextStyle(
+                                    fontFamily: "PSM",
+                                    fontSize: 18,
+                                    color: Theme.of(context).brightness ==
+                                            Brightness.dark
+                                        ? Color(0xFFB8FF7B)
+                                        : Color(0xFF5BAE07)),
+                              ),
+                            )
+                          ],
                         ),
-                        Container(
-                            padding: EdgeInsets.only(left: 15),
-                            width: double.infinity,
-                            child: Text(
-                              "Active Hours",
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                  color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFCEFF9D):Color(0xFF5BAE07), fontSize: 17),
+                        Row(
+                          children: <Widget>[
+                            Container(
+                              padding: EdgeInsets.all(20),
+                              child: Text(
+                                '2h 30m',
+                                style:
+                                    TextStyle(fontFamily: "PSL", fontSize: 15),
+                              ),
+                            ),
+                            Expanded(
+                                child: SizedBox(
+                              width: 1,
                             )),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Container(
-                            padding: EdgeInsets.only(left: 15),
-                            width: double.infinity,
-                            child: Text(
-                              "50 s",
-                              style: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF303030)),
-                            ))
+                            Align(
+                              alignment: Alignment.bottomRight,
+                              child: Container(
+                                // color: Colors.red,
+                                height: test.vertical(value: 60),
+                                width: test.horizontal(value: 60),
+                                margin: EdgeInsets.only(right: 10),
+                                // width: 20,
+                                // color: Colors.red,
+                                child: Lottie.asset(
+                                    Theme.of(context).brightness ==
+                                            Brightness.dark
+                                        ? 'Animations/run forest runD.json'
+                                        : 'Animations/run forest run.json',
+                                    repeat: true,
+                                    fit: BoxFit.fill),
+                              ),
+                            ),
+                          ],
+                        )
                       ],
                     ),
                   ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 10,right: 20),
+                padding: const EdgeInsets.only(left: 10, right: 20),
                 child: InkWell(
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Theme.of(context).brightness == Brightness.dark ? DBoxFill:LBoxFill,
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? DBoxFill
+                          : LBoxFill,
                       borderRadius: BorderRadius.circular(15),
                     ),
-                    width: screenWidth/2 + 10,
+                    width: screenWidth / 2 + 10,
                     child: Column(
                       children: <Widget>[
-                        SizedBox(
-                          height: 20,
+                        Row(
+                          children: <Widget>[
+                            Container(
+                              padding: EdgeInsets.only(left: 20, top: 10),
+                              // color: Colors.red,
+                              alignment: Alignment.centerLeft,
+                              height: test.vertical(value: 50),
+                              child: Text(
+                                'Sleep',
+                                style:
+                                    TextStyle(fontFamily: "PSM", fontSize: 18),
+                              ),
+                            ),
+                          ],
                         ),
-                        Container(
-                            padding: EdgeInsets.only(left: 15),
-                            width: double.infinity,
-                            child: Text(
-                              "Sleep",
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                  color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFA7B5FF):Color(0xFF334DD3), fontSize: 17),
+                        Row(
+                          children: <Widget>[
+                            Container(
+                              padding: EdgeInsets.all(20),
+                              child: Text(
+                                '7hrs 30m',
+                                style:
+                                    TextStyle(fontFamily: "PSL", fontSize: 15),
+                              ),
+                            ),
+                            Expanded(
+                                child: SizedBox(
+                              width: 1,
                             )),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Container(
-                            padding: EdgeInsets.only(left: 15),
-                            width: double.infinity,
-                            child: Text(
-                              "7h 20m",
-                              style: TextStyle(color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF303030)),
-                            ))
+                            Align(
+                              alignment: Alignment.bottomRight,
+                              child: Container(
+                                // color: Colors.red,
+                                height: 50,
+                                width: 100,
+                                margin: EdgeInsets.only(right: 10),
+                                // width: 20,
+                                // color: Colors.red,
+                                child: Lottie.asset(
+                                    Theme.of(context).brightness ==
+                                            Brightness.dark
+                                        ? 'Animations/sleepD.json'
+                                        : 'Animations/sleep.json'),
+                              ),
+                            ),
+                          ],
+                        )
                       ],
                     ),
                   ),
                 ),
               ),
-
             ],
           ),
         ),
@@ -633,30 +723,32 @@ class EmergencyBoxes extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
+    GeneralizedPadding test = GeneralizedPadding(context);
     return SliverToBoxAdapter(
       child: Center(
         child: Container(
           // color: Colors.amber,
           // width: 500,
-          padding: EdgeInsets.only(left: 15,right: 15,top: 20),
+          padding: EdgeInsets.only(left: 20, right: 20, top: 20),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
               InkWell(
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => EmergencyPage()));
-
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => EmergencyPage()));
                 },
                 borderRadius: BorderRadius.circular(10),
-                onLongPress: (){
+                onLongPress: () {
                   HapticFeedback.heavyImpact();
                 },
                 child: Container(
+                  margin: EdgeInsets.only(right: test.horizontal(value: 10)),
                   padding: EdgeInsets.all(8),
                   decoration: BoxDecoration(
                       color: Color(0xFFFF8E8E),
                       borderRadius: BorderRadius.circular(10)),
-                  width:screenWidth/3.4 ,
+                  width: screenWidth / 3.6,
                   height: 120,
                   // color: Colors.blue,
                   child: Center(
@@ -665,7 +757,10 @@ class EmergencyBoxes extends StatelessWidget {
                       children: <Widget>[
                         IconButton(
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => EmergencyPage()));
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => EmergencyPage()));
                           },
                           icon: Icon(Icons.emergency),
                           iconSize: 30,
@@ -685,19 +780,24 @@ class EmergencyBoxes extends StatelessWidget {
               ),
               InkWell(
                 borderRadius: BorderRadius.circular(10),
-                onLongPress: (){
+                onLongPress: () {
                   HapticFeedback.heavyImpact();
                 },
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) =>  News()),);
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => NewNewsPage()),
+                  );
                 },
                 child: Container(
-                  // margin: EdgeInsets.only(),
+                  margin: EdgeInsets.only(right: test.horizontal(value: 10)),
                   decoration: BoxDecoration(
-                    color:Theme.of(context).brightness == Brightness.dark ? DBoxFill:LBoxFill,
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? DBoxFill
+                        : LBoxFill,
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  width: screenWidth/3.4,
+                  width: screenWidth / 3.6,
                   height: 120,
                   // color: Colors.blue,
                   child: Center(
@@ -706,16 +806,26 @@ class EmergencyBoxes extends StatelessWidget {
                       children: <Widget>[
                         IconButton(
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>News()));
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => NewNewsPage()));
                           },
                           icon: Icon(Icons.newspaper),
                           iconSize: 30,
-                          color:Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF303030),
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Color(0xFFEEEEEE)
+                              : Color(0xFF303030),
                         ),
                         Text(
                           "News",
-                          style:
-                              TextStyle(fontSize: 15,color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF303030),),
+                          style: TextStyle(
+                            fontSize: 15,
+                            color:
+                                Theme.of(context).brightness == Brightness.dark
+                                    ? Color(0xFFEEEEEE)
+                                    : Color(0xFF303030),
+                          ),
                         ),
                       ],
                     ),
@@ -723,21 +833,23 @@ class EmergencyBoxes extends StatelessWidget {
                 ),
               ),
               InkWell(
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => FirstAid()));
-
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => FirstAid()));
                 },
                 borderRadius: BorderRadius.circular(10),
-                onLongPress: (){
+                onLongPress: () {
                   HapticFeedback.heavyImpact();
                 },
                 child: Container(
                   // margin: EdgeInsets.only(left: 8),
                   decoration: BoxDecoration(
-                    color:Theme.of(context).brightness == Brightness.dark ? DBoxFill:LBoxFill,
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? DBoxFill
+                        : LBoxFill,
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  width: screenWidth/3.4,
+                  width: screenWidth / 3.6,
                   height: 120,
                   // color: Colors.blue,
                   child: Center(
@@ -746,16 +858,26 @@ class EmergencyBoxes extends StatelessWidget {
                       children: <Widget>[
                         IconButton(
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => FirstAid()));
-
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => FirstAid()));
                           },
                           icon: Icon(Icons.health_and_safety),
                           iconSize: 30,
-                          color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF303030),
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Color(0xFFEEEEEE)
+                              : Color(0xFF303030),
                         ),
                         Text(
                           "First Aid",
-                          style: TextStyle(fontSize: 15,color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF303030),),
+                          style: TextStyle(
+                            fontSize: 15,
+                            color:
+                                Theme.of(context).brightness == Brightness.dark
+                                    ? Color(0xFFEEEEEE)
+                                    : Color(0xFF303030),
+                          ),
                         ),
                       ],
                     ),
@@ -1312,7 +1434,7 @@ class _ForYouCardsState extends State<ForYouCards> {
   @override
   Widget build(BuildContext context) {
     GeneralizedPadding test = GeneralizedPadding(context);
-    double screenWidth=MediaQuery.of(context).size.width;
+    double screenWidth = MediaQuery.of(context).size.width;
     return Container(
       // padding: EdgeInsets.all(0),
       // color: Colors.red,
@@ -1325,18 +1447,21 @@ class _ForYouCardsState extends State<ForYouCards> {
             children: <Widget>[
               InkWell(
                 splashColor: Colors.blue,
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => InsurancePg()));
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => InsurancePg()));
                 },
                 child: Container(
                   // height: test.vertical(value: 200),
-                  width: screenWidth/2.3,
+                  width: screenWidth / 2.3,
                   // height: 186,
                   // margin: EdgeInsets.all(20),
                   padding: EdgeInsets.all(test.horizontal(value: 20)),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: Theme.of(context).brightness==Brightness.dark? DBoxFill:LBoxFill,
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? DBoxFill
+                        : LBoxFill,
                   ),
 
                   child: Column(
@@ -1345,39 +1470,51 @@ class _ForYouCardsState extends State<ForYouCards> {
                         alignment: Alignment.topLeft,
                         child: Container(
                           height: test.vertical(value: 23),
-                          child: Text('Insurance',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+                          child: Text(
+                            'Insurance',
+                            style: TextStyle(fontFamily: "PSL", fontSize: 20),
+                          ),
                         ),
                       ),
                       Align(
                         alignment: Alignment.topLeft,
                         child: Container(
                           height: test.vertical(value: 23),
-                          child: Text('Policies',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+                          child: Text(
+                            'Policies',
+                            style: TextStyle(fontFamily: "PSL", fontSize: 20),
+                          ),
                         ),
                       ),
-                      SizedBox(height: test.vertical(value: 80),),
+                      SizedBox(
+                        height: test.vertical(value: 80),
+                      ),
                       Align(
                         alignment: Alignment.bottomRight,
                         child: Container(
                           height: 20,
-                          child: Icon(Icons.book,color: Color(0xFF207E81),),
+                          child: Icon(
+                            Icons.book,
+                            color: Color(0xFF207E81),
+                          ),
                         ),
                       ),
-
                     ],
                   ),
                 ),
               ),
               // SizedBox(width: 10,),
               Container(
-                width: screenWidth/2.3,
+                width: screenWidth / 2.3,
                 // height: 180,
                 // width: screenWidth/2,
                 // margin: EdgeInsets.all(20),
                 padding: EdgeInsets.all(test.horizontal(value: 20)),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Theme.of(context).brightness==Brightness.dark? DBoxFill:LBoxFill,
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? DBoxFill
+                      : LBoxFill,
                 ),
 
                 child: Column(
@@ -1386,29 +1523,38 @@ class _ForYouCardsState extends State<ForYouCards> {
                       alignment: Alignment.topLeft,
                       child: Container(
                         height: test.vertical(value: 23),
-                        child: Text('Link With',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+                        child: Text(
+                          'Link With',
+                          style: TextStyle(fontFamily: "PSL", fontSize: 20),
+                        ),
                       ),
                     ),
                     Align(
                       alignment: Alignment.topLeft,
                       child: Container(
                         height: 20,
-                        child: Text('Blood Banks',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+                        child: Text(
+                          'Blood Banks',
+                          style: TextStyle(fontFamily: "PSL", fontSize: 20),
+                        ),
                       ),
                     ),
-                    SizedBox(height: test.vertical(value: 80),),
+                    SizedBox(
+                      height: test.vertical(value: 80),
+                    ),
                     Align(
                       alignment: Alignment.bottomRight,
                       child: Container(
                         height: test.vertical(value: 23),
-                        child: Icon(Icons.water_drop,color: Color(0xFFFF6161),),
+                        child: Icon(
+                          Icons.water_drop,
+                          color: Color(0xFFFF6161),
+                        ),
                       ),
                     ),
-
                   ],
                 ),
               ),
-
             ],
           ),
           Row(
@@ -1416,18 +1562,21 @@ class _ForYouCardsState extends State<ForYouCards> {
             children: <Widget>[
               InkWell(
                 splashColor: Colors.blue,
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => InsurancePg()));
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => InsurancePg()));
                 },
                 child: Container(
                   // height: test.vertical(value: 200),
-                  width: screenWidth/2.3,
+                  width: screenWidth / 2.3,
                   // height: 186,
                   // margin: EdgeInsets.all(20),
                   padding: EdgeInsets.all(test.horizontal(value: 20)),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: Theme.of(context).brightness==Brightness.dark? DBoxFill:LBoxFill,
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? DBoxFill
+                        : LBoxFill,
                   ),
 
                   child: Column(
@@ -1436,40 +1585,54 @@ class _ForYouCardsState extends State<ForYouCards> {
                         alignment: Alignment.topLeft,
                         child: Container(
                           height: test.vertical(value: 23),
-                          child: Text('Pharmacies',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+                          child: Text(
+                            'Pharmacies',
+                            style: TextStyle(fontFamily: "PSL", fontSize: 20),
+                          ),
                         ),
                       ),
                       Align(
                         alignment: Alignment.topLeft,
                         child: Container(
                           height: test.vertical(value: 23),
-                          child: Text('',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+                          child: Text(
+                            '',
+                            style: TextStyle(fontFamily: "PSL", fontSize: 20),
+                          ),
                         ),
                       ),
-                      SizedBox(height: test.vertical(value: 80),),
+                      SizedBox(
+                        height: test.vertical(value: 80),
+                      ),
                       Align(
                         alignment: Alignment.bottomRight,
                         child: Container(
                           height: 20,
-                          child: Icon(Icons.shopping_bag_outlined,color: Theme.of(context).brightness == Brightness.dark? Color(
-                              0xFFB4FF93):Color(0xFF327A1E),),
+                          child: Icon(
+                            Icons.shopping_bag_outlined,
+                            color:
+                                Theme.of(context).brightness == Brightness.dark
+                                    ? Color(0xFFB4FF93)
+                                    : Color(0xFF327A1E),
+                          ),
                         ),
                       ),
-
                     ],
                   ),
                 ),
               ),
               // SizedBox(width: 10,),
               Container(
-                width: screenWidth/2.3,
+                width: screenWidth / 2.3,
                 // height: 180,
                 // width: screenWidth/2,
                 // margin: EdgeInsets.all(20),
                 padding: EdgeInsets.all(test.horizontal(value: 20)),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Theme.of(context).brightness==Brightness.dark? DBoxFill:LBoxFill,
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? DBoxFill
+                      : LBoxFill,
                 ),
 
                 child: Column(
@@ -1478,29 +1641,38 @@ class _ForYouCardsState extends State<ForYouCards> {
                       alignment: Alignment.topLeft,
                       child: Container(
                         height: test.vertical(value: 23),
-                        child: Text('Nearby',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+                        child: Text(
+                          'Nearby',
+                          style: TextStyle(fontFamily: "PSL", fontSize: 20),
+                        ),
                       ),
                     ),
                     Align(
                       alignment: Alignment.topLeft,
                       child: Container(
                         height: 20,
-                        child: Text('',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+                        child: Text(
+                          '',
+                          style: TextStyle(fontFamily: "PSL", fontSize: 20),
+                        ),
                       ),
                     ),
-                    SizedBox(height: test.vertical(value: 80),),
+                    SizedBox(
+                      height: test.vertical(value: 80),
+                    ),
                     Align(
                       alignment: Alignment.bottomRight,
                       child: Container(
                         height: test.vertical(value: 23),
-                        child: Icon(Icons.location_on,color: Color(0xFF88602E),),
+                        child: Icon(
+                          Icons.location_on,
+                          color: Color(0xFF88602E),
+                        ),
                       ),
                     ),
-
                   ],
                 ),
               ),
-
             ],
           ),
           Row(
@@ -1508,18 +1680,21 @@ class _ForYouCardsState extends State<ForYouCards> {
             children: <Widget>[
               InkWell(
                 splashColor: Colors.blue,
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => InsurancePg()));
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => InsurancePg()));
                 },
                 child: Container(
                   // height: test.vertical(value: 200),
-                  width: screenWidth/2.3,
+                  width: screenWidth / 2.3,
                   // height: 186,
                   // margin: EdgeInsets.all(20),
                   padding: EdgeInsets.all(test.horizontal(value: 20)),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: Theme.of(context).brightness==Brightness.dark? DBoxFill:LBoxFill,
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? DBoxFill
+                        : LBoxFill,
                   ),
 
                   child: Column(
@@ -1528,40 +1703,54 @@ class _ForYouCardsState extends State<ForYouCards> {
                         alignment: Alignment.topLeft,
                         child: Container(
                           height: test.vertical(value: 23),
-                          child: Text('Orders',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+                          child: Text(
+                            'Orders',
+                            style: TextStyle(fontFamily: "PSL", fontSize: 20),
+                          ),
                         ),
                       ),
                       Align(
                         alignment: Alignment.topLeft,
                         child: Container(
                           height: test.vertical(value: 23),
-                          child: Text('',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+                          child: Text(
+                            '',
+                            style: TextStyle(fontFamily: "PSL", fontSize: 20),
+                          ),
                         ),
                       ),
-                      SizedBox(height: test.vertical(value: 80),),
+                      SizedBox(
+                        height: test.vertical(value: 80),
+                      ),
                       Align(
                         alignment: Alignment.bottomRight,
                         child: Container(
                           height: 20,
-                          child: Icon(Icons.shopping_cart,color: Theme.of(context).brightness == Brightness.dark? Color(
-                              0xFFB4FF93):Color(0xFF327A1E),),
+                          child: Icon(
+                            Icons.shopping_cart,
+                            color:
+                                Theme.of(context).brightness == Brightness.dark
+                                    ? Color(0xFFB4FF93)
+                                    : Color(0xFF327A1E),
+                          ),
                         ),
                       ),
-
                     ],
                   ),
                 ),
               ),
               // SizedBox(width: 10,),
               Container(
-                width: screenWidth/2.3,
+                width: screenWidth / 2.3,
                 // height: 180,
                 // width: screenWidth/2,
                 // margin: EdgeInsets.all(20),
                 padding: EdgeInsets.all(test.horizontal(value: 20)),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Theme.of(context).brightness==Brightness.dark? DBoxFill:LBoxFill,
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? DBoxFill
+                      : LBoxFill,
                 ),
 
                 child: Column(
@@ -1570,44 +1759,48 @@ class _ForYouCardsState extends State<ForYouCards> {
                       alignment: Alignment.topLeft,
                       child: Container(
                         height: test.vertical(value: 23),
-                        child: Text('My',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+                        child: Text(
+                          'My',
+                          style: TextStyle(fontFamily: "PSL", fontSize: 20),
+                        ),
                       ),
                     ),
                     Align(
                       alignment: Alignment.topLeft,
                       child: Container(
                         height: 23,
-                        child: Text('Appointments',style: TextStyle(fontFamily: "PSL",fontSize: 20),),
+                        child: Text(
+                          'Appointments',
+                          style: TextStyle(fontFamily: "PSL", fontSize: 20),
+                        ),
                       ),
                     ),
-                    SizedBox(height: test.vertical(value: 80),),
+                    SizedBox(
+                      height: test.vertical(value: 80),
+                    ),
                     Align(
                       alignment: Alignment.bottomRight,
                       child: Container(
                         height: test.vertical(value: 23),
-                        child: Icon(Icons.sticky_note_2_sharp,color: Color(0xFF1B5B81),),
+                        child: Icon(
+                          Icons.sticky_note_2_sharp,
+                          color: Color(0xFF1B5B81),
+                        ),
                       ),
                     ),
-
                   ],
                 ),
               ),
-
             ],
           ),
 
           // SizedBox(height: test.vertical(value: 15),),
 
           // SizedBox(height: test.vertical(value: 15),),
-
-
-
-
-
         ],
       ),
     );
   }
 }
 
-
+//BTM NAV BAR

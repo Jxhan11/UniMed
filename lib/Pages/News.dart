@@ -62,18 +62,26 @@ class _NewsState extends State<News> {
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
-            backgroundColor: Colors.transparent,
             systemOverlayStyle: SystemUiOverlayStyle(
-              statusBarColor: Colors.transparent
+                statusBarColor: Theme.of(context).scaffoldBackgroundColor,
+                statusBarIconBrightness:
+                Theme.of(context).brightness == Brightness.dark
+                    ? Brightness.light
+                    : Brightness.dark),
+            leading: InkWell(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Icon(
+                Icons.arrow_back,
+                color: Theme.of(context).brightness == Brightness.dark
+                    ? LBoxFill
+                    : DBoxFill,
+              ),
             ),
-            title: Row(
-              children: <Widget>[
-                // SizedBox(width: 20,),
-                // SizedBox(width: 20,),
-                Text("Headlines",style: TextStyle(fontFamily: "PSL",fontSize: 22,letterSpacing: 1,color: Theme.of(context).brightness == Brightness.dark ? Color(0xFFEEEEEE):Color(0xFF363636),),),
-
-              ],
-            ),
+            title: Text('News',
+                style: TextStyle(
+                    fontFamily: "PSL", fontSize: 22, letterSpacing: 0)),
           ),
           
           //END OF APP BAR
