@@ -28,6 +28,7 @@ class _HealthPageWidgetsState extends State<HealthPageWidgets> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Health Page',
       theme: ThemeData(
         primarySwatch: Colors.red,

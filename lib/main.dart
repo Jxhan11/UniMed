@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       // title of the application
-      title: 'Hello World Demo Application',
+      title: 'UniMed',
       // theme of the widget
 
       theme: ThemeData(
@@ -73,7 +73,40 @@ class Homepage extends StatefulWidget {
   State<Homepage> createState() => _HomepageState();
 }
 
-class _HomepageState extends State<Homepage> {
+class _HomepageState extends State<Homepage> with WidgetsBindingObserver{
+
+  Brightness _platformBrightness = WidgetsBinding.instance?.window.platformBrightness ?? Brightness.light;
+  late SystemUiOverlayStyle _systemUiOverlayStyle;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance?.addObserver(this);
+    _updateSystemUiOverlayStyle();
+  }
+  @override
+  void dispose() {
+    WidgetsBinding.instance?.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangePlatformBrightness() {
+    setState(() {
+      _platformBrightness = WidgetsBinding.instance?.window.platformBrightness ?? Brightness.light;
+      _updateSystemUiOverlayStyle();
+    });
+  }
+
+  void _updateSystemUiOverlayStyle() {
+    _systemUiOverlayStyle = SystemUiOverlayStyle(
+      systemNavigationBarColor: _platformBrightness == Brightness.dark
+          ? const Color(0xFF131313)
+          : const Color(0xFFF1F1F1),
+    );
+    SystemChrome.setSystemUIOverlayStyle(_systemUiOverlayStyle);
+  }
+
   int _selectedIndex = 0;
   void _onItemTapped(int index) {
     setState(() {
@@ -83,12 +116,6 @@ class _HomepageState extends State<Homepage> {
 
   @override
   Widget build(BuildContext context) {
-    //TODO: Change system's navigation bar colors with dark and light mode. Make it navigation bar color somehow
-    SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
-        systemNavigationBarColor: Color(0xFF131313),
-      )
-    );
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
