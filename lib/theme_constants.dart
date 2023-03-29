@@ -18,8 +18,8 @@ class AppTheme {
   get darkTheme => ThemeData(
     // primaryColor: Colors.red,
     // toggleableActiveColor: Colors.red,
-    colorScheme: ColorScheme.fromSeed(seedColor: Colors.white)
-        .copyWith(secondary: Color(0xFF6CB3FF),brightness: Brightness.dark),
+    colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal)
+        .copyWith(secondary: Colors.teal,brightness: Brightness.dark),
     scaffoldBackgroundColor: Color(0xFF131313),
     appBarTheme: AppBarTheme(
         color: Colors.transparent, systemOverlayStyle: SystemUiOverlayStyle.light),

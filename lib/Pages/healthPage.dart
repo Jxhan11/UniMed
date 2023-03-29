@@ -101,7 +101,6 @@ class _HealthPgState extends State<HealthPg> {
                         : DBoxFill)),
           ),
           AboveChart(),
-          SubHeadlines(text: "Health Stats"),
           SliverToBoxAdapter(
             child: HealthChart(
               data: data,
@@ -157,8 +156,8 @@ class HealthChart extends StatelessWidget {
                   series,
                   animate: true,
                   defaultRenderer: new charts.BarRendererConfig(
-                      maxBarWidthPx: 20,
-                      cornerStrategy: charts.ConstCornerStrategy(100)),
+                      maxBarWidthPx: 200,
+                      cornerStrategy: charts.ConstCornerStrategy(6)),
                 ),
               ) //TODO:THIS IS CONTAINTER FOR CHART
             ],
@@ -183,6 +182,100 @@ class _AboveChartState extends State<AboveChart> {
     return SliverToBoxAdapter(
       child: Column(
         children: <Widget>[
+          SizedBox(height: 10,),
+          Container(
+            alignment: Alignment.centerLeft,
+            child: SizedBox(
+              height: test.vertical(value: 50),
+              width: test.horizontal(value: 130),
+              child: Container(
+                margin: EdgeInsets.only(left: 20),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(100),
+                  color: Theme.of(context).brightness==Brightness.dark? Color(
+                      0xFF95C9C3):Color(
+                      0xFF10938E),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Center(
+                      child: Text("Heart",
+                        style: TextStyle(fontFamily: "PSL",color:Theme.of(context).brightness==Brightness.dark? DBoxFill:LBoxFill ),
+                      ),
+                    ),
+                    Icon(Icons.arrow_drop_down,color:Theme.of(context).brightness==Brightness.dark? DBoxFill:LBoxFill),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          SizedBox(height: test.vertical(value: 10),),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Container(
+                margin: EdgeInsets.only(left: test.horizontal(value: 20)),
+                child: Text('Health Stats',style: TextStyle(fontSize: 16,fontFamily: "PSM",letterSpacing: 1),),
+              ),
+              SizedBox(
+                height: test.vertical(value: 60),
+                child: Container(
+                  margin: EdgeInsets.only(right: test.horizontal(value: 20)),
+                  height: test.vertical(value: 60),
+                  width:test.horizontal(value: 220) ,
+                  decoration: BoxDecoration(
+                    color:Theme.of(context).brightness==Brightness.dark? DBoxFill:LBoxFill,
+                    borderRadius: BorderRadius.all(Radius.circular(100)),
+                  ),
+                  child: Container(
+// color: Colors.blue,
+                    margin: EdgeInsets.all(7),
+                    width: test.horizontal(value: 200),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Container(
+                          height: test.vertical(value: 50),
+                          width: test.horizontal(value: 100),
+                          alignment: Alignment.center,
+// padding: EdgeInsets.all(19),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(100),
+                            color:Theme.of(context).brightness==Brightness.dark? Color(
+                                0xFF95C9C3):Color(
+                                0xFF10938E),
+                          ),
+                          child: Text(
+                            'Peak',
+                            style: TextStyle(
+                                fontFamily: "PSL",
+                                fontSize: 16,
+                                color:Theme.of(context).brightness==Brightness.dark? DBoxFill:LBoxFill
+                            ),
+                          ),
+                        ),
+                        Container(
+                          alignment: Alignment.center,
+                          height: test.vertical(value: 50),
+                          width: test.horizontal(value: 100),
+// padding: EdgeInsets.all(20),
+                          child: Text(
+                            'Avg',
+                            style: TextStyle(
+                                fontFamily: "PSL",
+                                fontSize: 16,
+                                color:Theme.of(context).brightness==Brightness.dark? LBoxFill:DBoxFill
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
 
         ],
       )
@@ -254,50 +347,4 @@ class _TipsBoxState extends State<TipsBox> {
     );
   }
 }
-// Container(
-// height: 60,
-// decoration: BoxDecoration(
-// color: LBoxFill,
-// borderRadius: BorderRadius.all(Radius.circular(100)),
-// ),
-// child: Container(
-// // color: Colors.blue,
-// margin: EdgeInsets.all(5),
-// width: 200,
-// child: Row(
-// mainAxisAlignment: MainAxisAlignment.spaceBetween,
-// children: <Widget>[
-// Container(
-// height: 50,
-// width: 100,
-// alignment: Alignment.center,
-// // padding: EdgeInsets.all(19),
-// decoration: BoxDecoration(
-// borderRadius: BorderRadius.circular(100),
-// color: Colors.red,
-// ),
-// child: Text(
-// 'Peak',
-// style: TextStyle(
-// fontFamily: "PSL",
-// fontSize: 16
-// ),
-// ),
-// ),
-// Container(
-// alignment: Alignment.center,
-// height: 50,
-// width: 100,
-// // padding: EdgeInsets.all(20),
-// child: Text(
-// 'Avg',
-// style: TextStyle(
-// fontFamily: "PSL",
-// fontSize: 16
-// ),
-// ),
-// ),
-// ],
-// ),
-// ),
-// ),
+

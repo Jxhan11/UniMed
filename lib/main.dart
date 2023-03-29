@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
 
       theme: ThemeData(
         useMaterial3: false,
-        primarySwatch: Colors.red,
+        primarySwatch: Colors.teal,
         scaffoldBackgroundColor: Color(0xFFF2F3F5),
         fontFamily: "ProductSans",
         appBarTheme: AppBarTheme(
