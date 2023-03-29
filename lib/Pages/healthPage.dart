@@ -74,102 +74,33 @@ class _HealthPgState extends State<HealthPg> {
         slivers: [
           SliverAppBar(
             backgroundColor: Colors.transparent,
-            systemOverlayStyle: SystemUiOverlayStyle(),
-            collapsedHeight: 60,
-            title: Padding(
-              //TODO: Make the padding and height relative.
-              padding: const EdgeInsets.only(left: 4, right: 4),
-              child: Container(
-                width: double.infinity,
-                height: 52,
-                decoration: BoxDecoration(
-                    color: Theme.of(context).brightness == Brightness.light
-                        ? Colors.white
-                        : Color(0xFF303030),
-                    borderRadius: BorderRadius.all(Radius.circular(50))),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  SearchWithSuggestionsPage()),
-                        );
-                      },
-                      child: Padding(
-                        padding: EdgeInsets.only(left: 24),
-                        child: Container(
-                          child: Row(
-                            children: [
-                              Hero(
-                                tag: 'search-icon-leading',
-                                child: Material(
-                                  color: Colors.transparent,
-                                  child: Icon(
-                                    Icons.search_rounded,
-                                    color: Theme.of(context).brightness ==
-                                            Brightness.dark
-                                        ? Colors.white
-                                        : Colors.black,
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              const Hero(
-                                tag: 'search-text',
-                                child: Material(
-                                  color: Colors.transparent,
-                                  child: Text(
-                                    "Search for healthcare facilities",
-                                    style: TextStyle(
-                                      fontFamily: 'PSL',
-                                      letterSpacing: 0,
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.grey,
-                                      fontSize: 15,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 16.0),
-                      child: CircleAvatar(
-                        backgroundColor:
-                            Theme.of(context).brightness == Brightness.dark
-                                ? Color(0xFFFF8E8E)
-                                : Colors.red,
-                        radius: 18,
-                        child: Icon(
-                          Icons.person_rounded,
-                        ),
-                      ),
-                    ),
-                    // SizedBox(width: 1,),
-                  ],
-                ),
+            systemOverlayStyle: SystemUiOverlayStyle(
+                statusBarColor: Theme.of(context).scaffoldBackgroundColor,
+                statusBarIconBrightness:
+                    Theme.of(context).brightness == Brightness.dark
+                        ? Brightness.light
+                        : Brightness.dark),
+            leading: InkWell(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Icon(
+                Icons.arrow_back,
+                color: Theme.of(context).brightness == Brightness.dark
+                    ? LBoxFill
+                    : DBoxFill,
               ),
             ),
+            title: Text('Health',
+                style: TextStyle(
+                    fontFamily: "PSL",
+                    fontSize: 22,
+                    letterSpacing: 0,
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? LBoxFill
+                        : DBoxFill)),
           ),
           AboveChart(),
-          SliverToBoxAdapter(
-            child: SizedBox(
-              height: 50,
-            ),
-          ),
           SubHeadlines(text: "Health Stats"),
           SliverToBoxAdapter(
             child: HealthChart(
@@ -218,11 +149,17 @@ class HealthChart extends StatelessWidget {
             children: <Widget>[
               Container(
                 width: double.infinity,
-                height: 400,
+                height: 250,
                 color: Theme.of(context).brightness == Brightness.dark
                     ? Color(0xFF131313)
                     : Color(0xFFF2F2F2),
-                child: new charts.BarChart(series, animate: true),
+                child: new charts.BarChart(
+                  series,
+                  animate: true,
+                  defaultRenderer: new charts.BarRendererConfig(
+                      maxBarWidthPx: 20,
+                      cornerStrategy: charts.ConstCornerStrategy(100)),
+                ),
               ) //TODO:THIS IS CONTAINTER FOR CHART
             ],
           ),
@@ -242,37 +179,13 @@ class AboveChart extends StatefulWidget {
 class _AboveChartState extends State<AboveChart> {
   @override
   Widget build(BuildContext context) {
+    GeneralizedPadding test = GeneralizedPadding(context);
     return SliverToBoxAdapter(
-      child: Container(
-        padding: EdgeInsets.only(left: 20),
-        // color: Colors.red,
-        child: Column(
-          children: <Widget>[
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Container(
-                height: 50,
-                width: 140,
-                decoration: BoxDecoration(
-                  color: Theme.of(context).brightness == Brightness.dark
-                      ? Color(0xFF8D9EFC)
-                      : Color(0xFF8D9EFC),
-                  borderRadius: BorderRadius.circular(200),
-                ),
-                child: Center(
-                    child: Text(
-                  'Heart',
-                  style: TextStyle(
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? Color(0xFF303030)
-                        : Color(0xFFFFFFFF),
-                  ),
-                )),
-              ),
-            ),
-          ],
-        ),
-      ),
+      child: Column(
+        children: <Widget>[
+
+        ],
+      )
     );
   }
 }
@@ -290,13 +203,21 @@ class _TipsBoxState extends State<TipsBox> {
     GeneralizedPadding test = GeneralizedPadding(context);
     return SliverToBoxAdapter(
       child: Container(
-        height: test.vertical(value:200),
-        margin: EdgeInsets.only(left: test.horizontal(value: 20),right: test.horizontal(value: 20)),
-        padding: EdgeInsets.only(left: test.horizontal(value: 20),bottom: test.vertical(value: 10),top: 5,right: test.horizontal(value: 20)),
+        height: test.vertical(value: 200),
+        margin: EdgeInsets.only(
+            left: test.horizontal(value: 20),
+            right: test.horizontal(value: 20)),
+        padding: EdgeInsets.only(
+            left: test.horizontal(value: 20),
+            bottom: test.vertical(value: 10),
+            top: 5,
+            right: test.horizontal(value: 20)),
         // width: test.horizontal(value: ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
-          color: Theme.of(context).brightness==Brightness.dark? DBoxFill:LBoxFill,
+          color: Theme.of(context).brightness == Brightness.dark
+              ? DBoxFill
+              : LBoxFill,
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -304,25 +225,79 @@ class _TipsBoxState extends State<TipsBox> {
             // SizedBox(height: 5,),
             Align(
               alignment: Alignment.centerLeft,
-              child: Text('How to Increase Lung Capacity?',style: TextStyle(fontFamily: "PSL",fontSize: 22),),
+              child: Text(
+                'How to Increase Lung Capacity?',
+                style: TextStyle(fontFamily: "PSL", fontSize: 22),
+              ),
             ),
-            SizedBox(height: 1,),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Text('1. Hold Breath for over a minute everyday',style: TextStyle(fontFamily: "PSXL",fontSize: 15)),
-            ),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Text('2. Eat grapes',style: TextStyle(fontFamily: "PSXL",fontSize: 15)),
+            SizedBox(
+              height: 1,
             ),
             Align(
               alignment: Alignment.centerLeft,
-              child: Text('3. Swimming',style: TextStyle(fontFamily: "PSXL",fontSize: 15)),
+              child: Text('1. Hold Breath for over a minute everyday',
+                  style: TextStyle(fontFamily: "PSXL", fontSize: 15)),
             ),
-
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text('2. Eat grapes',
+                  style: TextStyle(fontFamily: "PSXL", fontSize: 15)),
+            ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text('3. Swimming',
+                  style: TextStyle(fontFamily: "PSXL", fontSize: 15)),
+            ),
           ],
         ),
       ),
     );
   }
 }
+// Container(
+// height: 60,
+// decoration: BoxDecoration(
+// color: LBoxFill,
+// borderRadius: BorderRadius.all(Radius.circular(100)),
+// ),
+// child: Container(
+// // color: Colors.blue,
+// margin: EdgeInsets.all(5),
+// width: 200,
+// child: Row(
+// mainAxisAlignment: MainAxisAlignment.spaceBetween,
+// children: <Widget>[
+// Container(
+// height: 50,
+// width: 100,
+// alignment: Alignment.center,
+// // padding: EdgeInsets.all(19),
+// decoration: BoxDecoration(
+// borderRadius: BorderRadius.circular(100),
+// color: Colors.red,
+// ),
+// child: Text(
+// 'Peak',
+// style: TextStyle(
+// fontFamily: "PSL",
+// fontSize: 16
+// ),
+// ),
+// ),
+// Container(
+// alignment: Alignment.center,
+// height: 50,
+// width: 100,
+// // padding: EdgeInsets.all(20),
+// child: Text(
+// 'Avg',
+// style: TextStyle(
+// fontFamily: "PSL",
+// fontSize: 16
+// ),
+// ),
+// ),
+// ],
+// ),
+// ),
+// ),

@@ -63,7 +63,7 @@ class _MedicalInformationState extends State<MedicalInformation> {
                 ),
               ),
             ),
-            title: const Text("Medical Information",style: TextStyle(fontFamily: "PSL",fontSize: 22,letterSpacing: 0),),
+            title: Text("Medical Information",style: TextStyle(fontFamily: "PSL",fontSize: 22,letterSpacing: 0,color: Theme.of(context).brightness == Brightness.dark? LBoxFill:DBoxFill)),
             actions: [
               Padding(
                   padding: EdgeInsets.only(top: 8,bottom: 8,right: GeneralizedPadding(context).horizontal(value: 24)),

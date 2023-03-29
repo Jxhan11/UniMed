@@ -37,7 +37,7 @@ class _EmergencyPageState extends State<EmergencyPage> {
             ),
             title: Text('Emergency',
                 style: TextStyle(
-                    fontFamily: "PSL", fontSize: 22, letterSpacing: 0)),
+                    fontFamily: "PSL", fontSize: 22, letterSpacing: 0,color: Theme.of(context).brightness == Brightness.dark? LBoxFill:DBoxFill)),
           ),
           SliverToBoxAdapter(
             child: SizedBox(height: 20,),

@@ -81,7 +81,7 @@ class _FirstAidState extends State<FirstAid> {
             ),
             title: Text('First Aid',
                 style: TextStyle(
-                    fontFamily: "PSL", fontSize: 22, letterSpacing: 0)),
+                    fontFamily: "PSL", fontSize: 22, letterSpacing: 0,color: Theme.of(context).brightness == Brightness.dark? LBoxFill:DBoxFill)),
           ),
           SliverToBoxAdapter(
             child: Lottie.asset(

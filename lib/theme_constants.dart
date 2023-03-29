@@ -16,7 +16,10 @@ class ThemeNotifier with ChangeNotifier {
 
 class AppTheme {
   get darkTheme => ThemeData(
-    primarySwatch: Colors.red,
+    // primaryColor: Colors.red,
+    // toggleableActiveColor: Colors.red,
+    colorScheme: ColorScheme.fromSeed(seedColor: Colors.white)
+        .copyWith(secondary: Color(0xFF6CB3FF),brightness: Brightness.dark),
     scaffoldBackgroundColor: Color(0xFF131313),
     appBarTheme: AppBarTheme(
         color: Colors.transparent, systemOverlayStyle: SystemUiOverlayStyle.light),
@@ -32,7 +35,6 @@ class AppTheme {
       bodyText2: TextStyle(fontFamily: "PSM"),
       subtitle1: TextStyle(fontFamily: "PSM"),
     ),
-    // navigationBarTheme: NavigationBarThemeData(backgroundColor: Color(0xFF131313)),
 
   );
 

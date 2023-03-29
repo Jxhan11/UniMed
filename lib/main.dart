@@ -20,14 +20,9 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
 // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -65,7 +60,7 @@ class _MyAppState extends State<MyApp> {
       ),
       darkTheme: AppTheme().darkTheme,
       // Inner UI of the application
-      themeMode: ThemeMode.system,
+      // themeMode: ThemeMode.system,
       home: const Homepage(),
     );
   }
@@ -89,38 +84,40 @@ class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     //TODO: Change system's navigation bar colors with dark and light mode. Make it navigation bar color somehow
-    // SystemChrome.setSystemUIOverlayStyle(
-    //   SystemUiOverlayStyle(
-    //       systemNavigationBarColor: Colors.white
-    //   )
-    // );
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        systemNavigationBarColor: Color(0xFF131313),
+      )
+    );
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       extendBodyBehindAppBar: true,
       body: BodyFormerFunction(_selectedIndex, context),
       bottomNavigationBar: NavigationBar(
+        height: 70,
+        surfaceTintColor: Colors.blue,
         backgroundColor: Theme.of(context).brightness == Brightness.dark
-            ? Color(0xFF303030)
-            : Color(0xFFF2F2F2),
-        destinations: const [
+            ? Color(0xFF131313)
+            : Color(0xFFF2F3F5),
+        destinations:  [
           NavigationDestination(
-            selectedIcon: Icon(Icons.home),
-            icon: Icon(Icons.home_outlined),
-            label: 'Home',
+            selectedIcon: Icon(Icons.home,color: Theme.of(context).brightness==Brightness.dark? LBoxFill:DBoxFill,),
+            icon: Icon(Icons.home_outlined,color: Theme.of(context).brightness==Brightness.dark? LBoxFill:DBoxFill,),
+            label: '',
           ),
           NavigationDestination(
-              icon: Icon(Icons.favorite_border),
-              selectedIcon: Icon(Icons.favorite),
-              label: 'Health'),
+              icon: Icon(Icons.favorite_border,color: Theme.of(context).brightness==Brightness.dark? LBoxFill:DBoxFill),
+              selectedIcon: Icon(Icons.favorite,color: Theme.of(context).brightness==Brightness.dark? LBoxFill:DBoxFill),
+              label: ''),
           NavigationDestination(
-              icon: Icon(Icons.file_copy_outlined),
-              selectedIcon: Icon(Icons.file_copy_rounded),
-              label: 'Files'),
+              icon: Icon(Icons.file_copy_outlined,color: Theme.of(context).brightness==Brightness.dark? LBoxFill:DBoxFill),
+              selectedIcon: Icon(Icons.file_copy_rounded,color: Theme.of(context).brightness==Brightness.dark? LBoxFill:DBoxFill),
+              label: ''),
           NavigationDestination(
-              icon: Icon(Icons.person_outline_rounded),
-              selectedIcon: Icon(Icons.person_rounded),
-              label: 'Profile'),
+              icon: Icon(Icons.person_outline_rounded,color: Theme.of(context).brightness==Brightness.dark? LBoxFill:DBoxFill),
+              selectedIcon: Icon(Icons.person_rounded,color: Theme.of(context).brightness==Brightness.dark? LBoxFill:DBoxFill),
+              label: ''),
         ],
         selectedIndex: _selectedIndex,
         onDestinationSelected: _onItemTapped,
@@ -573,8 +570,8 @@ class _RecordCardsState extends State<RecordCards> {
                                     fontSize: 18,
                                     color: Theme.of(context).brightness ==
                                             Brightness.dark
-                                        ? Color(0xFFB8FF7B)
-                                        : Color(0xFF5BAE07)),
+                                        ? Color(0xFFD4FFC8)
+                                        : Color(0xFF51AD18)),
                               ),
                             )
                           ],
@@ -605,8 +602,8 @@ class _RecordCardsState extends State<RecordCards> {
                                 child: Lottie.asset(
                                     Theme.of(context).brightness ==
                                             Brightness.dark
-                                        ? 'Animations/run forest runD.json'
-                                        : 'Animations/run forest run.json',
+                                        ? 'Animations/87455-runing-man.json'
+                                        : 'Animations/87455-runing-man.json',
                                     repeat: true,
                                     fit: BoxFit.fill),
                               ),
@@ -641,7 +638,9 @@ class _RecordCardsState extends State<RecordCards> {
                               child: Text(
                                 'Sleep',
                                 style:
-                                    TextStyle(fontFamily: "PSM", fontSize: 18),
+                                    TextStyle(fontFamily: "PSM", fontSize: 18,color: Theme.of(context).brightness==Brightness.dark? Color(
+                                        0xFFBBC1FF):Color(
+                                        0xFF1F5ACE),),
                               ),
                             ),
                           ],
@@ -1446,7 +1445,7 @@ class _ForYouCardsState extends State<ForYouCards> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               InkWell(
-                splashColor: Colors.blue,
+                splashColor: Colors.transparent,
                 onTap: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => InsurancePg()));
@@ -1495,7 +1494,7 @@ class _ForYouCardsState extends State<ForYouCards> {
                           height: 20,
                           child: Icon(
                             Icons.book,
-                            color: Color(0xFF207E81),
+                            color: Theme.of(context).brightness==Brightness.dark? Color(0xFFA1FCFF):Color(0xFF207E81),
                           ),
                         ),
                       ),
@@ -1548,7 +1547,9 @@ class _ForYouCardsState extends State<ForYouCards> {
                         height: test.vertical(value: 23),
                         child: Icon(
                           Icons.water_drop,
-                          color: Color(0xFFFF6161),
+                          color: Theme.of(context).brightness==Brightness.dark? Color(
+                              0xFFFFBDBD):Color(
+                              0xFFC72222),
                         ),
                       ),
                     ),
@@ -1612,7 +1613,7 @@ class _ForYouCardsState extends State<ForYouCards> {
                             Icons.shopping_bag_outlined,
                             color:
                                 Theme.of(context).brightness == Brightness.dark
-                                    ? Color(0xFFB4FF93)
+                                    ? Color(0xFFD0FFBB)
                                     : Color(0xFF327A1E),
                           ),
                         ),
@@ -1666,7 +1667,8 @@ class _ForYouCardsState extends State<ForYouCards> {
                         height: test.vertical(value: 23),
                         child: Icon(
                           Icons.location_on,
-                          color: Color(0xFF88602E),
+                          color: Theme.of(context).brightness==Brightness.dark? Color(
+                              0xFFFFD8B4):Color(0xFFCC6923),
                         ),
                       ),
                     ),
@@ -1679,7 +1681,7 @@ class _ForYouCardsState extends State<ForYouCards> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               InkWell(
-                splashColor: Colors.blue,
+                splashColor: Colors.transparent,
                 onTap: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => InsurancePg()));
@@ -1730,7 +1732,7 @@ class _ForYouCardsState extends State<ForYouCards> {
                             Icons.shopping_cart,
                             color:
                                 Theme.of(context).brightness == Brightness.dark
-                                    ? Color(0xFFB4FF93)
+                                    ? Color(0xFFC9FFB0)
                                     : Color(0xFF327A1E),
                           ),
                         ),
@@ -1784,7 +1786,9 @@ class _ForYouCardsState extends State<ForYouCards> {
                         height: test.vertical(value: 23),
                         child: Icon(
                           Icons.sticky_note_2_sharp,
-                          color: Color(0xFF1B5B81),
+                          color: Theme.of(context).brightness==Brightness.dark? Color(
+                              0xFFBBC1FF):Color(
+                              0xFF1F5ACE),
                         ),
                       ),
                     ),

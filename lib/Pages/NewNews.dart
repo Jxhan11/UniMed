@@ -103,7 +103,7 @@ class _NewNewsPageState extends State<NewNewsPage> with TickerProviderStateMixin
               children: <Widget>[
                 Text('News',
                     style: TextStyle(
-                        fontFamily: "PSL", fontSize: 22, letterSpacing: 0)),
+                        fontFamily: "PSL", fontSize: 22, letterSpacing: 0,color: Theme.of(context).brightness == Brightness.dark? LBoxFill:DBoxFill)),
 
               ],
             )
