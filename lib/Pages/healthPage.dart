@@ -522,7 +522,7 @@ class _TipsBoxState extends State<TipsBox> {
             Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                'How to Increase Lung Capacity?',
+                'Increase Lung Capacity?',
                 style: TextStyle(fontFamily: "PSL", fontSize: 22),
               ),
             ),
@@ -587,7 +587,7 @@ class _BloodPressureBoxState extends State<BloodPressureBox> {
             Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                'How to reduce blood pressure?',
+                'Reduce blood pressure?',
                 style: TextStyle(fontFamily: "PSL", fontSize: 22),
               ),
             ),
