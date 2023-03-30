@@ -106,6 +106,7 @@ class _HealthPgState extends State<HealthPg> {
         physics: BouncingScrollPhysics(),
         slivers: [
           SliverAppBar(
+            backgroundColor: Colors.transparent,
             systemOverlayStyle: SystemUiOverlayStyle(
                 statusBarColor: Theme.of(context).scaffoldBackgroundColor,
                 statusBarIconBrightness:
