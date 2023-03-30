@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/services.dart';
 import 'package:unimed/Components/usefulStuff.dart';
+import 'package:unimed/Pages/searchResultsPage.dart';
+import 'package:unimed/Pages/searchWithSuggestions.dart';
 import 'package:unimed/theme_constants.dart';
 import 'HealthData.dart';
 import 'package:custom_sliding_segmented_control/custom_sliding_segmented_control.dart';
@@ -60,11 +62,43 @@ class _HealthPageWidgetsState extends State<HealthPageWidgets> {
 class HealthPg extends StatefulWidget {
   HealthPg({Key? key}) : super(key: key);
 
+
   @override
   State<HealthPg> createState() => _HealthPgState();
 }
 
 class _HealthPgState extends State<HealthPg> {
+  TextEditingController searchController = TextEditingController();
+  bool enableCrossButtonInSliverAppBar = false;
+  @override
+  void dispose() {
+    searchController.dispose();
+    super.dispose();
+  }
+  void _onTextChanged() {
+    if (searchController.text.isNotEmpty) {
+      setState(() {
+        enableCrossButtonInSliverAppBar = true;
+      });
+    } else {
+      setState(() {
+        enableCrossButtonInSliverAppBar = false;
+      });
+    }
+  }
+
+  void _userPressedEnter(text) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => searchResults(searchTerm: text)),
+    );
+  }
+
+  void _clearText() {
+    searchController.clear();
+    _onTextChanged();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,32 +106,111 @@ class _HealthPgState extends State<HealthPg> {
         physics: BouncingScrollPhysics(),
         slivers: [
           SliverAppBar(
-            backgroundColor: Colors.transparent,
             systemOverlayStyle: SystemUiOverlayStyle(
                 statusBarColor: Theme.of(context).scaffoldBackgroundColor,
                 statusBarIconBrightness:
-                    Theme.of(context).brightness == Brightness.dark
-                        ? Brightness.light
-                        : Brightness.dark),
-            leading: InkWell(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: Icon(
-                Icons.arrow_back,
-                color: Theme.of(context).brightness == Brightness.dark
-                    ? LBoxFill
-                    : DBoxFill,
+                Theme.of(context).brightness == Brightness.dark
+                    ? Brightness.light
+                    : Brightness.dark),
+            collapsedHeight: 60,
+            title: Padding(
+              //TODO: Make the padding and height relative.
+              padding: const EdgeInsets.only(left: 4, right: 4),
+              child: Container(
+                width: double.infinity,
+                height: 52,
+                decoration: BoxDecoration(
+                    color: Theme.of(context).brightness == Brightness.light
+                        ? Colors.white
+                        : Color(0xFF303030),
+                    borderRadius: BorderRadius.all(Radius.circular(50))),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  SearchWithSuggestionsPage()),
+                        );
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 24),
+                        child: Container(
+                          child: Row(
+                            children: [
+                              Hero(
+                                tag: 'search-icon-leading',
+                                child: Material(
+                                  color: Colors.transparent,
+                                  child: Icon(
+                                    Icons.search_rounded,
+                                    color: Theme.of(context).brightness ==
+                                        Brightness.dark
+                                        ? Colors.white
+                                        : Colors.black,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              const Hero(
+                                tag: 'search-text',
+                                child: Material(
+                                  color: Colors.transparent,
+                                  child: Text(
+                                    "Search for healthcare facilities",
+                                    style: TextStyle(
+                                      fontFamily: 'PSL',
+                                      letterSpacing: 0,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.grey,
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 16.0),
+                      child: CircleAvatar(
+                        backgroundColor:
+                        Theme.of(context).brightness == Brightness.dark
+                            ? Color(0xFFFF8E8E)
+                            : Colors.red,
+                        radius: 18,
+                        child: ClipOval(
+                          child: Image(
+                            height: 100,
+                            width: 100,
+                            fit: BoxFit.cover,
+                            image: NetworkImage(
+                                "https://i.pinimg.com/originals/39/26/db/3926db089d7af5fa91711db1dbb82b7c.jpg"),
+                          ),
+                        ),
+                      ),
+                    ),
+                    // SizedBox(width: 1,),
+                  ],
+                ),
               ),
             ),
-            title: Text('Health',
-                style: TextStyle(
-                    fontFamily: "PSL",
-                    fontSize: 22,
-                    letterSpacing: 0,
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? LBoxFill
-                        : DBoxFill)),
+          ),
+          SliverToBoxAdapter(
+            child: SizedBox(
+              height: 20,
+            ),
           ),
           AboveChart(),
           SliverToBoxAdapter(
