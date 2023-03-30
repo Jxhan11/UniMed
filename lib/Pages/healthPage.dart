@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/services.dart';
 import 'package:unimed/Components/usefulStuff.dart';
-import 'package:unimed/Pages/searchWithSuggestions.dart';
-import 'package:unimed/main.dart';
 import 'package:unimed/theme_constants.dart';
-import 'searchResultsPage.dart';
 import 'HealthData.dart';
+import 'package:custom_sliding_segmented_control/custom_sliding_segmented_control.dart';
 
 class SubscriberSeries {
   final String year;
@@ -113,7 +111,8 @@ class _HealthPgState extends State<HealthPg> {
               height: 20,
             ),
           ),
-          TipsBox(),
+          BloodPressureBox(),
+
           SliverToBoxAdapter(
             child: SizedBox(
               height: 50,
@@ -170,55 +169,94 @@ class HealthChart extends StatelessWidget {
 }
 
 class AboveChart extends StatefulWidget {
-  const AboveChart({Key? key}) : super(key: key);
+  AboveChart({Key? key}) : super(key: key);
+
 
   @override
   State<AboveChart> createState() => _AboveChartState();
 }
-
+bool checkif (context){
+  if(Theme.of(context).brightness==Brightness.dark){
+    return true;
+  }
+  else return false;
+}
 class _AboveChartState extends State<AboveChart> {
   @override
+  void textColor(){
+    if(checkif(context)){
+      Color TSelected= DBoxFill;
+      Color TunSelected = LBoxFill;
+    }
+    else {
+      Color TSelected=LBoxFill;
+      Color TunSelected=DBoxFill;
+    }
+  }
+  Color TSelected = Colors.red;
+  Color TunSelected = Colors.red;
   Widget build(BuildContext context) {
+
     GeneralizedPadding test = GeneralizedPadding(context);
+    textColor();
     return SliverToBoxAdapter(
-      child: Column(
-        children: <Widget>[
-          SizedBox(height: 10,),
-          Container(
-            alignment: Alignment.centerLeft,
-            child: SizedBox(
-              height: test.vertical(value: 50),
-              width: test.horizontal(value: 130),
-              child: Container(
-                margin: EdgeInsets.only(left: 20),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(100),
-                  color: Theme.of(context).brightness==Brightness.dark? Color(
-                      0xFF95C9C3):Color(
-                      0xFF10938E),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Center(
-                      child: Text("Heart",
-                        style: TextStyle(fontFamily: "PSL",color:Theme.of(context).brightness==Brightness.dark? DBoxFill:LBoxFill ),
-                      ),
+        child: Column(
+      children: <Widget>[
+        SizedBox(
+          height: 10,
+        ),
+        Container(
+          alignment: Alignment.centerLeft,
+          child: SizedBox(
+            height: test.vertical(value: 50),
+            width: test.horizontal(value: 130),
+            child: Container(
+              margin: EdgeInsets.only(left: 20),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(100),
+                color: Theme.of(context).brightness == Brightness.dark
+                    ? Color(0xFF95C9C3)
+                    : Color(0xFF10938E),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Center(
+                    child: Text(
+                      "Heart",
+                      style: TextStyle(
+                          fontFamily: "PSL",
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? DBoxFill
+                              : LBoxFill),
                     ),
-                    Icon(Icons.arrow_drop_down,color:Theme.of(context).brightness==Brightness.dark? DBoxFill:LBoxFill),
-                  ],
-                ),
+                  ),
+                  Icon(Icons.arrow_drop_down,
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? DBoxFill
+                          : LBoxFill),
+                ],
               ),
             ),
           ),
-          SizedBox(height: test.vertical(value: 10),),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Container(
+        ),
+        SizedBox(
+          height: test.vertical(value: 10),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Expanded(
+              flex: 1,
+              child: Container(
                 margin: EdgeInsets.only(left: test.horizontal(value: 20)),
-                child: Text('Health Stats',style: TextStyle(fontSize: 16,fontFamily: "PSM",letterSpacing: 1),),
+                child: Text(
+                  'Health Stats',
+                  style: TextStyle(
+                      fontSize: 16, fontFamily: "PSM", letterSpacing: 1),
+                ),
               ),
+            ),
               SizedBox(
                 height: test.vertical(value: 60),
                 child: Container(
@@ -230,7 +268,6 @@ class _AboveChartState extends State<AboveChart> {
                     borderRadius: BorderRadius.all(Radius.circular(100)),
                   ),
                   child: Container(
-// color: Colors.blue,
                     margin: EdgeInsets.all(7),
                     width: test.horizontal(value: 200),
                     child: Row(
@@ -275,12 +312,63 @@ class _AboveChartState extends State<AboveChart> {
                   ),
                 ),
               ),
-            ],
-          ),
-
-        ],
-      )
-    );
+//             Container(
+//               color: Colors.red,
+//               width: 200,
+//               alignment: Alignment.center,
+//               // color: Colors.red,
+//               margin: EdgeInsets.only(right: 20),
+//               child: CustomSlidingSegmentedControl<int>(
+//                 fromMax: true,
+//                 innerPadding: EdgeInsets.all(5),
+//                 children:  {
+//                   1: Text(
+//                     'Peak',
+//                     textAlign: TextAlign.center,
+//                     style: TextStyle(color: TSelected),
+//                   ),
+//                   2: Text(
+//                     'Avg',
+//                     textAlign: TextAlign.center,
+//                   ),
+//                 },
+//                 height: 50,
+//                 decoration: BoxDecoration(
+//                   color: Theme.of(context).brightness==Brightness.dark? DBoxFill:LBoxFill,
+//                   borderRadius: BorderRadius.circular(100),
+//                 ),
+//                 thumbDecoration: BoxDecoration(
+//                   color:Theme.of(context).brightness==Brightness.dark? Color(
+//                       0xFF95C9C3):Color(
+//                       0xFF10938E),
+//                   borderRadius: BorderRadius.circular(100),
+//                 ),
+//
+//                 onValueChanged: (int value) {
+//                   if(value==1){
+//                     Future.delayed(
+//                       Duration(milliseconds: 10)).then((TSelected){
+//                         setState(() {
+//                           TSelected=Theme.of(context).scaffoldBackgroundColor;
+//                         });
+//                     }
+//                     );
+//                 }
+//                   else{
+//                     Future.delayed(
+//                         Duration(milliseconds: 1000)).then((value){
+//                       setState(() {
+//                         TSelected=Theme.of(context).scaffoldBackgroundColor;
+//                       });
+//                     });
+//                   }
+//                   ;}
+//               ),
+//             )
+          ],
+        ),
+      ],
+    ));
   }
 }
 
@@ -329,17 +417,17 @@ class _TipsBoxState extends State<TipsBox> {
             ),
             Align(
               alignment: Alignment.centerLeft,
-              child: Text('1. Hold Breath for over a minute everyday',
+              child: Text('1. Practice cardio exercises',
                   style: TextStyle(fontFamily: "PSXL", fontSize: 15)),
             ),
             Align(
               alignment: Alignment.centerLeft,
-              child: Text('2. Eat grapes',
+              child: Text('2. Diaphragmatic breathing and other types of breathing exercises',
                   style: TextStyle(fontFamily: "PSXL", fontSize: 15)),
             ),
             Align(
               alignment: Alignment.centerLeft,
-              child: Text('3. Swimming',
+              child: Text('3. Try playing wind instruments like woodwind or brass instruments',
                   style: TextStyle(fontFamily: "PSXL", fontSize: 15)),
             ),
           ],
@@ -348,4 +436,70 @@ class _TipsBoxState extends State<TipsBox> {
     );
   }
 }
+
+class BloodPressureBox extends StatefulWidget {
+  const BloodPressureBox({Key? key}) : super(key: key);
+
+  @override
+  State<BloodPressureBox> createState() => _BloodPressureBoxState();
+}
+
+class _BloodPressureBoxState extends State<BloodPressureBox> {
+  @override
+  Widget build(BuildContext context) {
+    GeneralizedPadding test = GeneralizedPadding(context);
+    return SliverToBoxAdapter(
+      child: Container(
+        height: test.vertical(value: 200),
+        margin: EdgeInsets.only(
+            left: test.horizontal(value: 20),
+            right: test.horizontal(value: 20)),
+        padding: EdgeInsets.only(
+            left: test.horizontal(value: 20),
+            bottom: test.vertical(value: 10),
+            top: 5,
+            right: test.horizontal(value: 20)),
+        // width: test.horizontal(value: ),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15),
+          color: Theme.of(context).brightness == Brightness.dark
+              ? DBoxFill
+              : LBoxFill,
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            // SizedBox(height: 5,),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'How to reduce blood pressure?',
+                style: TextStyle(fontFamily: "PSL", fontSize: 22),
+              ),
+            ),
+            SizedBox(
+              height: 1,
+            ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text('1. Try mind-body exercises like yoga and tai chi ',
+                  style: TextStyle(fontFamily: "PSXL", fontSize: 15)),
+            ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text('2. Listen to calming music, or make music.',
+                  style: TextStyle(fontFamily: "PSXL", fontSize: 15)),
+            ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text('3. Increase activity and exercise more',
+                  style: TextStyle(fontFamily: "PSXL", fontSize: 15)),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 

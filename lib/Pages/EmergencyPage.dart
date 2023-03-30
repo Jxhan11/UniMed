@@ -59,7 +59,7 @@ class _EmergencyPageState extends State<EmergencyPage> {
                 child: Center(
                   child: Lottie.asset(
                       Theme.of(context).brightness==Brightness.dark? 'Animations/Dsheild.json':'Animations/Lsheild.json',
-                      repeat: true,
+                      repeat: false,
                       reverse: true,
                       // height: test.vertical(value: 200),
                     width: test.horizontal(value: 300),

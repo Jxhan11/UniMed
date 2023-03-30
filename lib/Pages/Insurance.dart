@@ -141,7 +141,7 @@ class _InsurancePgState extends State<InsurancePg> {
                 },
                 child: Icon(Icons.arrow_back,color: Theme.of(context).brightness==Brightness.dark? LBoxFill:DBoxFill,),
               ),
-              title: Text('Insurance Schemes',style: TextStyle(fontFamily: "PSL",fontSize: 22,letterSpacing: 0)),
+              title: Text('Insurance Schemes',style: TextStyle(fontFamily: "PSL",fontSize: 22,letterSpacing: 0,color: Theme.of(context).brightness == Brightness.dark? LBoxFill:DBoxFill)),
             ),
             SliverToBoxAdapter(
               child: InsuranceCards(

@@ -175,7 +175,7 @@ class _NewsListState extends State<NewsList> {
                         Container(
                           padding: EdgeInsets.only(left: test.horizontal(value: 20),right: test.horizontal(value: 20),bottom: test.vertical(value: 20)),
                           alignment: Alignment.bottomLeft,
-                          child: Text(data[index].source!.data!,style: TextStyle(fontFamily: "PSM",fontSize: 15),maxLines: 2,overflow: TextOverflow.ellipsis,),
+                          child: Text(data[index].source!.data!,style: TextStyle(fontFamily: "PSM",fontSize: 15),maxLines: 1,overflow: TextOverflow.ellipsis,),
                         ),
                       ],
                     ),
