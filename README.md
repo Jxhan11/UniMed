@@ -8,11 +8,12 @@ UniMed is an all-in-one healthcare system that puts the power of healthcare mana
 3. [Installation](##Installation)
 4. [Usage](##Usage)
 
+![Play Store banner](https://github.com/mustardian/UniMed/blob/side/assets/icons/github/UniMedStore.png)
 
 ### Features
 **Patient Management**: Patients can easily manage their healthcare information, including appointments, prescriptions, medical history, and more.
 
-***Healthcare Provider Management:** Healthcare providers can manage their patients' healthcare information, including appointments, prescriptions, medical history, and more.
+**Healthcare Provider Management:** Healthcare providers can manage their patients' healthcare information, including appointments, prescriptions, medical history, and more.
 
 **Billing and Insurance:** UniMed integrates with insurance providers and allows patients to easily manage their bills and claims.
 
