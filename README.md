@@ -1,14 +1,15 @@
 # UniMed
 UniMed is an all-in-one healthcare system that puts the power of healthcare management right at your fingertips on your phone. Whether you're a patient, healthcare provider, or administrator, UniMed is designed to streamline your healthcare experience and simplify communication between patients and healthcare providers.
 
+![Play Store banner](https://github.com/mustardian/UniMed/blob/side/assets/icons/github/UniMedStore.png)
 
 ## At a Glance
-1. [Features](##Features)
-2. [Technologies](##Technologies)
-3. [Installation](##Installation)
-4. [Usage](##Usage)
+1. [Features](###Features)
+2. [Technologies](###Technologies)
+3. [Screenshots](###Screenshots)
+4. [Installation](###Installation)
+5. [Usage](###Usage)
 
-![Play Store banner](https://github.com/mustardian/UniMed/blob/side/assets/icons/github/UniMedStore.png)
 
 ### Features
 **Patient Management**: Patients can easily manage their healthcare information, including appointments, prescriptions, medical history, and more.
@@ -29,6 +30,14 @@ UniMed is built using the following technologies:
 - Firebase
 - Flutter
     - Dart
+
+### Screenshots
+![Home](https://github.com/mustardian/UniMed/blob/side/assets/icons/github/home.png)
+![Health](https://github.com/mustardian/UniMed/blob/side/assets/icons/github/health.png)
+![Files](https://github.com/mustardian/UniMed/blob/side/assets/icons/github/files.png)
+![Profile](https://github.com/mustardian/UniMed/blob/side/assets/icons/github/profile.png)
+![Search](https://github.com/mustardian/UniMed/blob/side/assets/icons/github/search.png)
+![Policies](https://github.com/mustardian/UniMed/blob/side/assets/icons/github/policies.png)
 
 
 ### Installation
