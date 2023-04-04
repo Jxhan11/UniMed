@@ -32,10 +32,29 @@ dependencies:
   flutter:
     sdk: flutter
 
-
+  charts_flutter: ^0.12.0
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  video_player: ^2.6.0
+  youtube_player_flutter: ^8.1.2
+#<<<<<<< Updated upstream
+  sliding_switch: ^1.1.0
+  fluttertoast: ^8.0.9
+  lottie: ^2.3.0
+  google_nav_bar: ^5.0.6
+  flutter_launcher_icons: ^0.12.0
+  custom_sliding_segmented_control: ^1.7.4
+
+flutter_icons:
+  android: true
+  adaptive_icon_background: "assets/icons/launcher/ic_launcher_background.png"
+  adaptive_icon_foreground: "assets/icons/launcher/ic_launcher_foreground.png"
+  image_path: "assets/icons/launcher/ic_launcher_monochrome.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  ios: true
+
+
 
 dev_dependencies:
   flutter_test:
@@ -75,15 +94,24 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
+  assets:
+    - Animations/
+    - images/
+
   fonts:
-    - family: ProductSans
+    - family: PSL
+      fonts:
+        - asset: fonts/GoogleSans-Regular.ttf
+
+    - family: PSM
+      fonts:
+        - asset: fonts/GoogleSans-Medium.ttf
+
+    - family: PSXL
       fonts:
         - asset: fonts/ProductSans-Light.ttf
-          weight: 100
-        - asset: fonts/ProductSans-Medium.ttf
-          weight: 200
-        - asset: fonts/ProductSans-Bold.ttf
-          weight: 300
+
+
 
 
     - family: BalticH
