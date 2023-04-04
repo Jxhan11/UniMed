@@ -2,7 +2,7 @@
     package="com.mj.unimed.unimed">
 
    <application
-        android:label="unimed"
+        android:label="UniMed"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
