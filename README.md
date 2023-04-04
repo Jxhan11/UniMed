@@ -4,11 +4,11 @@ UniMed is an all-in-one healthcare system that puts the power of healthcare mana
 ![Play Store banner](https://github.com/mustardian/UniMed/blob/side/assets/icons/github/UniMedStore.png)
 
 ## At a Glance
-1. [Features](###Features)
-2. [Technologies](###Technologies)
-3. [Screenshots](###Screenshots)
-4. [Installation](###Installation)
-5. [Usage](###Usage)
+1. [Features](###features)
+2. [Technologies](###technologies)
+3. [Screenshots](###screenshots)
+4. [Installation](###installation)
+5. [Usage](###usage)
 
 
 ### Features
