@@ -33,6 +33,7 @@ UniMed is built using the following technologies:
 
 ### Screenshots
 ![Home](https://github.com/mustardian/UniMed/blob/side/assets/icons/github/home.png =250x250)
+<img src="https://github.com/mustardian/UniMed/blob/side/assets/icons/github/home.png" width="300" height="900">
 ![Health](https://github.com/mustardian/UniMed/blob/side/assets/icons/github/health.png =250x250)
 ![Files](https://github.com/mustardian/UniMed/blob/side/assets/icons/github/files.png =250x250)
 ![Profile](https://github.com/mustardian/UniMed/blob/side/assets/icons/github/profile.png =250x250)
