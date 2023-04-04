@@ -361,27 +361,11 @@ class _FirstAidState extends State<FirstAid> {
                           children: <Widget>[
                             SizedBox(width: test.horizontal(value: 10),),
                             Icon(Icons.health_and_safety_rounded),
-                            Container(padding: EdgeInsets.only(left: test.horizontal(value: 30)), child: Text('Fractures',style: TextStyle(fontFamily: "PSL",fontSize: 20),))
+                            Container(padding: EdgeInsets.only(left: test.horizontal(value: 30)), child: Text('Drowning',style: TextStyle(fontFamily: "PSL",fontSize: 20),))
                           ],
                         ),
                       ),
                       children: <Widget>[
-                        Container(
-                          margin: EdgeInsets.all(20),
-// height:test.vertical(value: 300),
-
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            child: YoutubePlayer  (
-                              controller: _vcontroller,
-                              showVideoProgressIndicator: true,
-                              onEnded: (metaData) {
-                                _vcontroller.seekTo(Duration(seconds: 0));
-                                _vcontroller.pause();
-                              },
-                            ),
-                          ),
-                        ),
                         Container(
                           width: double.infinity,
                           padding: EdgeInsets.only(left: 20,bottom: 10,top: 10,right: 20),
@@ -389,15 +373,15 @@ class _FirstAidState extends State<FirstAid> {
                         ),
                         Container(
                           padding: EdgeInsets.all(20),
-                          child: Text("Step 1 . Give five back blows. Stand to the side and just behind a choking adult. For a child, kneel down behind. Place your arm across the person's chest to support the person's body. Bend the person over at the waist to face the ground. Strike five separate times between the person's shoulder blades with the heel of your hand ",style: TextStyle(fontFamily: "PSXL",fontSize: 18),),
+                          child: Text("Step 1 . Do not put yourself in danger when trying to rescue a casualty. ",style: TextStyle(fontFamily: "PSXL",fontSize: 18),),
                         ),
                         Container(
                           padding: EdgeInsets.all(20),
-                          child: Text("Step 2 . Give five abdominal thrusts. If back blows don't remove the stuck object, give five abdominal thrusts, also known as the Heimlich maneuver.",style: TextStyle(fontFamily: "PSXL",fontSize: 18),),
+                          child: Text("Step 2 . When the casualty is rescued from the water, you should first perform a primary survey. If this establishes that they are unresponsive and not breathing, you should ask a helper to call 999 or 112 for emergency help while you start CPR. Ask a helper to find and bring a defibrillator, if available.If you are on your own, use the hands-free speaker on a phone so you can start CPR while speaking to ambulance control.\n\nDo not leave the casualty to look for a defibrillator yourself, the ambulance will bring one\n\n\nStep 3 . Check the airway is open before giving five intial rescue breaths. This is done by placing one hand on the forehead and two fingers (of your other hand) underneath the tip of the chin. Using the hand on the forehead, pinch the casualty's nose with your finger and thumb, allowing the casualty's mouth to fall open. Take a breath and place your lips around the casualty's mouth, forming a seal. Blow into the casualty's mouth until the chest rises.Follow by beginning chest compressions. Kneel by the casualty and put the heel of your hand in the middle of their chest. Put your other hand on top of the first. Interlock your fingers making sure they don't touch the ribs. Keep your arms straight and lean over the casualty. Press down hard, to a third of the depth of the chest, then allow the chest to come back up.After 30 chest compressions, give two rescue breaths. Repeat this at a rate of 100-120 compressions per minute.",style: TextStyle(fontFamily: "PSXL",fontSize: 18),),
                         ),
                         Container(
                           padding: EdgeInsets.all(20),
-                          child: Text('Step 3 . Alternate between five blows and five thrusts until the blockage is dislodged.',style: TextStyle(fontFamily: "PSXL",fontSize: 18),),
+                          child: Text('Step 4 . Continue to perform CPR until:\n1) Emergency help arrives and takes over\n2) The person starts showing signs of life and starts to breathe normally\n3) You are too exhausted to continue(if there is a helper, you can change over every one-to-two minutes, with minimal interruptions to chest compressions)or \n4) A defibrillator is ready to be used (if the helper returns with a defibrillator, ask them to switch it on and follow the voice prompts while you continue with CPR).\n\n\nStep 5 . Beware, many casualties that drown may bring up stomach contents, so be prepared to roll them onto their side to clear their airway.',style: TextStyle(fontFamily: "PSXL",fontSize: 18),),
                         )
                       ],
                     ),
@@ -425,27 +409,11 @@ class _FirstAidState extends State<FirstAid> {
                           children: <Widget>[
                             SizedBox(width: test.horizontal(value: 10),),
                             Icon(Icons.health_and_safety_rounded),
-                            Container(padding: EdgeInsets.only(left: test.horizontal(value: 30)), child: Text('Drowning',style: TextStyle(fontFamily: "PSL",fontSize: 20),))
+                            Container(padding: EdgeInsets.only(left: test.horizontal(value: 30)), child: Text('Fractures',style: TextStyle(fontFamily: "PSL",fontSize: 20),))
                           ],
                         ),
                       ),
                       children: <Widget>[
-                        Container(
-                          margin: EdgeInsets.all(20),
-// height:test.vertical(value: 300),
-
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            child: YoutubePlayer  (
-                              controller: _vcontroller,
-                              showVideoProgressIndicator: true,
-                              onEnded: (metaData) {
-                                _vcontroller.seekTo(Duration(seconds: 0));
-                                _vcontroller.pause();
-                              },
-                            ),
-                          ),
-                        ),
                         Container(
                           width: double.infinity,
                           padding: EdgeInsets.only(left: 20,bottom: 10,top: 10,right: 20),
@@ -453,15 +421,15 @@ class _FirstAidState extends State<FirstAid> {
                         ),
                         Container(
                           padding: EdgeInsets.all(20),
-                          child: Text("Step 1 . Give five back blows. Stand to the side and just behind a choking adult. For a child, kneel down behind. Place your arm across the person's chest to support the person's body. Bend the person over at the waist to face the ground. Strike five separate times between the person's shoulder blades with the heel of your hand ",style: TextStyle(fontFamily: "PSXL",fontSize: 18),),
+                          child: Text("Step 1 . Stop bleeding, especially in the case of open fracture where the skin is torn, by wrapping the wound with a sterile bandage or a clean cloth.\n\n\nStep 2 . Avoid moving the affected area; any movement can result in serious complications—especially in the case of neck and back fractures. ",style: TextStyle(fontFamily: "PSXL",fontSize: 18),),
                         ),
                         Container(
                           padding: EdgeInsets.all(20),
-                          child: Text("Step 2 . Give five abdominal thrusts. If back blows don't remove the stuck object, give five abdominal thrusts, also known as the Heimlich maneuver.",style: TextStyle(fontFamily: "PSXL",fontSize: 18),),
+                          child: Text("Step 3 . Cool the affected area by applying and ice pack or ice cubes wrapped in a clean cloth.\n\n\nStep 4 . Treat the patient's shock: help them get into a comfortable position, encourage them to rest, and reassure them. Cover them with a blanket or clothing to keep them warm.",style: TextStyle(fontFamily: "PSXL",fontSize: 18),),
                         ),
                         Container(
                           padding: EdgeInsets.all(20),
-                          child: Text('Step 3 . Alternate between five blows and five thrusts until the blockage is dislodged.',style: TextStyle(fontFamily: "PSXL",fontSize: 18),),
+                          child: Text('Step 5 . Call the ambulance, and help the patient get to the emergency department for examination and treatment.',style: TextStyle(fontFamily: "PSXL",fontSize: 18),),
                         )
                       ],
                     ),
