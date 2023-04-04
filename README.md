@@ -32,16 +32,16 @@ UniMed is built using the following technologies:
     - Dart
 
 ### Screenshots
-![Home](https://github.com/mustardian/UniMed/blob/side/assets/icons/github/home.png)
-![Health](https://github.com/mustardian/UniMed/blob/side/assets/icons/github/health.png)
-![Files](https://github.com/mustardian/UniMed/blob/side/assets/icons/github/files.png)
-![Profile](https://github.com/mustardian/UniMed/blob/side/assets/icons/github/profile.png)
-![Search](https://github.com/mustardian/UniMed/blob/side/assets/icons/github/search.png)
-![Policies](https://github.com/mustardian/UniMed/blob/side/assets/icons/github/policies.png)
+![Home](https://github.com/mustardian/UniMed/blob/side/assets/icons/github/home.png | width=300)
+![Health](https://github.com/mustardian/UniMed/blob/side/assets/icons/github/health.png | width=300)
+![Files](https://github.com/mustardian/UniMed/blob/side/assets/icons/github/files.png | width=300)
+![Profile](https://github.com/mustardian/UniMed/blob/side/assets/icons/github/profile.png | width=300)
+![Search](https://github.com/mustardian/UniMed/blob/side/assets/icons/github/search.png | width=300)
+![Policies](https://github.com/mustardian/UniMed/blob/side/assets/icons/github/policies.png | width=300)
 
 
 ### Installation
-To install UniMed, simply download it from the app store on your phone.
+To install UniMed, simply download the latest release from the [releases](https://github.com/mustardian/UniMed/tags) section.
 
 ### Usage
-To start using UniMed, open the app on your phone and create an account. You can then manage your healthcare information and communicate with your healthcare providers through the app.
+To start using UniMed, open the app on your phone. You can then manage your healthcare information and communicate with your healthcare providers through the app.
