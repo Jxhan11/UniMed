@@ -361,7 +361,7 @@ class _FirstAidState extends State<FirstAid> {
                           children: <Widget>[
                             SizedBox(width: test.horizontal(value: 10),),
                             Icon(Icons.health_and_safety_rounded),
-                            Container(padding: EdgeInsets.only(left: test.horizontal(value: 30)), child: Text('Choking',style: TextStyle(fontFamily: "PSL",fontSize: 20),))
+                            Container(padding: EdgeInsets.only(left: test.horizontal(value: 30)), child: Text('Fractures',style: TextStyle(fontFamily: "PSL",fontSize: 20),))
                           ],
                         ),
                       ),
@@ -425,7 +425,7 @@ class _FirstAidState extends State<FirstAid> {
                           children: <Widget>[
                             SizedBox(width: test.horizontal(value: 10),),
                             Icon(Icons.health_and_safety_rounded),
-                            Container(padding: EdgeInsets.only(left: test.horizontal(value: 30)), child: Text('Choking',style: TextStyle(fontFamily: "PSL",fontSize: 20),))
+                            Container(padding: EdgeInsets.only(left: test.horizontal(value: 30)), child: Text('Drowning',style: TextStyle(fontFamily: "PSL",fontSize: 20),))
                           ],
                         ),
                       ),
