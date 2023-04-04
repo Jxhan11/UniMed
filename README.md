@@ -32,12 +32,12 @@ UniMed is built using the following technologies:
     - Dart
 
 ### Screenshots
-![Home](https://github.com/mustardian/UniMed/blob/side/assets/icons/github/home.png | width=300)
-![Health](https://github.com/mustardian/UniMed/blob/side/assets/icons/github/health.png | width=300)
-![Files](https://github.com/mustardian/UniMed/blob/side/assets/icons/github/files.png | width=300)
-![Profile](https://github.com/mustardian/UniMed/blob/side/assets/icons/github/profile.png | width=300)
-![Search](https://github.com/mustardian/UniMed/blob/side/assets/icons/github/search.png | width=300)
-![Policies](https://github.com/mustardian/UniMed/blob/side/assets/icons/github/policies.png | width=300)
+![Home](https://github.com/mustardian/UniMed/blob/side/assets/icons/github/home.png =250x250)
+![Health](https://github.com/mustardian/UniMed/blob/side/assets/icons/github/health.png =250x250)
+![Files](https://github.com/mustardian/UniMed/blob/side/assets/icons/github/files.png =250x250)
+![Profile](https://github.com/mustardian/UniMed/blob/side/assets/icons/github/profile.png =250x250)
+![Search](https://github.com/mustardian/UniMed/blob/side/assets/icons/github/search.png =250x250)
+![Policies](https://github.com/mustardian/UniMed/blob/side/assets/icons/github/policies.png =250x250)
 
 
 ### Installation
