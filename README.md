@@ -33,9 +33,11 @@ UniMed is built using the following technologies:
 
 ### Screenshots
 
-<img src="https://github.com/mustardian/UniMed/blob/side/assets/icons/github/home.png" width="300" height="600"> <img src="https://github.com/mustardian/UniMed/blob/side/assets/icons/github/health.png" width="300" height="600">
-<img src="https://github.com/mustardian/UniMed/blob/side/assets/icons/github/files.png" width="300" height="600"> <img src="https://github.com/mustardian/UniMed/blob/side/assets/icons/github/profile.png" width="300" height="600">
-<img src="https://github.com/mustardian/UniMed/blob/side/assets/icons/github/search.png" width="300" height="600"> <img src="https://github.com/mustardian/UniMed/blob/side/assets/icons/github/policies.png" width="300" height="600">
+<img src="https://github.com/mustardian/UniMed/blob/side/assets/icons/github/home.png" width="300" height="700"> <img src="https://github.com/mustardian/UniMed/blob/side/assets/icons/github/health.png" width="300" height="700">
+
+<img src="https://github.com/mustardian/UniMed/blob/side/assets/icons/github/files.png" width="300" height="700"> <img src="https://github.com/mustardian/UniMed/blob/side/assets/icons/github/profile.png" width="300" height="700">
+
+<img src="https://github.com/mustardian/UniMed/blob/side/assets/icons/github/search.png" width="300" height="700"> <img src="https://github.com/mustardian/UniMed/blob/side/assets/icons/github/policies.png" width="300" height="700">
 
 ### Installation
 To install UniMed, simply download the latest release from the [releases](https://github.com/mustardian/UniMed/tags) section.
